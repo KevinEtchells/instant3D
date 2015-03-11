@@ -26,7 +26,7 @@ Meteor.startup(function () {
 					defaults: {
 						setGraphicSize: 0.9,
 						lectern: true, lecternX: -4.104028,
-						ttSize: 4, modPanelRed: 0, modPanelGreen: 0, modPanelBlue: 0,
+						ttSize: 4, topTableX: 3.2, modPanelRed: 0, modPanelGreen: 0, modPanelBlue: 0,
 						recessesRed: 0, recessesGreen: 0, recessesBlue: 1
 					}
 				},
