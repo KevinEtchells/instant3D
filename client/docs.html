@@ -1,0 +1,81 @@
+<template name="docs">
+
+	<style>
+		#navbar-top {margin: 0;}
+		ul.nav {width: 100%;}
+		#login-dropdown-list {float: right;}
+		.largeInput {width: 310px;}
+		td {padding: 6px !important;}
+	</style>
+
+	<header id="navbar-top"  class="navbar" role="banner">
+		<div class="navbar-inner"> 
+			<!--<img src="logo2.png" width="150px"/>-->
+			<nav class="collapse navbar-collapse" role="navigation">
+				<ul class="nav navbar-nav">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">New <b class="caret"></b></a>
+						<ul class="dropdown-menu" data-action="addDoc">
+							{{#each rooms}}
+								<li><a href="#">{{this}}</a></li>
+							{{/each}}
+							<!--<li class="divider"></li>-->
+						</ul>
+					</li>
+					{{> loginButtons align="right"}}
+				</ul>
+			</nav>
+       
+   </div>
+	</header>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Document Name</th>
+				<th></th>
+				<th>Template</th>
+				<th>Time Created</th>
+				<th>Sharing</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each docs}}
+				<tr>
+					<td><input type="text" class="name form-control" value="{{name}}"/></td>
+					<td>
+						<a href="{{_host}}/{{company.name}}/{{_id}}/edit" class="btn btn-primary">Edit</a>
+						<a href="{{_host}}/{{company.name}}/{{_id}}/view" class="btn btn-primary">View</a>
+						<a href="{{_host}}/{{company.name}}/{{_id}}/control" class="btn btn-primary">Control</a>
+					</td>
+					<td>
+						<input type="text" class="form-control" disabled value="{{template}}"/>
+						<!--
+						<select class="form-control" data-action="changeTemplate">
+							{{#each company.templates}}
+								<option {{selected ../template}}>{{name}}</option>
+							{{/each}}
+						</select>
+						-->
+					</td>
+					<td><input type="text" class="largeInput form-control" disabled value="{{created}}"/></td>
+					<td>
+						<select class="sharing form-control">
+							{{{_option 'private' 'Private' shared}}}
+							{{{_option 'view' 'Anyone can View' shared}}}
+							{{{_option 'viewPassword' 'Anyone with Password can View' shared}}}
+							{{{_option 'edit' 'Anyone can Edit' shared}}}
+							{{{_option 'editPassword' 'Anyone with Password can Edit' shared}}}
+						</select>
+					</td>
+					<td>
+						<button class="copy btn">Copy</button>
+						<button class="delete btn btn-danger">Remove</button>
+					</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+
+</template>

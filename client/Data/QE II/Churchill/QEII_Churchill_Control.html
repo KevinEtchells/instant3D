@@ -1,0 +1,71 @@
+<template name="QEII_Churchill_Control">
+
+	<style>
+		div.feltSwatch {position: absolute; width: 250px; height: 100%; left: -250px; top: 0; padding: 5px; background-color: white; animate: all;}
+		h5 {text-align: center; font-weight: bold;}
+		
+		select {width: 150px;}
+		label {float: left;}
+		.right {float: right;}
+		
+		div.colourBoxSmall {display: inline-block; width: 40px; height: 20px; border: 1px solid; margin-right: 10px; margin-left: 10px;}
+		div.colourBoxMedium {display: inline-block; width: 47px; height: 47px; border: 1px solid; margin-right: 5px; margin-left: 5px; margin-top: 5px;}
+	</style>
+
+	<div class="feltSwatch">
+		<h5>Select Felt</h5>
+		<div class="colourBoxMedium" style="background-color: black"></div>
+		<div class="colourBoxMedium" style="background-color: grey"></div>
+		<div class="colourBoxMedium" style="background-color: blue"></div>
+		<div class="colourBoxMedium" style="background-color: cyan"></div>
+		<div class="colourBoxMedium" style="background-color: purple"></div>
+		<div class="colourBoxMedium" style="background-color: red"></div>
+		<div class="colourBoxMedium" style="background-color: pink"></div>
+		<div class="colourBoxMedium" style="background-color: orange"></div>
+		<div class="colourBoxMedium" style="background-color: green"></div>
+		<div class="colourBoxMedium" style="background-color: white"></div>
+	</div>
+
+		<label>Stage width:</label><span class="right">{{stageWidth}} ft</span>
+		<input type="range" min="36" max="80" step="4" value="{{stageWidth}}" property="stageWidth"/>
+		<hr/>
+<!--
+		{{#if lectern}}
+			<input type="checkbox" class="checkbox" property="lectern" checked/>Lectern
+		{{else}}
+			<input type="checkbox" class="checkbox" property="lectern"/>Lectern
+		{{/if}}
+		<hr/>
+-->
+		<label>Top table size:</label>
+		<input type="number" class="text" min="0" max="16" value="{{ttSize}}" property="ttSize"/>
+		<br/><br/>
+		<label>Modesty Panel colour:</label>
+		<div class="colourBoxSmall" style="background-color: {{modPanelColour}}"></div><!--<span>Black</span>-->
+		<hr/>
+
+		<label>Chromabattens:</label>
+		<br/><br/>
+		<label>R:</label> <input type="range" min="0" max="1" step="0.01" value="{{uplightRed}}" property="uplightRed"/>
+		<br/>
+		<label>G:</label><input type="range" min="0" max="1" step="0.01" value="{{unplightGreen}}" property="uplightGreen"/>
+		<br/>
+		<label>B:</label><input type="range" min="0" max="1" step="0.01" value="{{uplightBlue}}" property="uplightBlue"/>
+		<hr/>
+		
+		<label>Set Graphics:</label>
+		<select property="setGraphics">
+			<option value="None">None</option>
+			{{#each _resources}}
+				{{{_option name name ../setGraphics}}}
+			{{/each}}
+		</select>
+		<br/>
+		<label>Size: </label><span class="right">{{setGraphicsSize setGraphicSize setGraphics}}</span>
+		<input type="range" min="0.4" max="2" step="0.01" value="{{setGraphicSize}}" property="setGraphicSize"/>
+		<hr/>
+
+		<h4>Upload Image:</h4>
+		<input class="upload" type="file"/>
+
+</template>

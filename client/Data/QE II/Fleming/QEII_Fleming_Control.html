@@ -1,0 +1,103 @@
+<template name="QEII_Fleming_Control">
+
+	<style>
+		/* general */
+		h5 {text-align: center; font-weight: bold;}
+		.right {float: right;}
+		label {float: left;}
+		.form-control {margin-bottom: 20px;}
+
+		/* felt */
+		div.feltSwatch {position: absolute; width: 250px; height: 100%; left: -250px; top: 0; padding: 5px; background-color: white; animate: all;}
+		div.colourBoxSmall {display: inline-block; width: 40px; height: 20px; border: 1px solid; margin-right: 10px; margin-left: 10px;}
+		div.colourBoxMedium {display: inline-block; width: 47px; height: 47px; border: 1px solid; margin-right: 5px; margin-left: 5px; margin-top: 5px;}
+	</style>
+
+	<div class="feltSwatch">
+		<h5>Select Felt</h5>
+		<div class="colourBoxMedium" style="background-color: black"></div>
+		<div class="colourBoxMedium" style="background-color: grey"></div>
+		<div class="colourBoxMedium" style="background-color: blue"></div>
+		<div class="colourBoxMedium" style="background-color: cyan"></div>
+		<div class="colourBoxMedium" style="background-color: purple"></div>
+		<div class="colourBoxMedium" style="background-color: red"></div>
+		<div class="colourBoxMedium" style="background-color: pink"></div>
+		<div class="colourBoxMedium" style="background-color: orange"></div>
+		<div class="colourBoxMedium" style="background-color: green"></div>
+		<div class="colourBoxMedium" style="background-color: white"></div>
+	</div>
+
+	{{#if selectedObjectType 'stage' 'set'}}
+		<h5>Stage</h5>
+		<label>Width:</label><span class="right">{{stageWidth}} ft</span>
+		<input type="range" min="36" max="80" step="4" value="{{stageWidth}}" property="stageWidth"/>
+	{{/if}}
+		
+	{{#if selectedObjectType 'set'}}
+		<hr/>
+		<h5>Set Wash</h5>
+		<label>R:</label> <input type="range" min="0" max="1" step="0.01" value="{{uplightRed}}" property="uplightRed"/>
+		<br/>
+		<label>G:</label><input type="range" min="0" max="1" step="0.01" value="{{uplightGreen}}" property="uplightGreen"/>
+		<br/>
+		<label>B:</label><input type="range" min="0" max="1" step="0.01" value="{{uplightBlue}}" property="uplightBlue"/>
+		<hr/>
+	{{/if}}
+	
+	{{#if selectedObjectType 'screen'}}
+		<h5>Screen</h5>
+		<select class="form-control">
+			<option value="4:3">4:3 Ratio</option>
+			<option value="16:9">16:9 Ratio</option>
+		</select>
+		<select class="form-control">
+			<option value="Standard">Standard</option>
+			<option value="Old">Old Header</option>
+			<option value="Old-raised">Old Raised Header</option>
+			<option value="Fast-fold">Fast-fold</option>
+		</select>
+		<button class="btn" data-action="resetScreenPos">Reset Position</button>
+		<button class="btn btn-danger" data-action="removeScreen">Remove</button>
+	{{/if}}
+	<!--
+		<h5>Screens</h5>
+		{{#each screens}}
+			<input type="text" class="screenName" screenProperty="name" value="{{name}}"/>
+			<button data-action="removeScreen">&times;</button>
+			<br/>
+			<select class="screenRatio">
+				<option value="4:3">4:3 Ratio</option>
+				<option value="16:9">16:9 Ratio</option>
+			</select>
+			<select class="screenType">
+				<option value="Standard">Standard</option>
+				<option value="Old">Old Header</option>
+				<option value="Old-raised">Old Raised Header</option>
+				<option value="Fast-fold">Fast-fold</option>
+			</select>
+		{{/each}}
+	-->
+
+	{{#if selectedObjectType 'graphics' 'set'}}
+		<h5>Set Graphics</h5>
+		<label>Content: </label>
+		<select class="right form-control" property="setGraphics">
+			<option value="None">None</option>
+			{{#each _resources}}
+				{{{_option name name ../setGraphics}}}
+			{{/each}}
+		</select>
+		<br/><br/>
+		<label>Size: </label><span class="right">{{setGraphicsSize setGraphicSize setGraphics}}</span>
+		<input type="range" min="0.4" max="2" step="0.01" value="{{setGraphicSize}}" property="setGraphicSize"/>
+	{{/if}}
+	
+		<hr/>
+		<h5>Add</h5>
+		<button data-action="addScreen" class="btn">Add Screen</button>
+		
+		<hr/>
+		<h5>Upload</h5>
+		<input class="upload btn" type="file"/>
+
+</template>

@@ -1,0 +1,65 @@
+<template name="QEII_Mountbatten_Control">
+
+	<style>
+		select {width: 150px;}
+		input.radio, input.checkbox {display: inline; min-height: 0;}
+	</style>
+
+		{{#if widescreen}}
+			<input type="radio" class="radio" name="ratio" value="false" property="widescreen"/>4:3 ratio screen
+			<br/>
+			<input type="radio" class="radio" name="ratio" value="true" property="widescreen" checked/>16:9 ratio screen
+		{{else}}
+			<input type="radio" class="radio" name="ratio" value="false" property="widescreen" checked/>4:3 ratio screen
+			<br/>
+			<input type="radio" class="radio" name="ratio" value="true" property="widescreen"/>16:9 ratio screen
+		{{/if}}
+		<br/><br/>
+		Slide:
+		<select property="slide">
+			<option value="None">None</option>
+			{{#each _resources}}
+				{{{_option name name ../slide}}}
+			{{/each}}
+		</select>
+		<hr/>
+
+		{{#if lectern}}
+			<input type="checkbox" class="checkbox" property="lectern" checked/>Lectern
+		{{else}}
+			<input type="checkbox" class="checkbox" property="lectern"/>Lectern
+		{{/if}}
+		<hr/>
+		<label>Top table size:</label>
+		<input type="number" min="0" max="16" value="{{ttSize}}" property="ttSize"/>
+		<p>Lectern & Modesty Panel felt colour:</p>
+		<label>R: </label> <input type="range" min="0" max="1" step="0.01" value="{{modPanelRed}}" property="modPanelRed"/>
+		<br/>
+		<label>G: </label><input type="range" min="0" max="1" step="0.01" value="{{modPanelGreen}}" property="modPanelGreen"/>
+		<br/>
+		<label>B: </label><input type="range" min="0" max="1" step="0.01" value="{{modPanelBlue}}" property="modPanelBlue"/>
+		<hr/>
+
+		<p>Chromabattens - Recesses:</p>
+		<label>R: </label> <input type="range" min="0" max="1" step="0.01" value="{{recessesRed}}" property="recessesRed"/>
+		<br/>
+		<label>G: </label><input type="range" min="0" max="1" step="0.01" value="{{recessesGreen}}" property="recessesGreen"/>
+		<br/>
+		<label>B: </label><input type="range" min="0" max="1" step="0.01" value="{{recessesBlue}}" property="recessesBlue"/>
+		<hr/>
+		
+		Set Graphics:
+		<select property="setGraphics">
+			<option value="None">None</option>
+			{{#each _resources}}
+				{{{_option name name ../setGraphics}}}
+			{{/each}}
+		</select>
+		<br/>
+		<label>Size: </label> <input type="range" min="0.4" max="1.7" step="0.01" value="{{setGraphicSize}}" class="text" property="setGraphicSize"/>
+		<hr/>
+
+		<h4>Upload Image:</h4>
+		<input class="upload" type="file"/>
+
+</template>
