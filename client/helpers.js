@@ -1,3 +1,7 @@
+getHost = function() {
+	return window.location.origin;
+};
+
 /*
 UI.registerHelper('_indexArray', function(array) {
 	array.forEach(function(item, index) {
@@ -8,7 +12,7 @@ UI.registerHelper('_indexArray', function(array) {
 */
 
 UI.registerHelper('_host', function() {
-	return window.location.origin;
+	return getHost();
 });
 
 UI.registerHelper('_option', function(value, text, check) {
@@ -18,3 +22,8 @@ UI.registerHelper('_option', function(value, text, check) {
 UI.registerHelper('_resources', function() {
 	return Resources.find();
 });
+
+UI.registerHelper('_equal', function(a, b) {
+	return a === b;
+});
+

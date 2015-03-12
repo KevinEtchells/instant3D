@@ -45,29 +45,36 @@
 	{{/if}}
 	
 	{{#if selectedObjectType 'screen'}}
-		<h5>Screen</h5>
-		<label>Ratio:</label>
-		<select class="form-control">
-			<option value="4:3">4:3 Ratio</option>
-			<option value="16:9">16:9 Ratio</option>
-		</select>
-		<label>Screen Type:</label>
-		<select class="form-control">
-			<option value="Standard">Standard</option>
-			<option value="Old">Old Header</option>
-			<option value="Old-raised">Old Raised Header</option>
-			<option value="Fast-fold">Fast-fold</option>
-		</select>
-		<label>Content:</label>
-		<select class="form-control" property="screenContent">
-			<option value="None">None</option>
-			{{#each _resources}}
-				{{{_option name name ../setGraphics}}}
-			{{/each}}
-		</select>
-		
-		<button class="btn" data-action="resetScreenPos">Reset Position</button>
-		<button class="btn btn-danger" data-action="removeScreen">Remove</button>
+		{{#with selectedScreen}}
+			<h5>Screen</h5>
+			<label>Ratio:</label>
+			<select class="form-control">
+				<option value="4:3">4:3 Ratio</option>
+				<option value="16:9">16:9 Ratio</option>
+			</select>
+			<label>Screen Type:</label>
+			<select class="form-control">
+				<option value="Standard">Standard</option>
+				<option value="Old">Old Header</option>
+				<option value="Old-raised">Old Raised Header</option>
+				<option value="Fast-fold">Fast-fold</option>
+			</select>
+			<label>Content:</label>
+			<select class="form-control" data-action="screenContentChange" value="{{content}}">
+				<option value="None">None</option>
+				<option value="Path">Path...</option>
+				{{#each _resources}}
+					{{{_option name name ../content}}}
+				{{/each}}
+			</select>
+			{{#if _equal content 'Path'}}
+				<input type="text" class="form-control" data-action="screenContentPathChange" value="{{contentPath}}"/>
+			{{/if}}
+			
+			
+			<button class="btn" data-action="resetScreenPos">Reset Position</button>
+			<button class="btn btn-danger" data-action="removeScreen">Remove</button>
+		{{/with}}
 	{{/if}}
 
 

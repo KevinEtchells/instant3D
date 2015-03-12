@@ -60,7 +60,7 @@
 				
 				{{#each screens}}
 
-					<Transform DEF="Screen_Surround" translation="{{screenPositionX}} 1.7 -0.74" scale="1.225 0.9395833333 0.04">
+					<Transform DEF="Screen_Surround" translation="{{valueOrDefault positionX 0}} 1.7 -0.74" scale="1.225 0.9395833333 0.04">
 						<Shape>
 							<Appearance>
 								<Material DEF="Black_Felt" diffuseColor="0 0 0" specularColor="0.1 0.1 0.1" ambientIntensity="0.333" shininess="0.1"></Material>
@@ -98,12 +98,19 @@
 
 					</Transform>
 
-					<Transform DEF="Screen" translation="{{screenPositionX}} 1.7 -0.69" scale="1.141666667 0.85625 0">
+					<Transform DEF="Screen" translation="{{valueOrDefault positionX 0}} 1.7 -0.69" scale="1.141666667 0.85625 0">
 						<Shape onclick="selectObject('screen', {{id}}, event)" onmousemove="dragObject({{id}}, event)">
-							<Appearance>
-								<!--<ImageTexture DEF="IM_Screen4-3_jpg" url="{{_host}}/resource/{{Id}}/{{slide}}"></ImageTexture>-->
-								<Material DEF="Screen" diffuseColor="1 1 1" specularColor="1 1 1" emissiveColor="1 1 1" ambientIntensity="0.333" shininess="0.1"></Material>
-							</Appearance>
+								<Appearance>
+									{{#if isMovie path}}
+										<MovieTexture url="{{path}}" loop="true"></MovieTexture>
+									{{else}}
+										{{#if isImage path}}}
+											<ImageTexture url="{{path}}"></ImageTexture>
+										{{else}}
+											<Material DEF="Screen" diffuseColor="1 1 1" specularColor="1 1 1" emissiveColor="1 1 1" ambientIntensity="0.333" shininess="0.1"></Material>
+										{{/if}}
+									{{/if}}
+								</Appearance>
 							<box></box>
 						</Shape>
 					</Transform>

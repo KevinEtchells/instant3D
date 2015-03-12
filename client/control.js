@@ -91,24 +91,40 @@ Template.control.events({
 			var docId = Docs.findOne()._id;
 
 		_.each(event.target.files, function(file) {
+
 			var fileReader = new FileReader();
 			fileReader.onload = function(file) {
+
+				var name = event.target.value.replace('C:\\fakepath\\', '');	
 				
 				var img = new Image();
 				img.onload = function() {
-					
 					Resources.insert({
 						name: name,
 						file: file.target.result,
 						doc: docId,
 						aspectRatio: this.width / this.height
 					});
-					
 				};
 				img.src = file.target.result;
 				
-				var name = event.target.value.replace('C:\\fakepath\\', '');	
-
+				/*
+				var video = document.createElement('video');
+				video.oncanplaythrough = function() {
+					console.log('check 3');
+					console.log(this);
+					console.log(this.width);
+					console.log(this.height);
+					Resources.insert({
+						name: name,
+						file: file.target.result,
+						doc: docId,
+						aspectRatio: this.width / this.height
+					});
+				};
+				video.src = file.target.result;
+				*/
+				
 			}
 			fileReader.readAsDataURL(file);
 		});

@@ -24,22 +24,30 @@ Template.QEII_Fleming_Scene.helpers({
 		return size/10 + 0.025;
 	},
 	
-	'screenPositionX': function() {
-		return this.positionX || 0;
-		/*
-		var doc = Docs.findOne();
-		if (doc) {
-			for (var i = 0; i < doc.data.screens.length; i++) {
-				if (doc.data.screens[i].id === this.id) {
-					return doc.data['screen' + this.id + 'X'] || 0;
-				}
-			}
-		}
-		*/
+	'valueOrDefault': function(position, fallback) {
+		return position || fallback;
 	},
-	
+
 	'material': function(property) {
 		return '<Material diffuseColor="' + this[property +'Red'] + ' ' + this[property + 'Green'] + ' ' + this[property + 'Blue'] + '"></Material>';
+	},
+	
+	'path': function() {
+		if (this.content === 'Path') {
+			return 'http://' + this.contentPath;
+		} else {
+			return getHost() + '/resource/' + Docs.findOne()._id + '/' + this.content;
+		}
+	},
+	'isImage': function(path) {
+		if (path) {
+			return (path.toLowerCase().indexOf('png') !== -1) || (path.toLowerCase().indexOf('jpg') !== -1)
+		}
+	},
+	'isMovie': function(path) {
+		if (path) {
+			return (path.toLowerCase().indexOf('mp4') !== -1) || (path.toLowerCase().indexOf('gif') !== -1)
+		}
 	},
 
 	'topTable': function() {
@@ -94,10 +102,8 @@ selectObject = function(type, id, event) {
 	if (!event.isTrigger) { // filter out 2nd jQuery event fire
 		var currentObject = Session.get('selectedObject');
 		if (currentObject && currentObject.type === type && currentObject.id === id) {
-			console.log('deselect');
 			Session.set('selectedObject', {});
 		} else {
-			console.log('select');
 			Session.set('selectedObject', {type: type, id: id});
 		}
 	}
