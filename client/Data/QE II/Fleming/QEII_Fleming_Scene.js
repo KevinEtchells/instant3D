@@ -16,10 +16,7 @@ Template.QEII_Fleming_Scene.helpers({
 		}
 		return 'false';
 	},
-	
-	'scale': function(size) {
-		return size/10;
-	},
+
 	'scaleSet': function(size) {
 		return size/10 + 0.025;
 	},
@@ -53,17 +50,6 @@ Template.QEII_Fleming_Scene.helpers({
 	'topTable': function() {
 		return this.ttSize > 0;
 	},
-
-	'ttScale': function() {
-		return 0.35 * this.ttSize;
-	},
-	'ttPos': function() {
-		return 5 - (0.35 * this.ttSize);
-	},
-	'modPanelReturnPos': function() {
-		return 4.99 - (0.7 * this.ttSize);
-	},
-
 
 	'setGraphicsX': function(side, stageWidth) {
 		var doc = Docs.findOne();

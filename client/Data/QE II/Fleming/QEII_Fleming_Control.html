@@ -91,13 +91,19 @@
 		<label>Size: </label><span class="right">{{setGraphicsSize setGraphicSize setGraphics}}</span>
 		<input type="range" min="0.4" max="2" step="0.01" value="{{setGraphicSize}}" property="setGraphicSize"/>
 	{{/if}}
+
+	{{#if selectedObjectType 'TopTable' 'stage'}}
+		<h5>Top Table</h5>
+		<label>Size: </label>
+		<input type="number" min="0" class="form-control" property="topTableSize" value="{{topTableSize}}"/>
+	{{/if}}
 	
-		<hr/>
-		<h5>Add</h5>
-		<button data-action="addScreen" class="btn">Add Screen</button>
-		
-		<hr/>
-		<h5>Upload</h5>
-		<input class="upload btn" type="file"/>
+	<hr/>
+	<h5>Add</h5>
+	<button data-action="addScreen" class="btn">Add Screen</button>
+	
+	<hr/>
+	<h5>Upload</h5>
+	<input class="upload btn" type="file"/>
 
 </template>

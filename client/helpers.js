@@ -27,3 +27,6 @@ UI.registerHelper('_equal', function(a, b) {
 	return a === b;
 });
 
+UI.registerHelper('_scale', function(value, amount) {
+	return value * amount;
+});
