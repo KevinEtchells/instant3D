@@ -37,9 +37,7 @@
 		<hr/>
 		<h5>Set Wash</h5>
 		<label>R:</label> <input type="range" min="0" max="1" step="0.01" value="{{uplightRed}}" property="uplightRed"/>
-		<br/>
 		<label>G:</label><input type="range" min="0" max="1" step="0.01" value="{{uplightGreen}}" property="uplightGreen"/>
-		<br/>
 		<label>B:</label><input type="range" min="0" max="1" step="0.01" value="{{uplightBlue}}" property="uplightBlue"/>
 		<hr/>
 	{{/if}}
@@ -70,8 +68,7 @@
 			{{#if _equal content 'Path'}}
 				<input type="text" class="form-control" data-action="screenContentPathChange" value="{{contentPath}}"/>
 			{{/if}}
-			
-			
+
 			<button class="btn" data-action="resetScreenPos">Reset Position</button>
 			<button class="btn btn-danger" data-action="removeScreen">Remove</button>
 		{{/with}}
@@ -90,17 +87,30 @@
 		<br/><br/>
 		<label>Size: </label><span class="right">{{setGraphicsSize setGraphicSize setGraphics}}</span>
 		<input type="range" min="0.4" max="2" step="0.01" value="{{setGraphicSize}}" property="setGraphicSize"/>
+		<hr/>
+	{{/if}}
+	
+	{{#if selectedObjectType 'recesses' 'set'}}
+		<h5>Recesses</h5>
+		{{#with selectedScreen}}
+			<label>R:</label><input type="range" min="0" max="1" step="0.01" value="{{uplightRed}}" property="uplightRed"/>
+			<label>G:</label><input type="range" min="0" max="1" step="0.01" value="{{uplightGreen}}" property="uplightGreen"/>
+			<label>B:</label><input type="range" min="0" max="1" step="0.01" value="{{uplightBlue}}" property="uplightBlue"/>
+			<button class="btn btn-danger" data-action="removeScreen">Remove</button>
+		{{/with}}
+		<hr/>
 	{{/if}}
 
 	{{#if selectedObjectType 'TopTable' 'stage'}}
 		<h5>Top Table</h5>
 		<label>Size: </label>
 		<input type="number" min="0" class="form-control" property="topTableSize" value="{{topTableSize}}"/>
+		<hr/>
 	{{/if}}
 	
-	<hr/>
 	<h5>Add</h5>
 	<button data-action="addScreen" class="btn">Add Screen</button>
+	<button data-action="addRecess" class="btn">Add Recess</button>
 	
 	<hr/>
 	<h5>Upload</h5>
