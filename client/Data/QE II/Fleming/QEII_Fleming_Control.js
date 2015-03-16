@@ -46,6 +46,7 @@ Template.QEII_Fleming_Control.events({
 
 	},
 	
+	// TO DO: these can all be made much DRYer...
 	'change [data-action="screenContentChange"]': function(event) {
 		var doc = Docs.findOne(),
 				id = Session.get('selectedObject').id;
@@ -66,7 +67,18 @@ Template.QEII_Fleming_Control.events({
 		}
 		Docs.update(doc._id, {$set: {data: doc.data}});
 	},
-	'click [data-action="resetScreenPos"]': function() {
+	'input [data-action="changeScreenPosition"]': function(event) {
+		var doc = Docs.findOne(),
+				id = Session.get('selectedObject').id;
+		for (var i = 0; i < doc.data.screens.length; i++) {
+			if (doc.data.screens[i].id.toString() === id.toString()) {
+				doc.data.screens[i].positionX = event.target.value;
+			}
+		}
+		Docs.update(doc._id, {$set: {data: doc.data}});
+		previousPositions = {} // to prevent position jumping if drag-drop
+	},
+	'dblclick [data-action="changeScreenPosition"]': function() {
 		var doc = Docs.findOne(),
 				id = Session.get('selectedObject').id;
 		for (var i = 0; i < doc.data.screens.length; i++) {
@@ -75,6 +87,8 @@ Template.QEII_Fleming_Control.events({
 			}
 		}
 		Docs.update(doc._id, {$set: {data: doc.data}});
+		previousPositions = {} // to prevent position jumping if drag-drop
+		event.target.value = 0; // need to force refresh
 	},
 	'click [data-action="removeScreen"]': function() {
 		var doc = Docs.findOne(),

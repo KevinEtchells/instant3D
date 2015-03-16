@@ -68,9 +68,11 @@
 			{{#if _equal content 'Path'}}
 				<input type="text" class="form-control" data-action="screenContentPathChange" value="{{contentPath}}"/>
 			{{/if}}
-
-			<button class="btn" data-action="resetScreenPos">Reset Position</button>
-			<button class="btn btn-danger" data-action="removeScreen">Remove</button>
+			<label>Position: </label>
+			<input type="range" min="-9" max="9" step="0.2" data-action="changeScreenPosition" value="{{positionX}}"/>
+			<br/>
+			<button class="btn btn-danger" data-action="removeScreen">Remove Screen</button>
+			<hr/>
 		{{/with}}
 	{{/if}}
 

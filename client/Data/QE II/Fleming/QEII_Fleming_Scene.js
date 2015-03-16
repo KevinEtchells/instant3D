@@ -80,7 +80,18 @@ Template.QEII_Fleming_Scene.events({
 
 
 Template.QEII_Fleming_Scene.rendered = function() {
+
 	x3dom.reload();
+
+/*
+	document.querySelectorAll('x3d')[0].addEventListener('touchmove', function(event) {
+		//alert(event.changedTouches[0].clientX);
+		var touch = event.changedTouches[0];
+		var newEvent = document.createEvent('MouseEvent');
+		newEvent.initMouseEvent('mousemove', true, window, 1, touch.screenX, touch.screenY, touch.clientX, touch.clientY, false, false, false, false, 0, null);
+		touch.target.dispatchEvent(newEvent);
+	}, true);
+	*/
 };
 
 
