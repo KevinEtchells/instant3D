@@ -55,7 +55,7 @@ Template.control.events({
 		Docs.update(currentDoc._id, {$set: {data: currentDoc.data}});
 		
 	},
-	'change input[type="range"]': function(event) {
+	'input input[type="range"]': function(event) {
 
 		var update = {},
 			currentDoc = Docs.findOne(),
