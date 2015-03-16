@@ -28,7 +28,7 @@ var previousPositions = {};
 
 dragObject = function(objectId, event) {
 	var object = Session.get('selectedObject');
-	if (event.button === 0 && object && object.id.toString() === objectId.toString()) {
+	if (event.button === 1 && object && object.id.toString() === objectId.toString()) {
 		if (previousPositions.x) {
 			if (object.type === 'screen') {
 				var doc = Docs.findOne();
@@ -40,42 +40,16 @@ dragObject = function(objectId, event) {
 					}
 				}
 			}
+		} else {
+			document.getElementById('navType').setAttribute('type', 'none');
 		}
 		previousPositions = {x: event.worldX, y: event.worldY, z: event.worldZ}
 	} else {
 		previousPositions = {}
+		document.getElementById('navType').setAttribute('type', 'examine');
 	}
 };
 
-/*
-dragObject = function(objectId, event) {
-	var object = Session.get('selectedObject');
-	if (event.button === 0 && object && object.id.toString() === objectId.toString()) {	
-		if (previousPositions.x) {	
-			if (object.type === 'screen') {
-				var doc = Docs.findOne();
-				for (var i = 0; i < doc.data.screens.length; i++) {
-					if (doc.data.screens[i].id.toString() === object.id.toString()) {
-						//console.log(event.worldX + ' : ' + previousPositions.x);
-						console.log(event.normalX);
-	
-						if (event.worldX - previousPositions.x < 0.2) {
-							doc.data.screens[i].positionX = doc.data.screens[i].positionX + 0.2;
-						} else {
-							doc.data.screens[i].positionX = doc.data.screens[i].positionX - 0.2;
-						}
-						Docs.update(doc._id, {$set: {data: doc.data}});
-	
-					}
-				}
-			}
-		}
-		previousPositions = {x: event.worldX, y: event.worldY, z: event.worldZ}
-	} else {
-		previousPositions = {}
-	}
-};
-*/
 snapToNearest = function(value, snap) {
 	console.log(Math.round(value / snap) * snap);
 	return Math.round(value / snap) * snap;
