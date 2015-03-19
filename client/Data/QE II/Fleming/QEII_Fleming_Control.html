@@ -78,18 +78,25 @@
 
 
 	{{#if selectedObjectType 'graphics' 'set'}}
-		<h5>Set Graphics</h5>
-		<label>Content: </label>
-		<select class="right form-control" property="setGraphics">
-			<option value="None">None</option>
-			{{#each _resources}}
-				{{{_option name name ../setGraphics}}}
-			{{/each}}
-		</select>
-		<br/><br/>
-		<label>Size: </label><span class="right">{{setGraphicsSize setGraphicSize setGraphics}}</span>
-		<input type="range" min="0.4" max="2" step="0.01" value="{{setGraphicSize}}" property="setGraphicSize"/>
-		<hr/>
+		{{#with selectedGraphic}}
+			<h5>Set Graphics</h5>
+			<label>Content: </label>
+			<select class="right form-control" data-action="changeGraphicContent">
+				<option value="None">None</option>
+				{{#each _resources}}
+					{{{_option name name ../content}}}
+				{{/each}}
+			</select>
+			<br/><br/>
+			<label>Size: </label><span class="right">{{setGraphicsSize setGraphicSize setGraphics}}</span>
+			<input type="range" min="0.4" max="2" step="0.01" value="{{setGraphicSize}}" data-action="changeGraphicSize"/>
+			<br/>
+			<label>Position: </label>
+			<input type="range" min="-9" max="9" step="0.01" data-action="changeGraphicPosition" value="{{positionX}}"/>
+			<br/>
+			<button class="btn btn-danger" data-action="removeGraphic">Remove Set Graphic</button>
+			<hr/>
+		{{/with}}
 	{{/if}}
 	
 	{{#if selectedObjectType 'recess'}}
@@ -116,6 +123,7 @@
 	
 	<h5>Add</h5>
 	<button data-action="addScreen" class="btn">Add Screen</button>
+	<button data-action="addGraphic" class="btn">Add Graphic</button>
 	<button data-action="addRecess" class="btn">Add Recess</button>
 	
 	<hr/>

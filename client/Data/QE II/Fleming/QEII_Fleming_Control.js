@@ -20,6 +20,15 @@ Template.QEII_Fleming_Control.helpers({
 			}
 		}
 	},
+	'selectedGraphic': function() {
+		var graphicId = Session.get('selectedObject').id;
+				graphics = Docs.findOne().data.setGraphics;
+		for (var i = 0; i < graphics.length; i++) {
+			if (graphics[i].id.toString() === graphicId.toString()) {
+				return graphics[i];
+			}
+		}
+	},
 	'selectedRecess': function() {
 		var recessId = Session.get('selectedObject').id;
 				recesses = Docs.findOne().data.recesses;
@@ -29,7 +38,7 @@ Template.QEII_Fleming_Control.helpers({
 			}
 		}
 	},
-
+/*
 	'setGraphicsSize': function(size, setGraphic) {
 		var img = Resources.findOne({name: setGraphic});
 		if (img) {
@@ -38,7 +47,7 @@ Template.QEII_Fleming_Control.helpers({
 			return '';
 		}
 	},
-
+*/
 });
 
 
@@ -121,6 +130,47 @@ Template.QEII_Fleming_Control.events({
 		Docs.update(doc._id, {$set: {data: doc.data}});
 	},
 
+	'change [data-action="changeGraphicContent"]': function() {
+		var doc = Docs.findOne(),
+				id = Session.get('selectedObject').id;
+		for (var i = 0; i < doc.data.setGraphics.length; i++) {
+			if (doc.data.setGraphics[i].id.toString() === id.toString()) {
+				doc.data.setGraphics[i].content = event.target.value;
+			}
+		}
+		Docs.update(doc._id, {$set: {data: doc.data}});
+	},
+	'input [data-action="changeGraphicSize"]': function() {
+		var doc = Docs.findOne(),
+				id = Session.get('selectedObject').id;
+		for (var i = 0; i < doc.data.setGraphics.length; i++) {
+			if (doc.data.setGraphics[i].id.toString() === id.toString()) {
+				doc.data.setGraphics[i].size = event.target.value;
+			}
+		}
+		Docs.update(doc._id, {$set: {data: doc.data}});
+	},
+	'input [data-action="changeGraphicPosition"]': function() {
+		var doc = Docs.findOne(),
+				id = Session.get('selectedObject').id;
+		for (var i = 0; i < doc.data.setGraphics.length; i++) {
+			if (doc.data.setGraphics[i].id.toString() === id.toString()) {
+				doc.data.setGraphics[i].positionX = event.target.value;
+			}
+		}
+		Docs.update(doc._id, {$set: {data: doc.data}});
+	},
+	'click [data-action="removeGraphic"]': function() {
+		var doc = Docs.findOne(),
+				id = Session.get('selectedObject').id;
+		for (var i = 0; i < doc.data.setGraphics.length; i++) {
+			if (doc.data.setGraphics[i].id.toString() === id.toString()) {
+				doc.data.setGraphics.splice(i, 1);
+			}
+		}
+		Docs.update(doc._id, {$set: {data: doc.data}});
+	},
+
 /*
 	'click div.colourBoxSmall': function(event) {
 		document.querySelectorAll('div.feltSwatch')[0].style.left = 0;
@@ -135,10 +185,21 @@ Template.QEII_Fleming_Control.events({
 		document.querySelectorAll('div.feltSwatch')[0].style.left = '-250px';
 	},
 */
+
+	// TO DO: make these DRY
 	'click [data-action="addScreen"]': function() {
 		var doc = Docs.findOne(),
 				newId = Date.now();
 		doc.data.screens.push({name: 'Screen ' + (doc.data.screens.length + 1), id: newId, ratio: '4:3', type: 'Standard'});
+		Docs.update(doc._id, {$set: {data: doc.data}});
+	},
+	'click [data-action="addGraphic"]': function() {
+		var doc = Docs.findOne(),
+				newId = Date.now();
+		if (!doc.data.setGraphics) {
+			doc.data.setGraphics = [];
+		}
+		doc.data.setGraphics.push({id: newId, positionX: -2, size: 0.5});
 		Docs.update(doc._id, {$set: {data: doc.data}});
 	},
 	'click [data-action="addRecess"]': function() {

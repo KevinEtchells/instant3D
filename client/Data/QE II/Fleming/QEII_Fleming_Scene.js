@@ -29,17 +29,23 @@ Template.QEII_Fleming_Scene.helpers({
 				stageWidth = doc.data.stageWidth;
 
 		// [1] sort recesses array into left-to-right order
-		recesses.sort(function(a, b) {
-			return a.positionX > b.positionX;
-		});
+		if (recesses) {
+			recesses.sort(function(a, b) {
+				return a.positionX > b.positionX;
+			});
+		}
 
 		// [2] create set sections data
 		setSections.push({start: stageWidth / -10});
-		for (var i = 0; i < recesses.length; i++) {
-			setSections[i].width = ((recesses[i].positionX - setSections[i].start) / 2) - 0.1;
-			setSections.push({start: Number(recesses[i].positionX) + 0.1});
+		if (recesses) {
+			for (var i = 0; i < recesses.length; i++) {
+				setSections[i].width = ((recesses[i].positionX - setSections[i].start) / 2) - 0.1;
+				setSections.push({start: Number(recesses[i].positionX) + 0.1});
+			}
+			setSections[setSections.length -1].width = (((stageWidth / 10) - recesses[recesses.length -1].positionX) / 2) - 0.05;
+		} else {
+			setSections[0].width = stageWidth / 10;
 		}
-		setSections[setSections.length -1].width = (((stageWidth / 10) - recesses[recesses.length -1].positionX) / 2) - 0.05;
 
 		// [3] set sections start position must take into account their width
 		setSections.forEach(function(section) {
@@ -76,6 +82,8 @@ Template.QEII_Fleming_Scene.helpers({
 		return this.ttSize > 0;
 	},
 
+
+/*
 	'setGraphicsX': function(side, stageWidth) {
 		var doc = Docs.findOne();
 		if (doc) {
@@ -87,12 +95,13 @@ Template.QEII_Fleming_Scene.helpers({
 			}
 		}
 	},
+*/
 	'setGraphicsScale': function(size, setGraphic) {
 		var img = Resources.findOne({name: setGraphic});
 		if (img) {
 			return size + ' ' + (size / img.aspectRatio) + '  0.01';
 		} else {
-			return '0 0 0';
+			return '0.5 0.5 0';
 		}
 	}
 

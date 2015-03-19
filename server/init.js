@@ -36,9 +36,12 @@ Meteor.startup(function () {
 						screens: [
 							{name: 'Screen 1', id: '1', ratio: '4:3', type: 'Standard'}
 						],
-						setGraphicSize: 0.9,
+						setGraphics: [
+							{id: '1', positionX: -2, size: 1},
+							{id: '2', positionX: 2, size: 1, linkTo: '1'}
+						],
 						lectern: true, lecternX: -4.104028,
-						ttSize: 4, topTableX: 4.5, modPanelRed: 0, modPanelGreen: 0, modPanelBlue: 0,
+						topTableSize: 4, modPanelRed: 0, modPanelGreen: 0, modPanelBlue: 0,
 						uplightRed: 0, uplightGreen: 0, uplightBlue: 1
 					}
 				},
