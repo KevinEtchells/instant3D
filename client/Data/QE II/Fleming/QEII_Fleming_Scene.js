@@ -21,14 +21,39 @@ Template.QEII_Fleming_Scene.helpers({
 		return size/10 + 0.025;
 	},
 	
+	'setSections': function() { // this works out the gaps for the recesses
+
+		var doc = Docs.findOne(),
+				recesses = doc.data.recesses,
+				setSections = [],
+				stageWidth = doc.data.stageWidth;
+
+		// [1] sort recesses array into left-to-right order
+		recesses.sort(function(a, b) {
+			return a.positionX > b.positionX;
+		});
+
+		// [2] create set sections data
+		setSections.push({start: stageWidth / -10});
+		for (var i = 0; i < recesses.length; i++) {
+			setSections[i].width = ((recesses[i].positionX - setSections[i].start) / 2) - 0.1;
+			setSections.push({start: Number(recesses[i].positionX) + 0.1});
+		}
+		setSections[setSections.length -1].width = (((stageWidth / 10) - recesses[recesses.length -1].positionX) / 2) - 0.05;
+
+		// [3] set sections start position must take into account their width
+		setSections.forEach(function(section) {
+			section.start = section.start + section.width;
+		});
+
+		return setSections;
+
+	},
+	
 	'valueOrDefault': function(position, fallback) {
 		return position || fallback;
 	},
 
-	'material': function(property) {
-		return '<Material diffuseColor="' + this[property +'Red'] + ' ' + this[property + 'Green'] + ' ' + this[property + 'Blue'] + '"></Material>';
-	},
-	
 	'path': function() {
 		if (this.content === 'Path') {
 			return 'http://' + this.contentPath;

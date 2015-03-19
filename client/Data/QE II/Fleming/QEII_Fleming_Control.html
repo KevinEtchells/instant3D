@@ -92,13 +92,17 @@
 		<hr/>
 	{{/if}}
 	
-	{{#if selectedObjectType 'recesses' 'set'}}
-		<h5>Recesses</h5>
-		{{#with selectedScreen}}
-			<label>R:</label><input type="range" min="0" max="1" step="0.01" value="{{uplightRed}}" property="uplightRed"/>
-			<label>G:</label><input type="range" min="0" max="1" step="0.01" value="{{uplightGreen}}" property="uplightGreen"/>
-			<label>B:</label><input type="range" min="0" max="1" step="0.01" value="{{uplightBlue}}" property="uplightBlue"/>
-			<button class="btn btn-danger" data-action="removeScreen">Remove</button>
+	{{#if selectedObjectType 'recess'}}
+		{{#with selectedRecess}}
+			<h5>Recesses</h5>
+			<label>Position: </label>
+			<input type="range" min="-9" max="9" step="0.2" data-action="changeRecessPosition" value="{{positionX}}"/>
+			<br/>
+			<label>R:</label><input type="range" min="0" max="1" step="0.01" value="{{../recessesRed}}" property="recessesRed"/>
+			<label>G:</label><input type="range" min="0" max="1" step="0.01" value="{{../recessesGreen}}" property="recessesGreen"/>
+			<label>B:</label><input type="range" min="0" max="1" step="0.01" value="{{../recessesBlue}}" property="recessesBlue"/>
+			<br/>
+			<button class="btn btn-danger" data-action="removeRecess">Remove Recess</button>		
 		{{/with}}
 		<hr/>
 	{{/if}}

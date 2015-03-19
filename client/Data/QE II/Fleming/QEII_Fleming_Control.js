@@ -10,17 +10,24 @@ Template.QEII_Fleming_Control.helpers({
 		}
 	},
 
+	// TO DO: make these DRY
 	'selectedScreen': function() {
-
 		var screenId = Session.get('selectedObject').id;
 				screens = Docs.findOne().data.screens;
-
 		for (var i = 0; i < screens.length; i++) {
 			if (screens[i].id.toString() === screenId.toString()) {
 				return screens[i];
 			}
 		}
-
+	},
+	'selectedRecess': function() {
+		var recessId = Session.get('selectedObject').id;
+				recesses = Docs.findOne().data.recesses;
+		for (var i = 0; i < recesses.length; i++) {
+			if (recesses[i].id.toString() === recessId.toString()) {
+				return recesses[i];
+			}
+		}
 	},
 
 	'setGraphicsSize': function(size, setGraphic) {
@@ -37,15 +44,6 @@ Template.QEII_Fleming_Control.helpers({
 
 Template.QEII_Fleming_Control.events({
 
-	'click [data-action="addScreen"]': function() {
-		var doc = Docs.findOne(),
-				newId = Date.now();
-
-		doc.data.screens.push({name: 'Screen ' + (doc.data.screens.length + 1), id: newId, ratio: '4:3', type: 'Standard'});
-		Docs.update(doc._id, {$set: {data: doc.data}});
-
-	},
-	
 	// TO DO: these can all be made much DRYer...
 	'change [data-action="screenContentChange"]': function(event) {
 		var doc = Docs.findOne(),
@@ -101,6 +99,29 @@ Template.QEII_Fleming_Control.events({
 		Docs.update(doc._id, {$set: {data: doc.data}});
 	},
 
+	'input [data-action="changeRecessPosition"]': function(event) {
+		var doc = Docs.findOne(),
+				id = Session.get('selectedObject').id;
+		for (var i = 0; i < doc.data.recesses.length; i++) {
+			if (doc.data.recesses[i].id.toString() === id.toString()) {
+				doc.data.recesses[i].positionX = event.target.value;
+			}
+		}
+		Docs.update(doc._id, {$set: {data: doc.data}});
+		previousPositions = {} // to prevent position jumping if drag-drop
+	},
+	'click [data-action="removeRecess"]': function() {
+		var doc = Docs.findOne(),
+				id = Session.get('selectedObject').id;
+		for (var i = 0; i < doc.data.recesses.length; i++) {
+			if (doc.data.recesses[i].id.toString() === id.toString()) {
+				doc.data.recesses.splice(i, 1);
+			}
+		}
+		Docs.update(doc._id, {$set: {data: doc.data}});
+	},
+
+/*
 	'click div.colourBoxSmall': function(event) {
 		document.querySelectorAll('div.feltSwatch')[0].style.left = 0;
 	},
@@ -112,6 +133,22 @@ Template.QEII_Fleming_Control.events({
 		Docs.update(currentDoc._id, {$set: {data: currentDoc.data}});
 
 		document.querySelectorAll('div.feltSwatch')[0].style.left = '-250px';
+	},
+*/
+	'click [data-action="addScreen"]': function() {
+		var doc = Docs.findOne(),
+				newId = Date.now();
+		doc.data.screens.push({name: 'Screen ' + (doc.data.screens.length + 1), id: newId, ratio: '4:3', type: 'Standard'});
+		Docs.update(doc._id, {$set: {data: doc.data}});
+	},
+	'click [data-action="addRecess"]': function() {
+		var doc = Docs.findOne(),
+				newId = Date.now();
+		if (!doc.data.recesses) {
+			doc.data.recesses = [];
+		}
+		doc.data.recesses.push({id: newId, positionX: -2});
+		Docs.update(doc._id, {$set: {data: doc.data}});
 	}
 
 });
