@@ -1,17 +1,10 @@
 Template.docs.helpers({
 
 	'rooms': function() {
-		var rooms = [],
-			company = Companies.findOne();
-		
+		var company = Companies.findOne();
 		if (company) {
-			for (var room in company.templates) {
-				rooms.push(room);
-			}
-			
-			return rooms;
+			return company.templates;
 		}
-
 	},
 
 	'docs': function() {
@@ -41,18 +34,43 @@ Template.docs.events({
 		Docs.update(this._id, {$set: {shared: event.target.value}});
 	},
 
-	'click [data-action="addDoc"] li': function() {
-		var room = this.toString(),
-			company = Companies.findOne();
-			
+	'click [data-action="addDoc"] li': function(event) {
+
+		var room = event.target.innerText,
+				company = Companies.findOne(),
+				defaults = {};
+		
+		if (room === 'Mountbatten') {
+			defaults = { 
+				setGraphicSize: 0.9,
+				lectern: true, lecternX: -4.104028,
+				ttSize: 4, topTableX: 3.2, modPanelRed: 0, modPanelGreen: 0, modPanelBlue: 0,
+				recessesRed: 0, recessesGreen: 0, recessesBlue: 1
+			}
+		} else if (room === 'Fleming') {
+			defaults = {
+				stageWidth: 36,
+				screens: [
+					{id: '1', ratio: '4:3', type: 'Standard'}
+				],
+				setGraphics: [
+					{id: '1', positionX: -2.4, size: 1},
+					{id: '2', positionX: 2.4, size: 1, linkTo: '1'}
+				],
+				topTableSize: 4,
+				uplightRed: 0, uplightGreen: 0, uplightBlue: 1
+			}
+		}
+
 		Docs.insert({
 			name: 'New Document',
 			company: company._id,
 			template: room,
 			created: new Date,
 			shared: 'private',
-			data: company.templates[room].defaults
+			data: defaults
 		});
+
 	},
 
 	'click button.copy': function() {
