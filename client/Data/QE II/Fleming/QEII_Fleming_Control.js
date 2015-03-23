@@ -1,7 +1,15 @@
 Template.QEII_Fleming_Control.helpers({
 
-	'selectedObject': function() {
-		return Session.get('selectedObject');
+	'selectedObject': function(type) {
+		var selected = Session.get('selectedObject');
+		if (selected && type) {
+			var objects = Docs.findOne().data[type];
+			for (var i = 0; i < objects.length; i++) {
+				if (objects[i].id.toString() === selected.id.toString()) {
+					return objects[i];
+				}
+			}
+		}
 	},
 	'selectedObjectType': function(type1, type2) {
 		var selectedObject = Session.get('selectedObject');
@@ -10,35 +18,6 @@ Template.QEII_Fleming_Control.helpers({
 		}
 	},
 
-	// TO DO: make these DRY
-	'selectedScreen': function() {
-		var screenId = Session.get('selectedObject').id;
-				screens = Docs.findOne().data.screens;
-		for (var i = 0; i < screens.length; i++) {
-			if (screens[i].id.toString() === screenId.toString()) {
-				return screens[i];
-			}
-		}
-	},
-	'selectedGraphic': function() {
-		var graphicId = Session.get('selectedObject').id;
-				graphics = Docs.findOne().data.setGraphics;
-		for (var i = 0; i < graphics.length; i++) {
-			if (graphics[i].id.toString() === graphicId.toString()) {
-				return graphics[i];
-			}
-		}
-	},
-	'selectedRecess': function() {
-		var recessId = Session.get('selectedObject').id;
-				recesses = Docs.findOne().data.recesses;
-		for (var i = 0; i < recesses.length; i++) {
-			if (recesses[i].id.toString() === recessId.toString()) {
-				return recesses[i];
-			}
-		}
-	},
-/*
 	'setGraphicsSize': function(size, setGraphic) {
 		var img = Resources.findOne({name: setGraphic});
 		if (img) {
@@ -46,45 +25,13 @@ Template.QEII_Fleming_Control.helpers({
 		} else {
 			return '';
 		}
-	},
-*/
+	}
+
 });
 
 
 Template.QEII_Fleming_Control.events({
 
-	// TO DO: these can all be made much DRYer...
-	'change [data-action="screenContentChange"]': function(event) {
-		var doc = Docs.findOne(),
-				id = Session.get('selectedObject').id;
-		for (var i = 0; i < doc.data.screens.length; i++) {
-			if (doc.data.screens[i].id.toString() === id.toString()) {
-				doc.data.screens[i].content = event.target.value;
-			}
-		}
-		Docs.update(doc._id, {$set: {data: doc.data}});
-	},
-	'change [data-action="screenContentPathChange"]': function(event) {
-		var doc = Docs.findOne(),
-				id = Session.get('selectedObject').id;
-		for (var i = 0; i < doc.data.screens.length; i++) {
-			if (doc.data.screens[i].id.toString() === id.toString()) {
-				doc.data.screens[i].contentPath = event.target.value;
-			}
-		}
-		Docs.update(doc._id, {$set: {data: doc.data}});
-	},
-	'input [data-action="changeScreenPosition"]': function(event) {
-		var doc = Docs.findOne(),
-				id = Session.get('selectedObject').id;
-		for (var i = 0; i < doc.data.screens.length; i++) {
-			if (doc.data.screens[i].id.toString() === id.toString()) {
-				doc.data.screens[i].positionX = event.target.value;
-			}
-		}
-		Docs.update(doc._id, {$set: {data: doc.data}});
-		previousPositions = {} // to prevent position jumping if drag-drop
-	},
 	'dblclick [data-action="changeScreenPosition"]': function() {
 		var doc = Docs.findOne(),
 				id = Session.get('selectedObject').id;
@@ -96,79 +43,6 @@ Template.QEII_Fleming_Control.events({
 		Docs.update(doc._id, {$set: {data: doc.data}});
 		previousPositions = {} // to prevent position jumping if drag-drop
 		event.target.value = 0; // need to force refresh
-	},
-	'click [data-action="removeScreen"]': function() {
-		var doc = Docs.findOne(),
-				id = Session.get('selectedObject').id;
-		for (var i = 0; i < doc.data.screens.length; i++) {
-			if (doc.data.screens[i].id.toString() === id.toString()) {
-				doc.data.screens.splice(i, 1);
-			}
-		}
-		Docs.update(doc._id, {$set: {data: doc.data}});
-	},
-
-	'input [data-action="changeRecessPosition"]': function(event) {
-		var doc = Docs.findOne(),
-				id = Session.get('selectedObject').id;
-		for (var i = 0; i < doc.data.recesses.length; i++) {
-			if (doc.data.recesses[i].id.toString() === id.toString()) {
-				doc.data.recesses[i].positionX = event.target.value;
-			}
-		}
-		Docs.update(doc._id, {$set: {data: doc.data}});
-		previousPositions = {} // to prevent position jumping if drag-drop
-	},
-	'click [data-action="removeRecess"]': function() {
-		var doc = Docs.findOne(),
-				id = Session.get('selectedObject').id;
-		for (var i = 0; i < doc.data.recesses.length; i++) {
-			if (doc.data.recesses[i].id.toString() === id.toString()) {
-				doc.data.recesses.splice(i, 1);
-			}
-		}
-		Docs.update(doc._id, {$set: {data: doc.data}});
-	},
-
-	'change [data-action="changeGraphicContent"]': function() {
-		var doc = Docs.findOne(),
-				id = Session.get('selectedObject').id;
-		for (var i = 0; i < doc.data.setGraphics.length; i++) {
-			if (doc.data.setGraphics[i].id.toString() === id.toString()) {
-				doc.data.setGraphics[i].content = event.target.value;
-			}
-		}
-		Docs.update(doc._id, {$set: {data: doc.data}});
-	},
-	'input [data-action="changeGraphicSize"]': function() {
-		var doc = Docs.findOne(),
-				id = Session.get('selectedObject').id;
-		for (var i = 0; i < doc.data.setGraphics.length; i++) {
-			if (doc.data.setGraphics[i].id.toString() === id.toString()) {
-				doc.data.setGraphics[i].size = event.target.value;
-			}
-		}
-		Docs.update(doc._id, {$set: {data: doc.data}});
-	},
-	'input [data-action="changeGraphicPosition"]': function() {
-		var doc = Docs.findOne(),
-				id = Session.get('selectedObject').id;
-		for (var i = 0; i < doc.data.setGraphics.length; i++) {
-			if (doc.data.setGraphics[i].id.toString() === id.toString()) {
-				doc.data.setGraphics[i].positionX = event.target.value;
-			}
-		}
-		Docs.update(doc._id, {$set: {data: doc.data}});
-	},
-	'click [data-action="removeGraphic"]': function() {
-		var doc = Docs.findOne(),
-				id = Session.get('selectedObject').id;
-		for (var i = 0; i < doc.data.setGraphics.length; i++) {
-			if (doc.data.setGraphics[i].id.toString() === id.toString()) {
-				doc.data.setGraphics.splice(i, 1);
-			}
-		}
-		Docs.update(doc._id, {$set: {data: doc.data}});
 	},
 
 /*
@@ -186,30 +60,66 @@ Template.QEII_Fleming_Control.events({
 	},
 */
 
-	// TO DO: make these DRY
-	'click [data-action="addScreen"]': function() {
+	'input [data-action="change"]': function() {
 		var doc = Docs.findOne(),
-				newId = Date.now();
-		doc.data.screens.push({name: 'Screen ' + (doc.data.screens.length + 1), id: newId, ratio: '4:3', type: 'Standard'});
+				id = Session.get('selectedObject').id,
+				collection = event.target.getAttribute('data-collection'),
+				property = event.target.getAttribute('data-property');
+		for (var i = 0; i < doc.data[collection].length; i++) {
+			if (doc.data[collection][i].id.toString() === id.toString()) {
+				doc.data[collection][i][property] = event.target.value;
+			}
+		}
 		Docs.update(doc._id, {$set: {data: doc.data}});
 	},
-	'click [data-action="addGraphic"]': function() {
+	'change [data-action="change"]': function() {
 		var doc = Docs.findOne(),
-				newId = Date.now();
-		if (!doc.data.setGraphics) {
-			doc.data.setGraphics = [];
+				id = Session.get('selectedObject').id,
+				collection = event.target.getAttribute('data-collection'),
+				property = event.target.getAttribute('data-property');
+		for (var i = 0; i < doc.data[collection].length; i++) {
+			if (doc.data[collection][i].id.toString() === id.toString()) {
+				doc.data[collection][i][property] = event.target.value;
+			}
 		}
-		doc.data.setGraphics.push({id: newId, positionX: -2, size: 0.5});
 		Docs.update(doc._id, {$set: {data: doc.data}});
 	},
-	'click [data-action="addRecess"]': function() {
+
+	'click [data-action="remove"]': function(event) {
+
 		var doc = Docs.findOne(),
-				newId = Date.now();
-		if (!doc.data.recesses) {
-			doc.data.recesses = [];
+				id = Session.get('selectedObject').id,
+				type = event.target.getAttribute('data-collection');
+
+		for (var i = 0; i < doc.data[type].length; i++) {
+			if (doc.data[type][i].id.toString() === id.toString()) {
+				doc.data[type].splice(i, 1);
+			}
 		}
-		doc.data.recesses.push({id: newId, positionX: -2});
+
 		Docs.update(doc._id, {$set: {data: doc.data}});
+
+	},
+
+	'click [data-action="add"]': function(event) {
+
+		var defaults = {id: Date.now()},
+				doc = Docs.findOne(),				
+				type = event.target.getAttribute('data-collection');
+
+		if (type === 'screens') {
+			defaults.ratio = '4:3';
+			defaults.type = 'Standard';
+		} else if (type === 'setGraphics') {
+			defaults.positionX = -2;
+			defaults.size = 0.5;
+		} else if (type === 'recesses') {
+			defaults.positionX = -2;
+		}
+
+		doc.data[type].push(defaults);
+		Docs.update(doc._id, {$set: {data: doc.data}});
+
 	}
 
 });

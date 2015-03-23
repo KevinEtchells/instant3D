@@ -43,7 +43,7 @@
 	{{/if}}
 	
 	{{#if selectedObjectType 'screen'}}
-		{{#with selectedScreen}}
+		{{#with selectedObject 'screens'}}
 			<h5>Screen</h5>
 			<label>Ratio:</label>
 			<select class="form-control">
@@ -58,7 +58,7 @@
 				<option value="Fast-fold">Fast-fold</option>
 			</select>
 			<label>Content:</label>
-			<select class="form-control" data-action="screenContentChange" value="{{content}}">
+			<select class="form-control" data-action="change" data-collection="screens" data-property="content" value="{{content}}">
 				<option value="None">None</option>
 				<option value="Path">Path...</option>
 				{{#each _resources}}
@@ -66,50 +66,50 @@
 				{{/each}}
 			</select>
 			{{#if _equal content 'Path'}}
-				<input type="text" class="form-control" data-action="screenContentPathChange" value="{{contentPath}}"/>
+				<input type="text" class="form-control" data-action="change" data-collection="screens" data-property="contentPath" value="{{contentPath}}"/>
 			{{/if}}
 			<label>Position: </label>
-			<input type="range" min="-9" max="9" step="0.2" data-action="changeScreenPosition" value="{{positionX}}"/>
+			<input type="range" min="-9" max="9" step="0.2" data-action="change" data-collection="screens" data-property="positionX" value="{{positionX}}"/>
 			<br/>
-			<button class="btn btn-danger" data-action="removeScreen">Remove Screen</button>
+			<button class="btn btn-danger" data-action="remove" data-collection="screens">Remove Screen</button>
 			<hr/>
 		{{/with}}
 	{{/if}}
 
 
 	{{#if selectedObjectType 'graphics' 'set'}}
-		{{#with selectedGraphic}}
+		{{#with selectedObject 'setGraphics'}}
 			<h5>Set Graphics</h5>
 			<label>Content: </label>
-			<select class="right form-control" data-action="changeGraphicContent">
+			<select class="right form-control" data-action="change" data-collection="setGraphics" data-property="content">
 				<option value="None">None</option>
 				{{#each _resources}}
 					{{{_option name name ../content}}}
 				{{/each}}
 			</select>
 			<br/><br/>
-			<label>Size: </label><span class="right">{{setGraphicsSize setGraphicSize setGraphics}}</span>
-			<input type="range" min="0.4" max="2" step="0.01" value="{{setGraphicSize}}" data-action="changeGraphicSize"/>
+			<label>Size: </label><span class="right">{{setGraphicsSize size content}}</span>
+			<input type="range" min="0.4" max="2" step="0.01" value="{{size}}" data-action="change" data-collection="setGraphics" data-property="size"/>
 			<br/>
 			<label>Position: </label>
-			<input type="range" min="-9" max="9" step="0.01" data-action="changeGraphicPosition" value="{{positionX}}"/>
+			<input type="range" min="-9" max="9" step="0.01" data-action="change" data-collection="setGraphics" data-property="positionX" value="{{positionX}}"/>
 			<br/>
-			<button class="btn btn-danger" data-action="removeGraphic">Remove Set Graphic</button>
+			<button class="btn btn-danger" data-action="remove" data-collection="setGraphics">Remove Set Graphic</button>
 			<hr/>
 		{{/with}}
 	{{/if}}
 	
 	{{#if selectedObjectType 'recess'}}
-		{{#with selectedRecess}}
+		{{#with selectedObject 'recesses'}}
 			<h5>Recesses</h5>
 			<label>Position: </label>
-			<input type="range" min="-9" max="9" step="0.2" data-action="changeRecessPosition" value="{{positionX}}"/>
+			<input type="range" min="-9" max="9" step="0.2" data-action="change" data-collection="recesses" data-property="positionX" value="{{positionX}}"/>
 			<br/>
 			<label>R:</label><input type="range" min="0" max="1" step="0.01" value="{{../recessesRed}}" property="recessesRed"/>
 			<label>G:</label><input type="range" min="0" max="1" step="0.01" value="{{../recessesGreen}}" property="recessesGreen"/>
 			<label>B:</label><input type="range" min="0" max="1" step="0.01" value="{{../recessesBlue}}" property="recessesBlue"/>
 			<br/>
-			<button class="btn btn-danger" data-action="removeRecess">Remove Recess</button>		
+			<button class="btn btn-danger" data-action="remove" data-collection="recesses">Remove Recess</button>		
 		{{/with}}
 		<hr/>
 	{{/if}}
@@ -120,12 +120,12 @@
 		<input type="number" min="0" class="form-control" property="topTableSize" value="{{topTableSize}}"/>
 		<hr/>
 	{{/if}}
-	
+
 	<h5>Add</h5>
-	<button data-action="addScreen" class="btn">Add Screen</button>
-	<button data-action="addGraphic" class="btn">Add Graphic</button>
-	<button data-action="addRecess" class="btn">Add Recess</button>
-	
+	<button data-action="add" data-collection="screens" class="btn">Add Screen</button>
+	<button data-action="add" data-collection="setGraphics" class="btn">Add Graphic</button>
+	<button data-action="add" data-collection="recesses" class="btn">Add Recess</button>
+
 	<hr/>
 	<h5>Upload</h5>
 	<input class="upload btn" type="file"/>
