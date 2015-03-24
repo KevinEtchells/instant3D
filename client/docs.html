@@ -6,6 +6,7 @@
 		#login-dropdown-list {float: right;}
 		.largeInput {width: 310px;}
 		td {padding: 6px !important;}
+		h2 {text-align: center;}
 	</style>
 
 	<header id="navbar-top"  class="navbar" role="banner">
@@ -30,57 +31,58 @@
 					{{> loginButtons align="right"}}
 				</ul>
 			</nav>
-       
    </div>
 	</header>
 
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>Document Name</th>
-				<th></th>
-				<th>Template</th>
-				<th>Time Created</th>
-				<th>Owner</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			{{#each docs}}
-				<tr>
-					<td><input type="text" class="name form-control" value="{{name}}"/></td>
-					<td>
-						<a href="{{_host}}/{{company.name}}/{{_id}}/edit" class="btn btn-primary">Edit</a>
-						<a href="{{_host}}/{{company.name}}/{{_id}}/view" class="btn btn-primary">View</a>
-						<a href="{{_host}}/{{company.name}}/{{_id}}/control" class="btn btn-primary">Control</a>
-					</td>
-					<td>
-						<input type="text" class="form-control" disabled value="{{template}}"/>
-					</td>
-					<td><input type="text" class="largeInput form-control" disabled value="{{created}}"/></td>
-					<td>
-						<!--
-						<select class="sharing form-control">
-							{{{_option 'private' 'Private' shared}}}
-							{{{_option 'view' 'Anyone can View' shared}}}
-							{{{_option 'viewPassword' 'Anyone with Password can View' shared}}}
-							{{{_option 'edit' 'Anyone can Edit' shared}}}
-							{{{_option 'editPassword' 'Anyone with Password can Edit' shared}}}
-						</select>
-						-->
-						<input disabled type="text" class="form-control" value="{{owner}}"/>
-					</td>
-					<td>
-						<button class="copy btn">Copy</button>
-						<button class="delete btn btn-danger">Remove</button>
-					</td>
-				</tr>
-			{{/each}}
-		</tbody>
-	</table>
+	{{#if currentUser}}
 
-	{{#unless currentUser}}
-		<p>Please log-in</p>
-	{{/unless}}
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Document Name</th>
+					<th></th>
+					<th>Template</th>
+					<th>Time Created</th>
+					<th>Owner</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each docs}}
+					<tr>
+						<td><input type="text" class="name form-control" value="{{name}}"/></td>
+						<td>
+							<a href="{{_host}}/{{company.name}}/{{_id}}/edit" class="btn btn-primary">Edit</a>
+							<a href="{{_host}}/{{company.name}}/{{_id}}/view" class="btn btn-primary">View</a>
+							<a href="{{_host}}/{{company.name}}/{{_id}}/control" class="btn btn-primary">Control</a>
+						</td>
+						<td>
+							<input type="text" class="form-control" disabled value="{{template}}"/>
+						</td>
+						<td><input type="text" class="largeInput form-control" disabled value="{{created}}"/></td>
+						<td>
+							<!--
+							<select class="sharing form-control">
+								{{{_option 'private' 'Private' shared}}}
+								{{{_option 'view' 'Anyone can View' shared}}}
+								{{{_option 'viewPassword' 'Anyone with Password can View' shared}}}
+								{{{_option 'edit' 'Anyone can Edit' shared}}}
+								{{{_option 'editPassword' 'Anyone with Password can Edit' shared}}}
+							</select>
+							-->
+							<input disabled type="text" class="form-control" value="{{owner}}"/>
+						</td>
+						<td>
+							<button class="copy btn">Copy</button>
+							<button class="delete btn btn-danger">Remove</button>
+						</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+
+	{{else}}
+		<h2>Please log-in</h2>
+	{{/if}}
 
 </template>

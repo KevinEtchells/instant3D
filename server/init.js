@@ -11,10 +11,19 @@ Meteor.startup(function () {
 				company: 'QEII'
 			}
 		});
+		
+		Accounts.createUser({
+			username: 'Steven Mann',
+			password: 'boombeach',
+			email: 'steven.mann@qeiicentre.london',
+			profile: {
+				company: 'QEII'
+			}
+		});
 
 	}
 
-	// test companies
+	// companies
 	if (!Companies.find().fetch().length) {
 		Companies.insert({
 			name: 'QEII',
