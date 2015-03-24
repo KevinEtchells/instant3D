@@ -4,7 +4,7 @@ Meteor.startup(function () {
 	if (!Meteor.users.find().fetch().length) {
 
 		Accounts.createUser({
-			username: 'KevinEtchells',
+			username: 'Kevin Etchells',
 			password: 'JCB',
 			email: 'kevetchells@hotmail.com',
 			profile: {

@@ -67,7 +67,7 @@ Template.docs.events({
 			company: company._id,
 			template: room,
 			created: new Date,
-			shared: 'private',
+			owner: Meteor.users.findOne().username,
 			data: defaults
 		});
 
@@ -79,7 +79,7 @@ Template.docs.events({
 			company: Companies.findOne()._id,
 			template: this.template,
 			created: new Date,
-			shared: this.shared,
+			owner: Meteor.users.findOne().username,
 			data: this.data
 		});
 	},
