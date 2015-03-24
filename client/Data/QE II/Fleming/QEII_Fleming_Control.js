@@ -32,7 +32,7 @@ Template.QEII_Fleming_Control.helpers({
 
 Template.QEII_Fleming_Control.events({
 
-	'dblclick [data-action="changeScreenPosition"]': function() {
+	'dblclick [data-reset="screenPosition"]': function() {
 		var doc = Docs.findOne(),
 				id = Session.get('selectedObject').id;
 		for (var i = 0; i < doc.data.screens.length; i++) {
