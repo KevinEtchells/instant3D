@@ -78,24 +78,24 @@ Template.QEII_Fleming_Scene.helpers({
 		}
 	},
 
-	'topTable': function() {
-		return this.ttSize > 0;
-	},
-
-
-/*
-	'setGraphicsX': function(side, stageWidth) {
-		var doc = Docs.findOne();
+	'comfyChairs': function() {
+		var doc = Docs.findOne(),
+				chairs = [],
+				xPos = -4.5;
+				rotation = -2.14
 		if (doc) {
-			if (side === 'SR') {
-				return doc.data['Set_Graphics_SRX'] || -((((stageWidth - 12.25) / 2) + 12.3) / 10);
-			} else if (side === 'SL') {
-				return doc.data['Set_Graphics_SLX'] || ((((stageWidth - 12.25) / 2) + 12.3) / 10);
-				//return (((stageWidth - 12.25) / 2) + 12.3) / 10;
+			for(var i = 0; i < doc.data.topTableSize; i++) {
+				xPos = xPos + 0.6
+				rotation = rotation - 0.2
+				chairs.push({
+					positionX: xPos,
+					rotation: 3.14 //rotation
+				});
 			}
 		}
+		return chairs;
 	},
-*/
+
 	'setGraphicsScale': function(size, setGraphic) {
 		var img = Resources.findOne({name: setGraphic});
 		if (img) {

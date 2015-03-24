@@ -116,6 +116,11 @@
 
 	{{#if selectedObjectType 'TopTable' 'stage'}}
 		<h5>Top Table</h5>
+		<label>Type: </label>
+		<select class="form-control" property="topTableType" value="{{topTableType}}">
+			{{{_option 'Top Table' 'Top Table' topTableType}}}
+			{{{_option 'Comfy Chairs' 'Comfy Chairs' topTableType}}}
+		</select>
 		<label>Size: </label>
 		<input type="number" min="0" class="form-control" property="topTableSize" value="{{topTableSize}}"/>
 		<hr/>
