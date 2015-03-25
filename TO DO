@@ -1,0 +1,21 @@
+BUG FIXES:
+* Set graphic sizing issue 
+
+
+
+NEW FEATURES:
+* Add/remove top tables in Fleming
+* Change set graphic height - Fleming
+* Churchill stage and set
+* Lectern logo - Fleming
+* Mod panel logo - Fleming
+* Triangular set pieces - Fleming
+* Add St.James's Suite
+
+
+
+PERFORMANCE IMPROVEMENTS:
+* Check scaling between Blender and X3dom
+* Re-work Mountbatten
+* New comfy chair
+* New lectern
