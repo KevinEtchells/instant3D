@@ -115,6 +115,13 @@ Template.QEII_Fleming_Control.events({
 			defaults.size = 0.5;
 		} else if (type === 'recesses') {
 			defaults.positionX = -2;
+		} else if (type === 'lecterns') {
+			defaults.positionX = 2.3;
+			defaults.type = 'Felt';
+		}
+		
+		if (!doc.data[type]) {
+			doc.data[type] = [];
 		}
 
 		doc.data[type].push(defaults);

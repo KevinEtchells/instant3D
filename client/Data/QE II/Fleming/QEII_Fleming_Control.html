@@ -6,6 +6,7 @@
 		.right {float: right;}
 		label {float: left;}
 		.form-control {margin-bottom: 20px;}
+		.btn {margin-bottom: 5px;}
 
 		/* felt */
 		div.feltSwatch {position: absolute; width: 250px; height: 100%; left: -250px; top: 0; padding: 5px; background-color: white; animate: all;}
@@ -109,9 +110,9 @@
 			<label>G:</label><input type="range" min="0" max="1" step="0.01" value="{{../recessesGreen}}" property="recessesGreen"/>
 			<label>B:</label><input type="range" min="0" max="1" step="0.01" value="{{../recessesBlue}}" property="recessesBlue"/>
 			<br/>
-			<button class="btn btn-danger" data-action="remove" data-collection="recesses">Remove Recess</button>		
+			<button class="btn btn-danger" data-action="remove" data-collection="recesses">Remove Recess</button>
+			<hr/>
 		{{/with}}
-		<hr/>
 	{{/if}}
 
 	{{#if selectedObjectType 'TopTable' 'stage'}}
@@ -125,11 +126,30 @@
 		<input type="number" min="0" class="form-control" property="topTableSize" value="{{topTableSize}}"/>
 		<hr/>
 	{{/if}}
+	
+	{{#if selectedObjectType 'lectern'}}
+		{{#with selectedObject 'lecterns'}}
+			<h5>Lectern</h5>
+			<label>Type: </label>
+			<select class="form-control" data-action="change" data-collection="lecterns" data-property="type">
+				{{{_option 'Felt' 'Felt' type}}}
+				{{{_option 'Standard Ash' 'Standard Ash' type}}}
+				{{{_option 'Large Ash' 'Large Ash' type}}}
+				{{{_option 'Perspex' 'Perspex' type}}}
+			</select>
+			<label>Position: </label>
+			<input type="range" min="-9" max="9" step="0.01" data-action="change" data-collection="lecterns" data-property="positionX" value="{{positionX}}"/>
+			<br/>
+			<button class="btn btn-danger" data-action="remove" data-collection="lecterns">Remove Lectern</button>
+			<hr/>
+		{{/with}}
+	{{/if}}
 
 	<h5>Add</h5>
 	<button data-action="add" data-collection="screens" class="btn">Add Screen</button>
 	<button data-action="add" data-collection="setGraphics" class="btn">Add Graphic</button>
 	<button data-action="add" data-collection="recesses" class="btn">Add Recess</button>
+	<button data-action="add" data-collection="lecterns" class="btn">Add Lectern</button>
 
 	<hr/>
 	<h5>Upload</h5>
