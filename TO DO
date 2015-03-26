@@ -3,7 +3,7 @@ WAITING DEPLOYMENT:
 * Add/remove top tables in Fleming
 * Slider for top table size
 * Change set graphic height
-
+* Remove set graphics from Fleming default + add lectern
 
 
 BUG FIXES:
@@ -12,7 +12,6 @@ BUG FIXES:
 
 
 NEW FEATURES:
-* Remove set graphics from Fleming default + add lectern ***
 * Take snapshot image
 * Top table colour
 * Mirror feature for Fleming - e.g. for Set Graphics, Recesses

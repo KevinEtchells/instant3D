@@ -53,12 +53,11 @@ Template.docs.events({
 				screens: [
 					{id: '1', ratio: '4:3', type: 'Standard'}
 				],
-				setGraphics: [
-					{id: '1', positionX: -2.4, size: 1},
-					{id: '2', positionX: 2.4, size: 1, linkTo: '1'}
-				],
 				topTables: [
 					{id: '1', positionX: -2.4, size: 4, type: 'Top Table'}
+				],
+				lecterns: [
+					{id: '1', positionX: 2.3, type: 'Felt', logo: 'None', logoSize: 0.23}
 				],
 				uplightRed: 0, uplightGreen: 0, uplightBlue: 1
 			}
