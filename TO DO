@@ -2,6 +2,7 @@ WAITING DEPLOYMENT:
 * Lectern logos
 * Add/remove top tables in Fleming
 * Slider for top table size
+* Change set graphic height
 
 
 
@@ -11,7 +12,7 @@ BUG FIXES:
 
 
 NEW FEATURES:
-* Change set graphic height - Fleming ***
+* Remove set graphics from Fleming default + add lectern ***
 * Take snapshot image
 * Top table colour
 * Mirror feature for Fleming - e.g. for Set Graphics, Recesses
@@ -32,3 +33,4 @@ PERFORMANCE IMPROVEMENTS / REFACTORING:
 * Re-work Mountbatten (scale and rotation. Use boxes for the flat parts. Remove camera)
 * New comfy chair (scale and rotation is out. Optimise)
 * New lectern (front is wonky, scale and rotation is out)
+* Sort out set wash png (sort out bottom in Fleming. Make only 1px wide)

@@ -112,6 +112,7 @@ Template.QEII_Fleming_Control.events({
 			defaults.type = 'Standard';
 		} else if (type === 'setGraphics') {
 			defaults.positionX = -2;
+			defaults.positionY = 1.6;
 			defaults.size = 0.5;
 		} else if (type === 'recesses') {
 			defaults.positionX = -2;

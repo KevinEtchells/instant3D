@@ -154,7 +154,7 @@
 				{{/each}}
 
 				{{#each setGraphics}}
-					<Transform translation="{{positionX}} 1.6 -0.74" scale="{{setGraphicsScale size content}}" 
+					<Transform translation="{{positionX}} {{positionY}} -0.74" scale="{{setGraphicsScale size content}}" 
 						onclick="selectObject('graphics', {{id}}, event)">
 						<Shape>
 							<Appearance>

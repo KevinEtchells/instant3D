@@ -92,8 +92,11 @@
 			<label>Size: </label><span class="right">{{setGraphicsSize size content}}</span>
 			<input type="range" min="0.4" max="2" step="0.01" value="{{size}}" data-action="change" data-collection="setGraphics" data-property="size"/>
 			<br/>
-			<label>Position: </label>
+			<label>Position (Horizontal): </label>
 			<input type="range" min="-9" max="9" step="0.01" data-action="change" data-collection="setGraphics" data-property="positionX" value="{{positionX}}"/>
+			<br/>
+			<label>Position (Vertical): </label>
+			<input type="range" min="0" max="2.5" step="0.01" data-action="change" data-collection="setGraphics" data-property="positionY" value="{{positionY}}"/>
 			<br/>
 			<button class="btn btn-danger" data-action="remove" data-collection="setGraphics">Remove Set Graphic</button>
 			<hr/>
