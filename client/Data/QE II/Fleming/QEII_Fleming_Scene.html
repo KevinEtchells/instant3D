@@ -279,7 +279,7 @@
 				{{/unless}}
 
 				{{#each lecterns}}
-					<Transform translation="{{positionX}} 0.63 0.35" scale="0.7 0.7 0.7">
+					<Transform translation="{{positionX}} 0.6 0.35" scale="0.65 0.65 0.65">
 						<Transform scale="0.35 0.61 0.26" rotation="1 0 0 3.14">
 							<Group DEF="group_ME_Cube_003" onclick="selectObject('lectern', {{id}}, event)">
 								<Shape>
@@ -299,7 +299,7 @@
 									</IndexedFaceSet>
 								</Shape>
 							</Group>
-							<Transform DEF="Bounding_Box" scale="2 2 2">
+							<Transform DEF="Bounding_Box" scale="2 2 2.35">
 								<shape ispickable="false" def="line" render="{{isSelected 'lectern' id}}" bboxcenter="0,0,0" bboxsize="-1,-1,-1">
 									<indexedlineset coordindex="0 1 2 3 0 -1, 4 5 6 7 4 -1, 0 4 -1, 1 5 -1, 2 6 -1, 3 7 -1" solid="true" ccw="true" usegeocache="true" colorpervertex="true" colorindex="">
 										<coordinate id="bbox_points" point="-0.5 -0.5 -0.5, -0.5 -0.5 0.5, 0.5 -0.5 0.5, 0.5 -0.5 -0.5, -0.5 0.5 -0.5, -0.5 0.5 0.5, 0.5 0.5 0.5, 0.5 0.5 -0.5"></coordinate>
@@ -309,6 +309,16 @@
 							</Transform>
 						</Transform>
 					</Transform>
+					{{#unless _equal logo 'None'}}
+						<Transform DEF="lectern_logo" translation="{{positionX}} {{lecternLogoPositionY logoSize logo}} 0.55" scale="{{setGraphicsScale logoSize logo}}">
+							<Shape onclick="selectObject('lectern', {{id}}, event)">
+								<Appearance>
+									<ImageTexture url="{{_host}}/resource/{{Id}}/{{logo}}"></ImageTexture>
+								</Appearance>
+								<plane></plane>
+							</Shape>
+						</Transform>
+					{{/unless}}
 				{{/each}}
 
 		</Scene>

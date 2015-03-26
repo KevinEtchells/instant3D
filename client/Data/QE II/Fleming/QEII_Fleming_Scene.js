@@ -103,6 +103,15 @@ Template.QEII_Fleming_Scene.helpers({
 		} else {
 			return '0.5 0.5 0';
 		}
+	},
+
+	'lecternLogoPositionY': function(size, logo) {
+		var img = Resources.findOne({name: logo}),
+				height = 0;
+		if (img) {
+			height = size / img.aspectRatio;
+			return 1 - height;
+		}
 	}
 
 });

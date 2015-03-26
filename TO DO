@@ -1,16 +1,21 @@
 BUG FIXES:
-* Set graphic sizing issue 
+* Set graphic sizing issue in VIEW MODE
 
 
 
 NEW FEATURES:
-* Add/remove top tables in Fleming
+* Lectern logos ***
 * Change set graphic height - Fleming
+* Add/remove top tables in Fleming
+* Take snapshot image
+* Slider for top table size
 * Churchill stage and set
-* Lectern logo - Fleming
-* Mod panel logo - Fleming
-* Triangular set pieces - Fleming
+* Mirror feature for Fleming - e.g. for Set Graphics, Recesses
+* Mod panel logos
+* In CONTROL MODE, need to have a drop-down box to select elements
 * Add St.James's Suite
+* Triangular set pieces - Fleming
+* Allow insertion of custom objects in x3d format
 
 
 

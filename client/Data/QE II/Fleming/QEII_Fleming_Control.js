@@ -118,6 +118,8 @@ Template.QEII_Fleming_Control.events({
 		} else if (type === 'lecterns') {
 			defaults.positionX = 2.3;
 			defaults.type = 'Felt';
+			defaults.logo = 'None';
+			defaults.logoSize = 0.23;
 		}
 		
 		if (!doc.data[type]) {
