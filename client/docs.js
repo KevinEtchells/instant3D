@@ -57,7 +57,9 @@ Template.docs.events({
 					{id: '1', positionX: -2.4, size: 1},
 					{id: '2', positionX: 2.4, size: 1, linkTo: '1'}
 				],
-				topTableSize: 4,
+				topTables: [
+					{id: '1', positionX: -2.4, size: 4, type: 'Top Table'}
+				],
 				uplightRed: 0, uplightGreen: 0, uplightBlue: 1
 			}
 		}

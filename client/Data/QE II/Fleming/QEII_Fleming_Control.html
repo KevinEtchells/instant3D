@@ -82,7 +82,7 @@
 		{{#with selectedObject 'setGraphics'}}
 			<h5>Set Graphics</h5>
 			<label>Content: </label>
-			<select class="right form-control" data-action="change" data-collection="setGraphics" data-property="content">
+			<select class="form-control" data-action="change" data-collection="setGraphics" data-property="content">
 				<option value="None">None</option>
 				{{#each _resources}}
 					{{{_option name name ../content}}}
@@ -115,16 +115,23 @@
 		{{/with}}
 	{{/if}}
 
-	{{#if selectedObjectType 'TopTable' 'stage'}}
-		<h5>Top Table</h5>
-		<label>Type: </label>
-		<select class="form-control" property="topTableType" value="{{topTableType}}">
-			{{{_option 'Top Table' 'Top Table' topTableType}}}
-			{{{_option 'Comfy Chairs' 'Comfy Chairs' topTableType}}}
-		</select>
-		<label>Size: </label>
-		<input type="number" min="0" class="form-control" property="topTableSize" value="{{topTableSize}}"/>
-		<hr/>
+	{{#if selectedObjectType 'topTable' 'stage'}}
+		{{#with selectedObject 'topTables'}}
+			<h5>Top Table</h5>
+			<label>Type: </label>
+			<select class="form-control" data-action="change" data-collection="topTables" data-property="type">
+				{{{_option 'Top Table' 'Top Table' type}}}
+				{{{_option 'Comfy Chairs' 'Comfy Chairs' type}}}
+			</select>
+			<label>Size: </label><span class="right">{{size}}</span>
+			<input type="range" min="1" max="16" data-action="change" data-collection="topTables" data-property="size" value="{{size}}"/>
+			<br/>
+			<label>Position: </label>
+			<input type="range" min="-9" max="9" step="0.2" data-action="change" data-collection="topTables" data-property="positionX" value="{{positionX}}"/>
+			<br/>
+			<button class="btn btn-danger" data-action="remove" data-collection="topTables">Remove Top Table</button>
+			<hr/>
+		{{/with}}
 	{{/if}}
 	
 	{{#if selectedObjectType 'lectern'}}
@@ -162,6 +169,7 @@
 	<button data-action="add" data-collection="setGraphics" class="btn">Add Graphic</button>
 	<button data-action="add" data-collection="recesses" class="btn">Add Recess</button>
 	<button data-action="add" data-collection="lecterns" class="btn">Add Lectern</button>
+	<button data-action="add" data-collection="topTables" class="btn">Add Top Table</button>
 
 	<hr/>
 	<h5>Upload</h5>

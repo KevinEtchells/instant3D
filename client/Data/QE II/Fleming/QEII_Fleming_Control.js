@@ -120,6 +120,10 @@ Template.QEII_Fleming_Control.events({
 			defaults.type = 'Felt';
 			defaults.logo = 'None';
 			defaults.logoSize = 0.23;
+		} else if (type === 'topTables') {
+			defaults.positionX = -2.4;
+			defaults.size = 4;
+			defaults.type = 'Top Table';
 		}
 		
 		if (!doc.data[type]) {
