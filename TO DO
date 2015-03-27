@@ -5,6 +5,7 @@ WAITING DEPLOYMENT:
 * Change set graphic height
 * Remove set graphics from Fleming default + add lectern
 * Take snapshot image
+* Reduce image uploads file-size/resolution
 
 
 
@@ -28,7 +29,6 @@ NEW FEATURES:
 
 
 PERFORMANCE IMPROVEMENTS / REFACTORING:
-* Reduce image uploads file-size/resolution ***
 * Check scaling between Blender and X3dom
 * "property" atrribute used in control html - change to "data-property" for consistency
 * Re-work Mountbatten (scale and rotation. Use boxes for the flat parts. Remove camera)
