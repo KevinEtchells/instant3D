@@ -1,11 +1,5 @@
 WAITING DEPLOYMENT:
-* Lectern logos
-* Add/remove top tables in Fleming
-* Slider for top table size
-* Change set graphic height
-* Remove set graphics from Fleming default + add lectern
-* Take snapshot image
-* Reduce image uploads file-size/resolution
+* Mirror feature for Fleming - e.g. for Set Graphics, Recesses, Screens
 
 
 
@@ -15,10 +9,10 @@ BUG FIXES:
 
 
 NEW FEATURES:
+* Change monochrome gobo colour ("Lamp Colour") ***
+* Top table & lectern colour ***
 * Sort docs by date/time (may need separate datestamp)
-* Mirror feature for Fleming - e.g. for Set Graphics, Recesses
-* Change monochrome gobo colour ("Lamp Colour")
-* Top table & lectern colour
+* Expand / hide control panel
 * In CONTROL MODE, need to have a drop-down box to select elements
 * Mod panel logos
 * Allow insertion of custom objects in x3d format
@@ -29,7 +23,7 @@ NEW FEATURES:
 
 
 PERFORMANCE IMPROVEMENTS / REFACTORING:
-* Check scaling between Blender and X3dom
+* Check scaling between Blender and X3dom ***
 * "property" atrribute used in control html - change to "data-property" for consistency
 * Re-work Mountbatten (scale and rotation. Use boxes for the flat parts. Remove camera)
 * New comfy chair (scale and rotation is out. Optimise)

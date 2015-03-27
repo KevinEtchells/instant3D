@@ -7,11 +7,14 @@
 		label {float: left;}
 		.form-control {margin-bottom: 20px;}
 		.btn {margin-bottom: 5px;}
+		input[type="checkbox"] {width: 20px; height: 20px; position: relative; top: -6px; margin-left: 10px; float: left;}
 
 		/* felt */
 		div.feltSwatch {position: absolute; width: 250px; height: 100%; left: -250px; top: 0; padding: 5px; background-color: white; animate: all;}
 		div.colourBoxSmall {display: inline-block; width: 40px; height: 20px; border: 1px solid; margin-right: 10px; margin-left: 10px;}
 		div.colourBoxMedium {display: inline-block; width: 47px; height: 47px; border: 1px solid; margin-right: 5px; margin-left: 5px; margin-top: 5px;}
+
+		div.felt-swatch {width: 40px; height: 20px; display: inline-block; border: 1px solid;}
 		
 		#screenshotPreviews {display: none;}
 	</style>
@@ -72,8 +75,15 @@
 				<input type="text" class="form-control" data-action="change" data-collection="screens" data-property="contentPath" value="{{contentPath}}"/>
 			{{/if}}
 			<label>Position: </label>
-			<input type="range" min="-9" max="9" step="0.2" data-action="change" data-collection="screens" data-property="positionX" data-reset="screenPosition" value="{{positionX}}"/>
+			<input type="range" min="-9" max="9" step="0.2" data-action="input" data-collection="screens" data-property="positionX" data-reset="screenPosition" value="{{positionX}}"/>
 			<br/>
+			<label>Mirror: </label>
+			{{#if mirror}}
+				<input type="checkbox" class="form-control" data-action="check" data-collection="screens" data-property="mirror" checked="true"/>
+			{{else}}
+				<input type="checkbox" class="form-control" data-action="check" data-collection="screens" data-property="mirror"/>
+			{{/if}}
+			<br/><br/>
 			<button class="btn btn-danger" data-action="remove" data-collection="screens">Remove Screen</button>
 			<hr/>
 		{{/with}}
@@ -90,16 +100,22 @@
 					{{{_option name name ../content}}}
 				{{/each}}
 			</select>
-			<br/><br/>
 			<label>Size: </label><span class="right">{{setGraphicsSize size content}}</span>
-			<input type="range" min="0.4" max="2" step="0.01" value="{{size}}" data-action="change" data-collection="setGraphics" data-property="size"/>
+			<input type="range" min="0.4" max="2" step="0.01" value="{{size}}" data-action="input" data-collection="setGraphics" data-property="size"/>
 			<br/>
 			<label>Position (Horizontal): </label>
-			<input type="range" min="-9" max="9" step="0.01" data-action="change" data-collection="setGraphics" data-property="positionX" value="{{positionX}}"/>
+			<input type="range" min="-9" max="9" step="0.002" data-action="input" data-collection="setGraphics" data-property="positionX" value="{{positionX}}"/>
 			<br/>
 			<label>Position (Vertical): </label>
-			<input type="range" min="0" max="2.5" step="0.01" data-action="change" data-collection="setGraphics" data-property="positionY" value="{{positionY}}"/>
+			<input type="range" min="0" max="2.5" step="0.01" data-action="input" data-collection="setGraphics" data-property="positionY" value="{{positionY}}"/>
 			<br/>
+			<label>Mirror: </label>
+			{{#if mirror}}
+				<input type="checkbox" class="form-control" data-action="check" data-collection="setGraphics" data-property="mirror" checked="true"/>
+			{{else}}
+				<input type="checkbox" class="form-control" data-action="check" data-collection="setGraphics" data-property="mirror"/>
+			{{/if}}
+			<br/><br/>
 			<button class="btn btn-danger" data-action="remove" data-collection="setGraphics">Remove Set Graphic</button>
 			<hr/>
 		{{/with}}
@@ -109,18 +125,25 @@
 		{{#with selectedObject 'recesses'}}
 			<h5>Recesses</h5>
 			<label>Position: </label>
-			<input type="range" min="-9" max="9" step="0.2" data-action="change" data-collection="recesses" data-property="positionX" value="{{positionX}}"/>
+			<input type="range" min="-9" max="9" step="0.2" data-action="input" data-collection="recesses" data-property="positionX" value="{{positionX}}"/>
 			<br/>
 			<label>R:</label><input type="range" min="0" max="1" step="0.01" value="{{../recessesRed}}" property="recessesRed"/>
 			<label>G:</label><input type="range" min="0" max="1" step="0.01" value="{{../recessesGreen}}" property="recessesGreen"/>
 			<label>B:</label><input type="range" min="0" max="1" step="0.01" value="{{../recessesBlue}}" property="recessesBlue"/>
 			<br/>
+			<label>Mirror: </label>
+			{{#if mirror}}
+				<input type="checkbox" class="form-control" data-action="check" data-collection="recesses" data-property="mirror" checked="true"/>
+			{{else}}
+				<input type="checkbox" class="form-control" data-action="check" data-collection="recesses" data-property="mirror"/>
+			{{/if}}
+			<br/><br/>
 			<button class="btn btn-danger" data-action="remove" data-collection="recesses">Remove Recess</button>
 			<hr/>
 		{{/with}}
 	{{/if}}
 
-	{{#if selectedObjectType 'topTable' 'stage'}}
+	{{#if selectedObjectType 'topTable'}}
 		{{#with selectedObject 'topTables'}}
 			<h5>Top Table</h5>
 			<label>Type: </label>
@@ -129,11 +152,16 @@
 				{{{_option 'Comfy Chairs' 'Comfy Chairs' type}}}
 			</select>
 			<label>Size: </label><span class="right">{{size}}</span>
-			<input type="range" min="1" max="16" data-action="change" data-collection="topTables" data-property="size" value="{{size}}"/>
+			<input type="range" min="1" max="16" data-action="input" data-collection="topTables" data-property="size" value="{{size}}"/>
 			<br/>
 			<label>Position: </label>
-			<input type="range" min="-9" max="9" step="0.2" data-action="change" data-collection="topTables" data-property="positionX" value="{{positionX}}"/>
+			<input type="range" min="-9" max="9" step="0.2" data-action="input" data-collection="topTables" data-property="positionX" value="{{positionX}}"/>
 			<br/>
+			<select class="form-control" data-action="change" data-collection="topTables" data-property="colour">
+				<option value="0 0 0"><div class="felt-swatch"></div> Black</option>
+				{{{_option '0 0 0' '<div class="felt-swatch"></div> Black' colour}}}
+				{{{_option '1 1 1' 'White' colour}}}
+			</select>
 			<button class="btn btn-danger" data-action="remove" data-collection="topTables">Remove Top Table</button>
 			<hr/>
 		{{/with}}
@@ -150,7 +178,7 @@
 				{{{_option 'Perspex' 'Perspex' type}}}
 			</select>
 			<label>Position: </label>
-			<input type="range" min="-9" max="9" step="0.01" data-action="change" data-collection="lecterns" data-property="positionX" value="{{positionX}}"/>
+			<input type="range" min="-9" max="9" step="0.01" data-action="input" data-collection="lecterns" data-property="positionX" value="{{positionX}}"/>
 			<br/>
 			<label>Logo: </label>
 			<select class="right form-control" data-action="change" data-collection="lecterns" data-property="logo">
@@ -161,7 +189,7 @@
 			</select>
 			{{#unless _equal logo 'None'}}
 				<label>Logo Size: </label>
-				<input type="range" min="0" max="0.23" step="0.01" data-action="change" data-collection="lecterns" data-property="logoSize" value="{{logoSize}}"/>
+				<input type="range" min="0" max="0.23" step="0.01" data-action="input" data-collection="lecterns" data-property="logoSize" value="{{logoSize}}"/>
 			{{/unless}}
 			<br/>
 			<button class="btn btn-danger" data-action="remove" data-collection="lecterns">Remove Lectern</button>

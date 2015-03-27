@@ -60,7 +60,7 @@ Template.QEII_Fleming_Control.events({
 	},
 */
 
-	'input [data-action="change"]': function() {
+	'input [data-action="input"]': function() {
 		var doc = Docs.findOne(),
 				id = Session.get('selectedObject').id,
 				collection = event.target.getAttribute('data-collection'),
@@ -80,6 +80,18 @@ Template.QEII_Fleming_Control.events({
 		for (var i = 0; i < doc.data[collection].length; i++) {
 			if (doc.data[collection][i].id.toString() === id.toString()) {
 				doc.data[collection][i][property] = event.target.value;
+			}
+		}
+		Docs.update(doc._id, {$set: {data: doc.data}});
+	},
+	'change [data-action="check"]': function() {
+		var doc = Docs.findOne(),
+				id = Session.get('selectedObject').id,
+				collection = event.target.getAttribute('data-collection'),
+				property = event.target.getAttribute('data-property');
+		for (var i = 0; i < doc.data[collection].length; i++) {
+			if (doc.data[collection][i].id.toString() === id.toString()) {
+				doc.data[collection][i][property] = event.target.checked;
 			}
 		}
 		Docs.update(doc._id, {$set: {data: doc.data}});
@@ -110,6 +122,7 @@ Template.QEII_Fleming_Control.events({
 		if (type === 'screens') {
 			defaults.ratio = '4:3';
 			defaults.type = 'Standard';
+			defaults.positionX = 0;
 		} else if (type === 'setGraphics') {
 			defaults.positionX = -2;
 			defaults.positionY = 1.6;

@@ -16,6 +16,10 @@ Template.QEII_Fleming_Scene.helpers({
 		}
 		return 'false';
 	},
+	
+	'opposite': function(value) {
+		return 0 - Number(value);
+	},
 
 	'scaleSet': function(size) {
 		return size/10 + 0.025;
@@ -28,14 +32,26 @@ Template.QEII_Fleming_Scene.helpers({
 				setSections = [],
 				stageWidth = doc.data.stageWidth;
 
-		// [1] sort recesses array into left-to-right order
+		// [1] if any recesses are mirrored, add these to the array
+		if (recesses) {
+			recesses.forEach(function(recess) {
+				if (recess.mirror) {
+					var mirror = JSON.parse(JSON.stringify(recess));
+					mirror.positionX = 0 - mirror.positionX;
+					mirror.mirror = false;
+					recesses.push(mirror);
+				}
+			});
+		}
+
+		// [2] sort recesses array into left-to-right order
 		if (recesses) {
 			recesses.sort(function(a, b) {
 				return a.positionX > b.positionX;
 			});
 		}
 
-		// [2] create set sections data
+		// [3] create set sections data
 		setSections.push({start: stageWidth / -10});
 		if (recesses) {
 			for (var i = 0; i < recesses.length; i++) {
@@ -47,17 +63,13 @@ Template.QEII_Fleming_Scene.helpers({
 			setSections[0].width = stageWidth / 10;
 		}
 
-		// [3] set sections start position must take into account their width
+		// [4] set sections start position must take into account their width
 		setSections.forEach(function(section) {
 			section.start = section.start + section.width;
 		});
 
 		return setSections;
 
-	},
-	
-	'valueOrDefault': function(position, fallback) {
-		return position || fallback;
 	},
 
 	'path': function() {
