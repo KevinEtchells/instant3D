@@ -12,6 +12,8 @@
 		div.feltSwatch {position: absolute; width: 250px; height: 100%; left: -250px; top: 0; padding: 5px; background-color: white; animate: all;}
 		div.colourBoxSmall {display: inline-block; width: 40px; height: 20px; border: 1px solid; margin-right: 10px; margin-left: 10px;}
 		div.colourBoxMedium {display: inline-block; width: 47px; height: 47px; border: 1px solid; margin-right: 5px; margin-left: 5px; margin-top: 5px;}
+		
+		#screenshotPreviews {display: none;}
 	</style>
 
 	<div class="feltSwatch">
@@ -177,5 +179,10 @@
 	<hr/>
 	<h5>Upload</h5>
 	<input class="upload btn" type="file"/>
+	
+	<hr/>
+	<h5>Screen Shots</h5>
+	<button class="btn" data-action="saveView">Save View</button>
+	<div id="screenshotPreviews"></div>
 
 </template>

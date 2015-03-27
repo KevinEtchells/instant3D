@@ -4,6 +4,8 @@ WAITING DEPLOYMENT:
 * Slider for top table size
 * Change set graphic height
 * Remove set graphics from Fleming default + add lectern
+* Take snapshot image
+
 
 
 BUG FIXES:
@@ -12,21 +14,21 @@ BUG FIXES:
 
 
 NEW FEATURES:
-* Take snapshot image
-* Top table colour
+* Sort docs by date/time (may need separate datestamp)
 * Mirror feature for Fleming - e.g. for Set Graphics, Recesses
 * Change monochrome gobo colour ("Lamp Colour")
+* Top table & lectern colour
+* In CONTROL MODE, need to have a drop-down box to select elements
 * Mod panel logos
 * Allow insertion of custom objects in x3d format
 * Churchill stage and set
-* In CONTROL MODE, need to have a drop-down box to select elements
 * Add St.James's Suite
 * Triangular set pieces - Fleming
 
 
 
 PERFORMANCE IMPROVEMENTS / REFACTORING:
-* Reduce image uploads file-size/resolution
+* Reduce image uploads file-size/resolution ***
 * Check scaling between Blender and X3dom
 * "property" atrribute used in control html - change to "data-property" for consistency
 * Re-work Mountbatten (scale and rotation. Use boxes for the flat parts. Remove camera)

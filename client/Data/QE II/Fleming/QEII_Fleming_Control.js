@@ -134,6 +134,26 @@ Template.QEII_Fleming_Control.events({
 		doc.data[type].push(defaults);
 		Docs.update(doc._id, {$set: {data: doc.data}});
 
+	},
+	
+	'click [data-action="saveView"]': function() {
+		//Get data url from the runtime
+		var imgUrl = document.getElementById("canvas").runtime.getScreenshot();
+
+		//Create preview image...
+		/*
+		var newScreenshotImage = document.createElement('img');
+		newScreenshotImage.src = imgUrl;
+		$('#screenshotPreviews').append(newScreenshotImage);
+		*/
+
+		//...and download link
+		var newScreenshotDownloadLink = document.createElement('a');
+		newScreenshotDownloadLink.href = imgUrl;
+		newScreenshotDownloadLink.download = Docs.findOne().name + '.png';
+		newScreenshotDownloadLink.innerHTML = "<br/>Download Image";
+		$('#screenshotPreviews').append(newScreenshotDownloadLink); // append in order for click() to work across widest range of browsers
+		newScreenshotDownloadLink.click();
 	}
 
 });
