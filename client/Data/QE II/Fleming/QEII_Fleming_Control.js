@@ -45,20 +45,27 @@ Template.QEII_Fleming_Control.events({
 		event.target.value = 0; // need to force refresh
 	},
 
-/*
 	'click div.colourBoxSmall': function(event) {
 		document.querySelectorAll('div.feltSwatch')[0].style.left = 0;
 	},
-
-	'click div.colourBoxMedium': function(event) {
-
-		var currentDoc = Docs.findOne();
-		currentDoc.data.modPanelColour = event.target.style.backgroundColor
+	'click [data-action="colour-select"]': function(event) {
+		console.log('check');
+		var currentDoc = Docs.findOne(),
+				selectedObject = Session.get('selectedObject'),
+				collection = currentDoc.data[selectedObject.type + 's']
+				
+		for (var i = 0; i < collection.length; i++) {
+			if (collection[i].id.toString() === selectedObject.id.toString()) {
+				collection[i].colour = {
+					hash: event.target.style.backgroundColor,
+					rgb: event.target.getAttribute('data-rgb'),
+					name: event.target.parentElement.innerText
+				}
+			}
+		}
 		Docs.update(currentDoc._id, {$set: {data: currentDoc.data}});
-
 		document.querySelectorAll('div.feltSwatch')[0].style.left = '-250px';
 	},
-*/
 
 	'input [data-action="input"]': function() {
 		var doc = Docs.findOne(),
@@ -134,10 +141,12 @@ Template.QEII_Fleming_Control.events({
 			defaults.type = 'Felt';
 			defaults.logo = 'None';
 			defaults.logoSize = 0.23;
+			defaults.colour = {hash: '#000000', rgb: '0 0 0'};
 		} else if (type === 'topTables') {
 			defaults.positionX = -2.4;
 			defaults.size = 4;
 			defaults.type = 'Top Table';
+			defaults.colour = {hash: '#000000', rgb: '0 0 0'};
 		}
 		
 		if (!doc.data[type]) {
@@ -152,13 +161,6 @@ Template.QEII_Fleming_Control.events({
 	'click [data-action="saveView"]': function() {
 		//Get data url from the runtime
 		var imgUrl = document.getElementById("canvas").runtime.getScreenshot();
-
-		//Create preview image...
-		/*
-		var newScreenshotImage = document.createElement('img');
-		newScreenshotImage.src = imgUrl;
-		$('#screenshotPreviews').append(newScreenshotImage);
-		*/
 
 		//...and download link
 		var newScreenshotDownloadLink = document.createElement('a');

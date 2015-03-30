@@ -321,15 +321,16 @@
 										</indexedlineset>
 									</shape>
 								</Transform>
-							
 							</Transform>
 						</Transform>
 
 						<Transform DEF="Mod_Panel_front" translation="{{positionX}} 0.42 0.65" scale="0.23 0.249 0.01">
 							<Transform scale="{{size}} 1 1">
-								<shape onclick="selectObject('topTable', {{id}}, event)">
+								<shape DEF="Mod_Panel" onclick="selectObject('topTable', {{id}}, event)">
 									<Appearance>
-										<Material DEF="Black_Felt" diffuseColor="0 0 0" specularColor="0.1 0.1 0.1" ambientIntensity="0.333" shininess="0.1"></Material>
+										{{#with colour}}
+											<Material diffuseColor="{{rgb}}"></Material>
+										{{/with}}
 									</Appearance>
 									<box></box>
 								</shape>
@@ -338,23 +339,13 @@
 
 						<Transform DEF="Mod_Panel_side1" translation="{{positionX}} 0.42 0.41" scale="0.01 0.249 0.249">
 							<Transform translation="-{{_scale size 23}} 0 0">
-									<shape onclick="selectObject('topTable', {{id}}, event)">
-										<Appearance>
-											<Material DEF="Black_Felt" diffuseColor="0 0 0" specularColor="0.1 0.1 0.1" ambientIntensity="0.333" shininess="0.1"></Material>
-										</Appearance>
-										<box></box>
-									</shape>
+									<shape USE="Mod_Panel"></shape>
 							</Transform>
 						</Transform>
 
 						<Transform DEF="Mod_Panel_side2" translation="{{positionX}} 0.42 0.41" scale="0.01 0.249 0.249">
 							<Transform translation="{{_scale size 23}} 0 0">
-									<shape onclick="selectObject('topTable', {{id}}, event)">
-										<Appearance>
-											<Material DEF="Black_Felt" diffuseColor="0 0 0" specularColor="0.1 0.1 0.1" ambientIntensity="0.333" shininess="0.1"></Material>
-										</Appearance>
-										<box></box>
-									</shape>
+									<shape USE="Mod_Panel"></shape>
 							</Transform>
 						</Transform>
 					

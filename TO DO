@@ -1,5 +1,5 @@
 WAITING DEPLOYMENT:
-* Mirror feature for Fleming - e.g. for Set Graphics, Recesses, Screens
+* Mirror feature for Fleming - for Set Graphics, Recesses and Screens
 
 
 
@@ -9,8 +9,10 @@ BUG FIXES:
 
 
 NEW FEATURES:
-* Change monochrome gobo colour ("Lamp Colour") ***
-* Top table & lectern colour ***
+* Top table & lectern colour **1**
+* Stage depth and height options **4**
+* 16:9 screen in Fleming **5**
+* Change monochrome gobo colour ("Lamp Colour") ?
 * Sort docs by date/time (may need separate datestamp)
 * Expand / hide control panel
 * In CONTROL MODE, need to have a drop-down box to select elements
@@ -23,9 +25,10 @@ NEW FEATURES:
 
 
 PERFORMANCE IMPROVEMENTS / REFACTORING:
-* Check scaling between Blender and X3dom ***
+* Check scaling between Blender and X3dom **2**
+* New lectern (front is wonky, scale and rotation is out) **3**
+* Can we implement mirror feature with less lines of HTML?
 * "property" atrribute used in control html - change to "data-property" for consistency
 * Re-work Mountbatten (scale and rotation. Use boxes for the flat parts. Remove camera)
 * New comfy chair (scale and rotation is out. Optimise)
-* New lectern (front is wonky, scale and rotation is out)
 * Sort out set wash png (sort out bottom in Fleming. Make only 1px wide)
