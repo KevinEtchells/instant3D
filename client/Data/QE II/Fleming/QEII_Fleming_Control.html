@@ -114,6 +114,12 @@
 		<h5>Stage</h5>
 		<label>Width:</label><span class="right">{{stageWidth}} ft</span>
 		<input type="range" min="36" max="80" step="4" value="{{stageWidth}}" property="stageWidth"/>
+		<br/>
+		<label>Depth:</label>
+		<select class="form-control" data-global="change" data-property="stageDepth">
+			{{{_option 0.8 "8'" stageDepth}}}
+			{{{_option 1.2 "12'" stageDepth}}}
+		</select>
 	{{/if}}
 		
 	{{#if selectedObjectType 'set'}}

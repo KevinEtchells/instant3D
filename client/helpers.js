@@ -16,7 +16,7 @@ UI.registerHelper('_host', function() {
 });
 
 UI.registerHelper('_option', function(value, text, check) {
-	return '<option value="' + value + '"' + (value === check ? 'selected' : '') + '>' + text + '</option>';
+	return '<option value="' + value + '"' + (value.toString() === check.toString() ? 'selected' : '') + '>' + text + '</option>';
 });
 
 UI.registerHelper('_resources', function() {

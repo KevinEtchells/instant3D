@@ -158,6 +158,15 @@ Template.QEII_Fleming_Control.events({
 
 	},
 	
+	'change [data-global="change"]': function(event) {
+		var doc = Docs.findOne(),
+				property = event.target.getAttribute('data-property');
+		if (doc && property) {
+			doc.data[property] = event.target.value;
+			Docs.update(doc._id, {$set: {data: doc.data}});
+		}
+	},
+	
 	'click [data-action="saveView"]': function() {
 		//Get data url from the runtime
 		var imgUrl = document.getElementById("canvas").runtime.getScreenshot();

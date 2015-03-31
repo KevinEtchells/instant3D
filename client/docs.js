@@ -49,7 +49,7 @@ Template.docs.events({
 			}
 		} else if (room === 'Fleming') {
 			defaults = {
-				stageWidth: 36,
+				stageWidth: 36, stageDepth: 0.8, stageHeight: 0.2,
 				screens: [
 					{id: '1', ratio: '4:3', type: 'Standard'}
 				],

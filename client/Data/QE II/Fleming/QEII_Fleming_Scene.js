@@ -21,10 +21,19 @@ Template.QEII_Fleming_Scene.helpers({
 		return 0 - Number(value);
 	},
 
+	'stageDepthOffset': function(value1, value2) {
+		var doc = Docs.findOne();
+		if (doc && doc.data.stageDepth === '1.2') {
+			return value2;
+		}
+		return value1;
+	},
+
+/*
 	'scaleSet': function(size) {
 		return size/10 + 0.025;
 	},
-	
+*/
 	'setSections': function() { // this works out the gaps for the recesses
 
 		var doc = Docs.findOne(),
