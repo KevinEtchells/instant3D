@@ -121,7 +121,7 @@ Template.QEII_Fleming_Scene.helpers({
 				height = 0;
 		if (img) {
 			height = size / img.aspectRatio;
-			return 1 - height;
+			return 1 - height - 0.02;
 		}
 	}
 
