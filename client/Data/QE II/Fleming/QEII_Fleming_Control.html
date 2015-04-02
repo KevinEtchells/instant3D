@@ -135,9 +135,9 @@
 		{{#with selectedObject 'screens'}}
 			<h5>Screen</h5>
 			<label>Ratio:</label>
-			<select class="form-control">
-				<option value="4:3">4:3 Ratio</option>
-				<option value="16:9">16:9 Ratio</option>
+			<select class="form-control" data-action="change" data-collection="screens" data-property="ratio" value="{{ratio}}">
+				{{{_option '4:3' '4:3 Ratio' ratio}}}
+				{{{_option '16:9' '16:9 Ratio' ratio}}}
 			</select>
 			<label>Screen Type:</label>
 			<select class="form-control">

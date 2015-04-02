@@ -3,6 +3,7 @@ WAITING DEPLOYMENT:
 * Basic Top table & lectern colour
 * New lectern
 * Stage depth option for Fleming
+* 16:9 screen in Fleming
 
 
 
@@ -12,23 +13,22 @@ BUG FIXES:
 
 
 NEW FEATURES:
-* 16:9 screen in Fleming ***
-* Change monochrome gobo colour ("Lamp Colour") ?
+* Add Westminster Suite
 * Churchill stage and set
+* Change monochrome gobo colour ("Lamp Colour") ?
 * Stage height options for Fleming
 * Sort docs by date/time (may need separate datestamp)
 * Expand / hide control panel
 * In CONTROL MODE, need to have a drop-down box to select elements
 * Mod panel logos
 * Allow insertion of custom objects in x3d format
-* Add St.James's Suite
 * Triangular set pieces - Fleming
 
 
 
 PERFORMANCE IMPROVEMENTS / REFACTORING:
-* "property" atrribute used in control html - change to "data-global-property" for consistency ***
-* Can we implement mirror feature with less lines of HTML?
+* Can we implement mirror feature with less lines of HTML? ***
+* Sort out set wash png (sort out bottom in Fleming. Make only 1px wide)
+* "property" atrribute used in control html - change to "data-global-property" for consistency
 * Re-work Mountbatten (scale and rotation. Use boxes for the flat parts. Remove camera)
 * New comfy chair (scale and rotation is out. Optimise)
-* Sort out set wash png (sort out bottom in Fleming. Make only 1px wide)
