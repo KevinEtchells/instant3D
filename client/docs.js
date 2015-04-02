@@ -46,7 +46,12 @@ Template.docs.events({
 				lectern: true, lecternX: -4.104028,
 				ttSize: 4, topTableX: 3.2, modPanelRed: 0, modPanelGreen: 0, modPanelBlue: 0,
 				recessesRed: 0, recessesGreen: 0, recessesBlue: 1
-			}
+			};
+		} else if (room === 'Westminster') {
+			defaults = {
+				stageWidth: 20,
+				uplightRed: 0, uplightBlue: 0, uplightGreen: 0, uplightType: 'par'
+			};
 		} else if (room === 'Fleming') {
 			defaults = {
 				stageWidth: 36, stageDepth: 0.8, stageHeight: 0.2,
@@ -60,7 +65,7 @@ Template.docs.events({
 					{id: '1', positionX: 2.3, type: 'Felt', logo: 'None', logoSize: 0.23, colour: {name: ' S67 Black', rgb: '0 0 0', hash: '#000000'}}
 				],
 				uplightRed: 0, uplightGreen: 0, uplightBlue: 1
-			}
+			};
 		}
 
 		Docs.insert({

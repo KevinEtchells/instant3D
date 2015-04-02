@@ -4,10 +4,12 @@ WAITING DEPLOYMENT:
 * New lectern
 * Stage depth option for Fleming
 * 16:9 screen in Fleming
+* refactored "property" atrribute used in control html - changed to "data-global-property" for consistency + various other refactorings
 
 
 
 BUG FIXES:
+* Increase padding in control panel for iPad sliders ***
 * Set graphic sizing issue in VIEW MODE
 
 
@@ -29,7 +31,6 @@ NEW FEATURES:
 PERFORMANCE IMPROVEMENTS / REFACTORING:
 * Can we implement mirror feature with less lines of HTML? ***
 * Sort out set wash png (sort out bottom in Fleming. Make only 1px wide)
-* "property" atrribute used in control html - change to "data-global-property" for consistency
 * Re-work Mountbatten (scale and rotation. Use boxes for the flat parts. Remove camera)
 * New comfy chair (scale and rotation is out. Optimise)
 * Update Meteor and x3dom

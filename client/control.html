@@ -1,7 +1,126 @@
 <template name="control">
 
+	<style>
+		/* general */
+		h5 {text-align: center; font-weight: bold;}
+		.right {float: right;}
+		.left {float: left;}
+		label {float: left;}
+		.form-control {margin-bottom: 20px;}
+		.btn {margin-bottom: 5px;}
+		input[type="checkbox"] {width: 20px; height: 20px; position: relative; top: -6px; margin-left: 10px; float: left;}
+
+		/* felt */
+		div.feltSwatch {position: absolute; width: 235px; height: 100%; left: -250px; top: 0; padding: 5px; background-color: white; animate: all;}
+		div.colourBoxSmall {display: inline-block; width: 40px; height: 20px; border: 1px solid; margin-right: 10px; margin-left: 10px;}
+		li div.colourBoxSmall {position: relative; top: 4px;}
+		ul {list-style-type: none; font-size: 12pt; font-weight: bold; padding-left: 0;}
+		
+		#screenshotPreviews {display: none;}
+	</style>
+
 	<div id="control">
+		
+		<div class="feltSwatch">
+			<h5>Select Felt</h5>
+			<ul>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> S67 Black</li>
+				<!--
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> S74 Dark Earth</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> S73 Ash</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> S71 Silver Birch</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> S72 Grey Metal</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> S70 Pebble</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> S69 Grey Mist</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> S99 Platinum</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> S75 Charcoal</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> B77 Midnight</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> B57 Dark Iris</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> B56 Trafalgar</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> B55 Cornflower</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> B54 Royal Windsor</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> B53 Hyacinth</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> G49 Caspian</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> B60 Caribbean</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> B58 Love In A Mist</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> B61 Process Blue</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> B59 Blue Bell</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> B52 Speedwell</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> B51 Wedgwood</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> B50 Sky</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> G47 Sage Green</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> G45 Wood Sorrel</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> G37 Mint</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> G36 Linden</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> G46 Willow</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> G48 Laurel</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> G38 Arundel</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> N88 Mahogany</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> N89 Russet</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> R14 Burnt Umber</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> N87 Caramel</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> N82 Golden Sand</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> N91 Peat</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> N90 Oak</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> N93 Nutmeg</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> N92 Mushroom</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> N98 Shell</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> N97 Cream</li>
+				-->
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> S68 White</li>
+				<!--
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> N94 Sycamore</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> P26 Double Cream</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> Y33 Jasmine</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> Y32 Primrose</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> Y35 Olympian</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> Y36 Yellow Crocus</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> Y79 Fiesta Gold</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> G40 Verona</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> G41 Conifer</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> G42 Holly</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> G43 Yew</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> G44 Ivy</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> N80 Sunflower</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> R07 Oriental Red</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> R09 Peony Red</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> R12 Columbine</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> V67 Clematis</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> V66 Amethyst</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> V64 Lavender</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> V63 Anemone</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> V61 Lilac</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> C20 Fuchsia</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> C19 Thistle</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> C22 Rosebay</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> C16 Cerise</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> R04 Japonica Pink</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> P23 London Pride</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> P24 Rose Pink</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> P25 Medicine Pink</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> P30 Salmon</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> P31 Melon Pink</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> P28 Honeysuckle</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> Y38 Dahlia Yellow</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> Y39 Tango</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> R01 Hot Sahara</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: white" data-rgb="1 1 1"></div> R05 Lipstick</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: black" data-rgb="0 0 0"></div> R03 Red Coral</li>
+				<li><div class="colourBoxSmall" data-action="colour-select" style="background-color: blue" data-rgb="0 0 1"></div> R06 Geranium</li>
+				-->
+			</ul>
+		</div>
+		
 		{{> sceneControl data}}
+
+		<h5>Upload</h5>
+		<input class="upload btn" type="file"/>
+		<hr/>
+		
+		<h5>Screen Shots</h5>
+		<button class="btn" data-action="saveView">Save View</button>
+		<div id="screenshotPreviews"></div>
+		
 	</div>
 
 </template>
