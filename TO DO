@@ -13,7 +13,7 @@ BUG FIXES:
 
 
 NEW FEATURES:
-* Add Westminster Suite
+* Add Westminster Suite ***
 * Churchill stage and set
 * Change monochrome gobo colour ("Lamp Colour") ?
 * Stage height options for Fleming
@@ -32,3 +32,4 @@ PERFORMANCE IMPROVEMENTS / REFACTORING:
 * "property" atrribute used in control html - change to "data-global-property" for consistency
 * Re-work Mountbatten (scale and rotation. Use boxes for the flat parts. Remove camera)
 * New comfy chair (scale and rotation is out. Optimise)
+* Update Meteor and x3dom

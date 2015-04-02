@@ -27,8 +27,19 @@ Meteor.startup(function () {
 	if (!Companies.find().fetch().length) {
 		Companies.insert({
 			name: 'QEII',
-			templates: ['Mountbatten', 'Fleming', 'Churchill']
+			templates: ['Mountbatten', 'Westminster', 'Fleming', 'Churchill']
 		});
 	}
+	
+	// Add Westminster on next deploy - temp only ***********************************************
+	var qeii;
+	do {
+		console.log('Checking templates...');
+		qeii = Companies.findOne();
+		if (qeii && qeii.templates && qeii.templates.length === 3) {
+			console.log('Inserting Westminster Suite into templates');
+			Companies.update(qeii._id, {$set: {templates: ['Mountbatten', 'Westminster', 'Fleming', 'Churchill']}});
+		}
+	} while (!qeii || !qeii.templates)
 
 });

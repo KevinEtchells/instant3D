@@ -51,13 +51,13 @@ Template.docs.events({
 			defaults = {
 				stageWidth: 36, stageDepth: 0.8, stageHeight: 0.2,
 				screens: [
-					{id: '1', ratio: '4:3', type: 'Standard'}
+					{id: '1', ratio: '4:3', type: 'Standard', positionX: 0}
 				],
 				topTables: [
-					{id: '1', positionX: -2.4, size: 4, type: 'Top Table'}
+					{id: '1', positionX: -2.4, size: 4, type: 'Top Table', colour: {name: ' S67 Black', rgb: '0 0 0', hash: '#000000'}}
 				],
 				lecterns: [
-					{id: '1', positionX: 2.3, type: 'Felt', logo: 'None', logoSize: 0.23}
+					{id: '1', positionX: 2.3, type: 'Felt', logo: 'None', logoSize: 0.23, colour: {name: ' S67 Black', rgb: '0 0 0', hash: '#000000'}}
 				],
 				uplightRed: 0, uplightGreen: 0, uplightBlue: 1
 			}
