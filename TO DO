@@ -5,7 +5,7 @@ WAITING DEPLOYMENT:
 * Stage depth option for Fleming
 * 16:9 screen in Fleming
 * Fix for loading issue (x3dom was sometimes reloaded before data had come across)
-
+* Control box padding increased to fix slider issue on iPads
 
 
 BUG FIXES:
