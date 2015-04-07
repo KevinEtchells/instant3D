@@ -19,3 +19,14 @@ Template.view.helpers({
 
 });
 
+
+selectObject = function(type, id, event) {
+	if (!event.isTrigger) { // filter out 2nd jQuery event fire
+		var currentObject = Session.get('selectedObject');
+		if (currentObject && currentObject.type === type && currentObject.id === id) {
+			Session.set('selectedObject', {});
+		} else {
+			Session.set('selectedObject', {type: type, id: id});
+		}
+	}
+};

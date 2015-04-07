@@ -1,25 +1,13 @@
 Template.QEII_Fleming_Scene.helpers({
-
+/*
 	'Id': function() {
+		console.log('CHECK!');
 		var doc = Docs.findOne();
 		if (doc) {
 			return doc._id;
 		}
 	},
-	
-	'isSelected': function(type, id) {
-		var selectedObject = Session.get('selectedObject');
-		if (selectedObject) {
-			if (selectedObject.type === type && selectedObject.id.toString() === id.toString()) {
-				return 'true';
-			}
-		}
-		return 'false';
-	},
-	
-	'opposite': function(value) {
-		return 0 - Number(value);
-	},
+*/
 
 	'stageDepthOffset': function(value1, value2) {
 		var doc = Docs.findOne();
@@ -79,59 +67,6 @@ Template.QEII_Fleming_Scene.helpers({
 
 		return setSections;
 
-	},
-
-	'path': function() {
-		if (this.content === 'Path') {
-			return 'http://' + this.contentPath;
-		} else {
-			return getHost() + '/resource/' + Docs.findOne()._id + '/' + this.content;
-		}
-	},
-	'isImage': function(path) {
-		if (path) {
-			return (path.toLowerCase().indexOf('png') !== -1) || (path.toLowerCase().indexOf('jpg') !== -1)
-		}
-	},
-	'isMovie': function(path) {
-		if (path) {
-			return (path.toLowerCase().indexOf('mp4') !== -1) || (path.toLowerCase().indexOf('gif') !== -1)
-		}
-	},
-
-	'comfyChairs': function(size, position) {
-		var chairs = [],
-				rotation = -2.14,
-				xPos = Number(position);
-
-		for(var i = 0; i < size; i++) {
-			xPos = xPos + 0.6
-			rotation = rotation - 0.2
-			chairs.push({
-				positionX: xPos,
-				rotation: 3.14 //rotation
-			});
-		}
-
-		return chairs;
-	},
-
-	'setGraphicsScale': function(size, setGraphic) {
-		var img = Resources.findOne({name: setGraphic});
-		if (img) {
-			return size + ' ' + (size / img.aspectRatio) + '  0.01';
-		} else {
-			return '0.5 0.5 0';
-		}
-	},
-
-	'lecternLogoPositionY': function(size, logo) {
-		var img = Resources.findOne({name: logo}),
-				height = 0;
-		if (img) {
-			height = size / img.aspectRatio;
-			return 1 - height - 0.02;
-		}
 	}
 
 });
@@ -164,16 +99,3 @@ Template.QEII_Fleming_Scene.rendered = function() {
 	}, true);
 	*/
 };
-
-
-selectObject = function(type, id, event) {
-	if (!event.isTrigger) { // filter out 2nd jQuery event fire
-		var currentObject = Session.get('selectedObject');
-		if (currentObject && currentObject.type === type && currentObject.id === id) {
-			Session.set('selectedObject', {});
-		} else {
-			Session.set('selectedObject', {type: type, id: id});
-		}
-	}
-};
-

@@ -1,0 +1,155 @@
+<template name="QEII_Westminster_Control">
+
+	{{#if selectedObjectType 'stage'}}
+		<h5>Stage</h5>
+		<label>Width:</label><span class="right">{{stageWidth}} ft</span>
+		<input type="range" min="20" max="28" step="4" value="{{stageWidth}}" data-global="input" data-property="stageWidth"/>
+		<br/>
+	{{/if}}
+		
+	{{#if selectedObjectType 'set'}}
+		<hr/>
+		<h5>Uplighting</h5>
+		<label>R:</label> <input type="range" min="0" max="1" step="0.01" value="{{uplightRed}}" data-global="input" data-property="uplightRed"/>
+		<label>G:</label><input type="range" min="0" max="1" step="0.01" value="{{uplightGreen}}" data-global="input" data-property="uplightGreen"/>
+		<label>B:</label><input type="range" min="0" max="1" step="0.01" value="{{uplightBlue}}" data-global="input" data-property="uplightBlue"/>
+		<hr/>
+		<label>Type: </label>
+		<select class="form-control" data-global="change" data-property="uplightType">
+			{{{_option 'par' 'LED Pars' uplightType}}}
+			{{{_option 'chromabatten' 'Chromabattens' uplightType}}}
+		</select>
+	{{/if}}
+	
+	{{#if selectedObjectType 'screen' 'set'}}
+		<h5>Screen</h5>
+		<label>Type:</label>
+		<select class="form-control" data-global="change" data-property="ratio">
+			{{{_option '4:3' '4:3 Ratio' ratio}}}
+			{{{_option '16:9' '16:9 Ratio' ratio}}}
+			{{{_option 'none' 'None' ratio}}}
+		</select>
+		<label>Content:</label>
+		<select class="form-control" data-global="change" data-property="content" value="{{content}}">
+			<option value="None">None</option>
+			<option value="Path">Path...</option>
+			{{#each _resources}}
+				{{{_option name name ../content}}}
+			{{/each}}
+		</select>
+		{{#if _equal content 'Path'}}
+			<input type="text" class="form-control" data-action="change" data-collection="screens" data-property="contentPath" value="{{contentPath}}"/>
+		{{/if}}
+		<br/><br/>
+		<button class="btn btn-danger" data-action="remove" data-collection="screens">Remove Screen</button>
+		<hr/>
+	{{/if}}
+
+
+	{{#if selectedObjectType 'graphics' 'set'}}
+		{{#with selectedObject 'setGraphics'}}
+			<h5>Set Graphics</h5>
+			<label>Content: </label>
+			<select class="form-control" data-action="change" data-collection="setGraphics" data-property="content">
+				<option value="None">None</option>
+				{{#each _resources}}
+					{{{_option name name ../content}}}
+				{{/each}}
+			</select>
+			<label>Size: </label><span class="right">{{setGraphicsSize size content}}</span>
+			<input type="range" min="0.4" max="2" step="0.01" value="{{size}}" data-action="input" data-collection="setGraphics" data-property="size"/>
+			<br/>
+			<label>Position (Horizontal): </label>
+			<input type="range" min="-9" max="9" step="0.002" data-action="input" data-collection="setGraphics" data-property="positionX" value="{{positionX}}"/>
+			<br/>
+			<label>Position (Vertical): </label>
+			<input type="range" min="0" max="2.5" step="0.01" data-action="input" data-collection="setGraphics" data-property="positionY" value="{{positionY}}"/>
+			<br/>
+			<label>Mirror: </label>
+			{{#if mirror}}
+				<input type="checkbox" class="form-control" data-action="check" data-collection="setGraphics" data-property="mirror" checked="true"/>
+			{{else}}
+				<input type="checkbox" class="form-control" data-action="check" data-collection="setGraphics" data-property="mirror"/>
+			{{/if}}
+			<br/><br/>
+			<button class="btn btn-danger" data-action="remove" data-collection="setGraphics">Remove Set Graphic</button>
+			<hr/>
+		{{/with}}
+	{{/if}}
+
+	{{#if selectedObjectType 'topTable'}}
+		{{#with selectedObject 'topTables'}}
+			<h5>Top Table</h5>
+			<label>Type: </label>
+			<select class="form-control" data-action="change" data-collection="topTables" data-property="type">
+				{{{_option 'Top Table' 'Top Table' type}}}
+				{{{_option 'Comfy Chairs' 'Comfy Chairs' type}}}
+			</select>
+			<label>Size: </label><span class="right">{{size}}</span>
+			<input type="range" min="1" max="16" data-action="input" data-collection="topTables" data-property="size" value="{{size}}"/>
+			<br/>
+			<label>Position: </label>
+			<input type="range" min="-9" max="9" step="0.2" data-action="input" data-collection="topTables" data-property="positionX" value="{{positionX}}"/>
+			<br/>
+			<label>Colour: </label>
+			{{#with colour}}
+				<div class="colourBoxSmall left" style="background-color: {{hash}}"></div><span class="left"> {{name}}</span>
+			{{/with}}
+			<br/><br/>
+			<button class="btn btn-danger" data-action="remove" data-collection="topTables">Remove Top Table</button>
+			<hr/>
+		{{/with}}
+	{{/if}}
+	
+	{{#if selectedObjectType 'lectern'}}
+		{{#with selectedObject 'lecterns'}}
+			<h5>Lectern</h5>
+			<label>Type: </label>
+			<select class="form-control" data-action="change" data-collection="lecterns" data-property="type">
+				{{{_option 'Felt' 'Felt' type}}}
+				{{{_option 'Standard Ash' 'Standard Ash' type}}}
+				{{{_option 'Large Ash' 'Large Ash' type}}}
+				{{{_option 'Perspex' 'Perspex' type}}}
+			</select>
+			<label>Position: </label>
+			<input type="range" min="-9" max="9" step="0.01" data-action="input" data-collection="lecterns" data-property="positionX" value="{{positionX}}"/>
+			<br/>
+			<label>Logo: </label>
+			<select class="right form-control" data-action="change" data-collection="lecterns" data-property="logo">
+				<option value="None">None</option>
+				{{#each _resources}}
+					{{{_option name name ../logo}}}
+				{{/each}}
+			</select>
+			{{#unless _equal logo 'None'}}
+				<label>Logo Size: </label>
+				<input type="range" min="0" max="0.23" step="0.01" data-action="input" data-collection="lecterns" data-property="logoSize" value="{{logoSize}}"/>
+			{{/unless}}
+			<br/>
+			<label>Colour: </label>
+			{{#with colour}}
+				<div class="colourBoxSmall" style="background-color: {{hash}}"></div>
+			{{/with}}
+			<br/><br/>
+			<button class="btn btn-danger" data-action="remove" data-collection="lecterns">Remove Lectern</button>
+			<hr/>
+		{{/with}}
+	{{/if}}
+
+	<h5>Pillars</h5>
+	<label>Show Westminster pillars: </label>
+	{{#if westminsterPillars}}
+		<input type="checkbox" class="form-control" data-global="check" data-property="westminsterPillars" checked="true"/>
+	{{else}}
+		<input type="checkbox" class="form-control" data-global="check" data-property="westminsterPillars"/>
+	{{/if}}
+	<br/>
+	<hr/>
+
+	<h5>Add</h5>
+	<button data-action="add" data-collection="setGraphics" class="btn">Add Graphic</button>
+	<button data-action="add" data-collection="lecterns" class="btn">Add Lectern</button>
+	<button data-action="add" data-collection="topTables" class="btn">Add Top Table</button>
+	<hr/>
+
+</template>
