@@ -4,7 +4,7 @@ WAITING DEPLOYMENT:
 * New lectern
 * Stage depth option for Fleming
 * 16:9 screen in Fleming
-* refactored "property" atrribute used in control html - changed to "data-global-property" for consistency + various other refactorings
+* Fix for loading issue (x3dom was sometimes reloaded before data had come across)
 
 
 

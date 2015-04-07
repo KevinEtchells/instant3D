@@ -143,8 +143,16 @@ Template.QEII_Fleming_Scene.events({
 
 
 Template.QEII_Fleming_Scene.rendered = function() {
-
-	x3dom.reload();
+	
+	// only init x3dom if document has loaded (once we have updated iron router we can simplify this)
+	var x3domInit = function() {
+		if (Docs.findOne()) {
+			x3dom.reload();
+		} else {
+			x3domInit();
+		}
+	}
+	x3domInit();
 
 /*
 	document.querySelectorAll('x3d')[0].addEventListener('touchmove', function(event) {
