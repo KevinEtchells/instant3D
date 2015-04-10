@@ -50,7 +50,13 @@ Template.docs.events({
 		} else if (room === 'Westminster') {
 			defaults = {
 				stageWidth: 20,
-				uplightRed: 0, uplightBlue: 0, uplightGreen: 0, uplightType: 'par'
+				uplightRed: 0, uplightBlue: 0, uplightGreen: 0, uplightType: 'par',
+				topTables: [
+					{id: '1', positionX: -1.2, size: 2, type: 'Top Table', colour: {name: ' S67 Black', rgb: '0 0 0', hash: '#000000'}}
+				],
+				lecterns: [
+					{id: '1', positionX: 1.46, type: 'Felt', logo: 'None', logoSize: 0.23, colour: {name: ' S67 Black', rgb: '0 0 0', hash: '#000000'}}
+				]
 			};
 		} else if (room === 'Fleming') {
 			defaults = {

@@ -6,6 +6,9 @@ WAITING DEPLOYMENT:
 * 16:9 screen in Fleming
 * Fix for loading issue (x3dom was sometimes reloaded before data had come across)
 * Control box padding increased to fix slider issue on iPads
+* Westminster Suite added
+--------------------------------------------
+
 
 
 BUG FIXES:
@@ -14,7 +17,8 @@ BUG FIXES:
 
 
 NEW FEATURES:
-* Add Westminster Suite ***
+* Westminster uplighters ***
+* Westminster pillars
 * Churchill stage and set
 * Change monochrome gobo colour ("Lamp Colour") ?
 * Stage height options for Fleming

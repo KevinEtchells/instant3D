@@ -57,13 +57,13 @@
 				{{/each}}
 			</select>
 			<label>Size: </label><span class="right">{{setGraphicsSize size content}}</span>
-			<input type="range" min="0.4" max="2" step="0.01" value="{{size}}" data-action="input" data-collection="setGraphics" data-property="size"/>
+			<input type="range" min="0.2" max="0.8" step="0.01" value="{{size}}" data-action="input" data-collection="setGraphics" data-property="size"/>
 			<br/>
 			<label>Position (Horizontal): </label>
 			<input type="range" min="-9" max="9" step="0.002" data-action="input" data-collection="setGraphics" data-property="positionX" value="{{positionX}}"/>
 			<br/>
 			<label>Position (Vertical): </label>
-			<input type="range" min="0" max="2.5" step="0.01" data-action="input" data-collection="setGraphics" data-property="positionY" value="{{positionY}}"/>
+			<input type="range" min="0" max="1.5" step="0.01" data-action="input" data-collection="setGraphics" data-property="positionY" value="{{positionY}}"/>
 			<br/>
 			<label>Mirror: </label>
 			{{#if mirror}}

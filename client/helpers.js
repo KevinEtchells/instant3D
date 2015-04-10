@@ -15,6 +15,13 @@ UI.registerHelper('_host', function() {
 	return getHost();
 });
 
+UI.registerHelper('Id', function() {
+	var doc = Docs.findOne();
+	if (doc) {
+		return doc._id;
+	}
+});
+
 UI.registerHelper('_option', function(value, text, check) {
 	return '<option value="' + value + '"' + (check && value.toString() === check.toString() ? 'selected' : '') + '>' + text + '</option>';
 });
@@ -37,9 +44,11 @@ UI.registerHelper('selectedObject', function(type) {
 	var selected = Session.get('selectedObject');
 	if (selected && type) {
 		var objects = Docs.findOne().data[type];
-		for (var i = 0; i < objects.length; i++) {
-			if (objects[i].id.toString() === selected.id.toString()) {
-				return objects[i];
+		if (objects) {
+			for (var i = 0; i < objects.length; i++) {
+				if (objects[i].id.toString() === selected.id.toString()) {
+					return objects[i];
+				}
 			}
 		}
 	}
@@ -117,7 +126,7 @@ UI.registerHelper('setGraphicsScale', function(size, setGraphic) {
 	if (img) {
 		return size + ' ' + (size / img.aspectRatio) + '  0.01';
 	} else {
-		return '0.5 0.5 0';
+		return '0.4 0.4 0';
 	}
 });
 

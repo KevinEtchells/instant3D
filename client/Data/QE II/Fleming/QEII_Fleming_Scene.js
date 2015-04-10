@@ -1,13 +1,4 @@
 Template.QEII_Fleming_Scene.helpers({
-/*
-	'Id': function() {
-		console.log('CHECK!');
-		var doc = Docs.findOne();
-		if (doc) {
-			return doc._id;
-		}
-	},
-*/
 
 	'stageDepthOffset': function(value1, value2) {
 		var doc = Docs.findOne();

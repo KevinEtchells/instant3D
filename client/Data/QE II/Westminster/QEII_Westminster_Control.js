@@ -14,9 +14,9 @@ Template.QEII_Westminster_Control.events({
 		if (type === 'screens') {
 			defaults.ratio = '4:3';
 		} else if (type === 'setGraphics') {
-			defaults.positionX = -2;
-			defaults.positionY = 1.6;
-			defaults.size = 0.5;
+			defaults.positionX = -1.46;
+			defaults.positionY = 1.18;
+			defaults.size = 0.3;
 		} else if (type === 'lecterns') {
 			defaults.positionX = 2.3;
 			defaults.type = 'Felt';
