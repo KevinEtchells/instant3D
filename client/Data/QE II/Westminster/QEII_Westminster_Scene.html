@@ -32,22 +32,25 @@
 						</shape>
 					</Transform>
 				</Transform>
-
-<!--
-				<Transform scale="0.2 0.2 0.2" translation="3.0 1 1">
-					<Transform scale="0.915 0.915 5" rotation="0 0.707107 0.707107 3.141593">
-						<Shape DEF="pillar">
-							<Appearance>
-								<Material DEF="concrete" diffuseColor="0.800 0.795 0.403" specularColor="0.167 0.166 0.089" ambientIntensity="0.333" shininess="0.098"></Material>
-							</Appearance>
-							<IndexedFaceSet solid="true" coordIndex="0 1 3 2 -1 2 3 5 4 -1 4 5 7 6 -1 6 7 9 8 -1 8 9 11 10 -1 10 11 13 12 -1 3 1 15 -1 3 15 5 -1 15 13 5 -1 13 11 5 -1 11 7 5 -1 11 9 7 -1 1 0 14 15 -1 12 13 15 14 -1 0 2 14 -1 2 4 14 -1 4 12 14 -1 4 10 12 -1 4 6 10 -1 6 8 10 -1 ">
-								<Coordinate DEF="coords_ME_Cylinder" point="0 1 -1 0 1 1 0.707107 0.707107 -1 0.707107 0.707107 1 1 -0 -1 1 -0 1 0.707107 -0.707107 -1 0.707107 -0.707107 1 -0 -1 -1 -0 -1 1 -0.707107 -0.707107 -1 -0.707107 -0.707107 1 -1 0 -1 -1 0 1 -0.707107 0.707107 -1 -0.707107 0.707107 1 "></Coordinate>
-							</IndexedFaceSet>
-						</Shape>
+				
+				{{#if westminsterPillars}}
+					<Transform scale="0.2 0.2 0.2" translation="2.6 0.9 0.8">
+						<Transform DEF="pillar" scale="0.915 0.915 5" rotation="0 0.707107 0.707107 3.141593">
+							<Shape>
+								<Appearance>
+									<Material DEF="concrete" diffuseColor="0.800 0.8 0.8" specularColor="0.167 0.166 0.089" ambientIntensity="0.333" shininess="0.098"></Material>
+								</Appearance>
+								<IndexedFaceSet solid="true" coordIndex="0 1 3 2 -1 2 3 5 4 -1 4 5 7 6 -1 6 7 9 8 -1 8 9 11 10 -1 10 11 13 12 -1 3 1 15 -1 3 15 5 -1 15 13 5 -1 13 11 5 -1 11 7 5 -1 11 9 7 -1 1 0 14 15 -1 12 13 15 14 -1 0 2 14 -1 2 4 14 -1 4 12 14 -1 4 10 12 -1 4 6 10 -1 6 8 10 -1 ">
+									<Coordinate DEF="coords_ME_Cylinder" point="0 1 -1 0 1 1 0.707107 0.707107 -1 0.707107 0.707107 1 1 -0 -1 1 -0 1 0.707107 -0.707107 -1 0.707107 -0.707107 1 -0 -1 -1 -0 -1 1 -0.707107 -0.707107 -1 -0.707107 -0.707107 1 -1 0 -1 -1 0 1 -0.707107 0.707107 -1 -0.707107 0.707107 1 "></Coordinate>
+								</IndexedFaceSet>
+							</Shape>
+						</Transform>
 					</Transform>
-				</Transform>
--->
-			
+					<Transform scale="0.2 0.2 0.2" translation="-2.6 0.9 0.8">
+						<Transform USE="pillar"></Transform>
+					</Transform>
+				{{/if}}
+
 				<Transform DEF="set" scale="0.56 0.56 0.56" translation="0.38 1.7 -0.9" rotation="0 1 0 3.14" onclick="selectObject('set', '1', event)">
 					<Transform DEF="Screen_Surround_TRANSFORM" translation="0.669749 -1.274069 -0.1" scale="2.7 2.7 2.7" rotation="0 1 -0 3.141593">
 						<Shape>

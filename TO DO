@@ -1,14 +1,5 @@
 WAITING DEPLOYMENT:
-* Mirror feature for Fleming - for Set Graphics, Recesses and Screens
-* Basic Top table & lectern colour
-* New lectern
-* Stage depth option for Fleming
-* 16:9 screen in Fleming
-* Fix for loading issue (x3dom was sometimes reloaded before data had come across)
-* Control box padding increased to fix slider issue on iPads
-* Westminster Suite added
-* Westminster uplighters
---------------------------------------------
+* Westminster pillars
 
 
 
@@ -18,8 +9,6 @@ BUG FIXES:
 
 
 NEW FEATURES:
-
-* Westminster pillars ***
 * Churchill stage and set
 * Change monochrome gobo colour ("Lamp Colour") ?
 * Stage height options for Fleming
@@ -33,8 +22,8 @@ NEW FEATURES:
 
 
 PERFORMANCE IMPROVEMENTS / REFACTORING:
+* Re-work Mountbatten (scale and rotation. Use boxes for the flat parts. Remove camera) ***
 * Can we implement mirror feature with less lines of HTML?
 * Sort out set wash png (sort out bottom in Fleming. Make only 1px wide)
-* Re-work Mountbatten (scale and rotation. Use boxes for the flat parts. Remove camera)
 * New comfy chair (scale and rotation is out. Optimise)
 * Update Meteor and x3dom

@@ -60,6 +60,14 @@ Template.control.events({
 			Docs.update(doc._id, {$set: {data: doc.data}});
 		}
 	},
+	'click [data-global="check"]': function(event) {
+		var doc = Docs.findOne(),
+				property = event.target.getAttribute('data-property');
+		if (doc && property) {
+			doc.data[property] = doc.data[property] ? false : true;			
+			Docs.update(doc._id, {$set: {data: doc.data}});
+		}
+	},
 	
 	'input [data-action="input"]': function() {
 		var doc = Docs.findOne(),
