@@ -2,8 +2,65 @@
 	
 	<x3d showStat="false" showLog="false" showProgress="bar">
 		<Scene>
-			<NavigationInfo headlight="false"></NavigationInfo>
+			<NavigationInfo headlight="true"></NavigationInfo>
 				<Background DEF="WO_World" groundColor="0.051 0.051 0.051" skyColor="0.051 0.051 0.051"></Background>
+				
+				
+				<Transform DEF="stage" scale="4.841 0.2 0.86">
+					<Shape>
+						<Appearance>
+							<Material DEF="MA_Stage" diffuseColor="0.052 0.052 0.052" specularColor="0.084 0.084 0.084" ambientIntensity="0.333"></Material>
+						</Appearance>
+						<box></box>
+					</Shape>
+				</Transform>
+				
+				<Transform DEF="set_recesses" scale="3.848 1.352 0.02" translation="0 1.152 -1.288">
+					<Shape>
+						<Appearance>
+							<Material DEF="MA_Suede" diffuseColor="0.384 0.384 0.384" specularColor="0.155 0.155 0.155" ambientIntensity="0.333" shininess="0.098"></Material>
+						</Appearance>
+						<box></box>
+					</Shape>
+				</Transform>
+
+				<Transform DEF="Chromabattens_recesses" translation="0 1.152 -1.27" scale="3.848 1.352 0.01">
+					<Shape>
+						<Appearance>
+							<ImageTexture url="../../../chromas3.png"></ImageTexture>
+							<Material diffuseColor="0.5 0.5 0.5" specularColor="0.084 0.084 0.084" emissiveColor="{{recessesRed}} {{recessesGreen}} {{recessesBlue}}"></Material>
+						</Appearance>
+						<box></box>
+					</Shape>
+				</Transform>
+				
+				<Transform DEF="set_centre_4-3" scale="1.64 1.352 0.213" translation="0 1.152 -1.073">
+					<Shape>
+						<Appearance>
+							<Material DEF="MA_Suede" diffuseColor="0.384 0.384 0.384" specularColor="0.155 0.155 0.155" ambientIntensity="0.333" shininess="0.098"></Material>
+						</Appearance>
+						<box></box>
+					</Shape>
+				</Transform>
+				
+				<Transform rotation="1 0 0 -1.57" scale="0.655 0.655 0.58">
+					<Transform DEF="set_curves" translation="7.32 2.1 2" scale="1.479547 3.161181 2.360000">
+						<Shape>
+							<Appearance>
+								<Material USE="MA_Suede"></Material>
+							</Appearance>
+							<IndexedFaceSet solid="false" creaseAngle="0.5236"
+								coordIndex="0 1 3 2 -1 2 3 5 4 -1 4 5 7 6 -1 6 7 9 8 -1 8 9 11 10 -1 10 11 13 12 -1 12 13 15 14 -1 14 15 17 16 -1 18 20 21 19 -1 20 22 23 21 -1 22 24 25 23 -1 24 26 27 25 -1 26 28 29 27 -1 28 30 31 29 -1 30 32 33 31 -1 32 34 35 33 -1 ">
+								<Coordinate DEF="coords_ME_Curve_SL"
+									point="-0 -1 -1 -0 -1 1 -0.195091 -0.980785 -1 -0.195091 -0.980785 1 -0.382684 -0.923879 -1 -0.382684 -0.923879 1 -0.555571 -0.831469 -1 -0.555571 -0.831469 1 -0.707107 -0.707106 -1 -0.707107 -0.707106 1 -0.831470 -0.555570 -1 -0.831470 -0.555570 1 -0.923880 -0.382683 -1 -0.923880 -0.382683 1 -0.980785 -0.195089 -1 -0.980785 -0.195089 1 -1 0.000001 -1 -1 0.000001 1 -9.925900 -1 -1 -9.925900 -1 1 -9.730810 -0.980785 -1 -9.730810 -0.980785 1 -9.543217 -0.923879 -1 -9.543217 -0.923879 1 -9.370330 -0.831469 -1 -9.370330 -0.831469 1 -9.218793 -0.707106 -1 -9.218793 -0.707106 1 -9.094431 -0.555570 -1 -9.094431 -0.555570 1 -9.002021 -0.382683 -1 -9.002021 -0.382683 1 -8.945115 -0.195090 -1 -8.945115 -0.19509 1 -8.9259 0.000001 -1 -8.925900 0.000001 1 "></Coordinate>
+							</IndexedFaceSet>
+						</Shape>
+					</Transform>
+				</Transform>
+				
+				
+				<!-- ********************************************************************************************************************** -->
+				
 				{{#if widescreen}}
 					<Transform DEF="_16-9_Flat_innacurate_TRANSFORM" translation="0 1.11 -2.425817" scale="2.8 2.1 0.05" rotation="0 0.707107 0.707107 3.141593">
 						<Shape>
@@ -47,6 +104,8 @@
 					</Shape>
 				</Transform>
 			{{/if}}
+			
+			<!--
 			<Transform DEF="Screen4-3_TRANSFORM" translation="0 1.205 -2.8" scale="1.61 1.2075 1" rotation="0 -0.707107 0.707107 3.141594">
 				<Shape>
 					<Appearance>
@@ -70,83 +129,7 @@
 					</IndexedFaceSet>
 				</Shape>
 			</Transform>
-				{{#if lectern}}
-					
-					<Transform DEF="Lectern_TRANSFORM" translation="{{lecternX}} -0.647810 -0.939312" scale="0.35 0.61 0.26" rotation="0 0.707107 0.707107 3.141593">
-						<Group DEF="group_ME_Cube_003" onclick="startStopMoveObject('lectern', event)" onmousemove="moveObject('lectern', event)">
-							<Shape>
-								<Appearance>
-									<Material DEF="MA_Black_Wood" diffuseColor="0.019 0.019 0.019" specularColor="0.401 0.401 0.401" ambientIntensity="0.333" shininess="0.098"></Material>
-								</Appearance>
-								<IndexedFaceSet solid="true" coordIndex="5 1 2 6 -1 19 18 41 42 -1 0 8 9 3 -1 12 10 11 13 -1 16 14 15 17 -1 6 2 36 38 -1 23 24 20 19 -1 27 26 18 21 -1 18 19 20 21 -1 30 31 29 28 -1 34 35 33 32 -1 14 16 34 32 -1 7 9 27 25 -1 4 5 23 22 -1 16 17 35 34 -1 9 8 26 27 -1 6 7 25 24 -1 17 15 33 35 -1 10 12 30 28 -1 15 14 32 33 -1 12 13 31 30 -1 8 4 22 26 -1 13 11 29 31 -1 5 6 24 23 -1 11 10 28 29 -1 38 40 39 -1 38 36 40 -1 36 37 40 -1 43 44 45 -1 44 42 45 -1 42 41 45 -1 9 7 39 40 -1 26 22 43 45 -1 7 6 38 39 -1 3 9 40 37 -1 18 26 45 41 -1 2 3 37 36 -1 22 23 44 43 -1 23 19 42 44 -1 ">
-									<Coordinate DEF="coords_ME_Cube_003" point="-1 -1 -1.171238 -1 1.047936 -1.171238 1 1.047936 -1.171238 1 -1 -1.171238 -1 -0.575180 1 -1 1.046673 1 1 1 1 1 -0.575180 1 -1 -1 -0.306335 1 -1 -0.306335 -0.994730 0.165907 -1 0.990932 0.165907 -1 -0.994730 0.165907 1 0.990932 0.165907 1 -0.992319 -0.575804 -1 0.991027 -0.575804 -1 -0.992319 -0.575804 1 0.991027 -0.575804 1 -1 -0.951961 -1.169851 -1 1.048039 -1.169851 1 1.048039 -1.169851 1 -1.001106 -1.169851 -0.955635 -0.527140 0.830149 -1 1.048039 0.999099 1 1.048039 0.999099 1 -0.573565 0.991471 -0.997548 -0.969851 -0.268963 1 -0.995037 -0.294057 -0.994730 0.213947 -1.169851 0.990932 0.213947 -1.169851 -0.994730 0.213947 1.000101 0.990932 0.213947 1.000101 -0.992319 -0.527764 -1.169851 0.991027 -0.527764 -1.169851 -0.992319 -0.527764 0.972665 0.991027 -0.527764 0.972665 0.963458 1 -1 0.963458 -1 -1 0.963458 1 1 0.963458 -0.575180 1 0.963458 -1 -0.306335 -0.992177 -0.951961 -1.169851 -0.992177 1.048039 -1.169851 -0.992177 -0.527140 0.830149 -0.992177 1.048039 0.830149 -0.992177 -0.951961 -0.476186 "></Coordinate>
-								</IndexedFaceSet>
-							</Shape>
-							<Shape>
-								<Appearance>
-									<Material DEF="MA_Felt"
-							          diffuseColor="1 1 1"
-							          specularColor="1 1 1"
-							          ambientIntensity="0.333"
-							          shininess="0.098"
-							          transparency="0.0"></Material>
-									<!--{{{material 'modPanel'}}}-->
-								</Appearance>
-								<IndexedFaceSet solid="true" coordIndex="4 8 5 -1 8 1 5 -1 8 0 1 -1 0 3 2 1 -1 24 25 20 -1 25 27 20 -1 27 21 20 -1 ">
-									<Coordinate point="-1 -1 -1.171238 -1 1.047936 -1.171238 1 1.047936 -1.171238 1 -1 -1.171238 -1 -0.575180 1 -1 1.046673 1 1 1 1 1 -0.575180 1 -1 -1 -0.306335 1 -1 -0.306335 -0.994730 0.165907 -1 0.990932 0.165907 -1 -0.994730 0.165907 1 0.990932 0.165907 1 -0.992319 -0.575804 -1 0.991027 -0.575804 -1 -0.992319 -0.575804 1 0.991027 -0.575804 1 -1 -0.951961 -1.169851 -1 1.048039 -1.169851 1 1.048039 -1.169851 1 -1.001106 -1.169851 -0.955635 -0.527140 0.830149 -1 1.048039 0.999099 1 1.048039 0.999099 1 -0.573565 0.991471 -0.997548 -0.969851 -0.268963 1 -0.995037 -0.294057 -0.994730 0.213947 -1.169851 0.990932 0.213947 -1.169851 -0.994730 0.213947 1.000101 0.990932 0.213947 1.000101 -0.992319 -0.527764 -1.169851 0.991027 -0.527764 -1.169851 -0.992319 -0.527764 0.972665 0.991027 -0.527764 0.972665 0.963458 1 -1 0.963458 -1 -1 0.963458 1 1 0.963458 -0.575180 1 0.963458 -1 -0.306335 -0.992177 -0.951961 -1.169851 -0.992177 1.048039 -1.169851 -0.992177 -0.527140 0.830149 -0.992177 1.048039 0.830149 -0.992177 -0.951961 -0.476186 "></Coordinate>
-								</IndexedFaceSet>
-							</Shape>
-						</Group>
-					</Transform>
-					<!--
-					<Transform DEF="Lectern_TRANSFORM" translation="{{lecternX}} -0.647810 -0.939312" scale="0.350000 0.610000 0.280000"
-						rotation="0.039125 -0.706565 -0.706565 3.020346">
-						<Shape>
-							<Appearance>
-								{{{material 'modPanel'}}}
-							</Appearance>
-							<box onmousedown="dragLectern(event)" onmouseup="dragLectern(event)" onmousemove="dragLectern(event)" onclick="dragLectern(event)" touchstart="alert('check')"></box>
-						</Shape>
-					</Transform>
-					-->
-				{{/if}}
-				{{#if topTable}}
-					<Transform DEF="Top_table_TRANSFORM" translation="{{ttPos}} -0.55 -0.65" scale="{{ttScale}} 0.32 0.35" rotation="0.000000 0.707107 0.707107 3.141593"
-						onclick="startStopMoveObject('topTable', event)" onmousemove="moveObject('topTable', event)">
-						<Shape>
-							<Appearance>
-								<Material DEF="MA_Wood" diffuseColor="0.8 0.363 0.156" specularColor="0.401 0.401 0.401" ambientIntensity="0.3" shininess="0.1"></Material>
-							</Appearance>
-							<box></box>
-						</Shape>
-					</Transform>
-					<Transform DEF="ModPanelFront_TRANSFORM" translation="{{ttPos}} -0.916423 -0.65" scale="{{ttScale}} 0.38 0.005" 
-						rotation="0.000000 0.707107 0.707107 3.141593" onclick="startStopMoveObject('topTable', event)" onmousemove="moveObject('topTable', event)">
-						<Shape>
-							<Appearance>
-								{{{material 'modPanel'}}}
-							</Appearance>
-							<box></box>
-						</Shape>
-					</Transform>
-					<Transform DEF="Mod_Panel_side_1_TRANSFORM" translation="{{modPanelReturnPos 'left'}} -0.533376 -0.65" scale="0.005 0.38 0.38" rotation="0 0.707107 0.707107 3.141593">
-						<Shape>
-							<Appearance>
-								{{{material 'modPanel'}}}
-							</Appearance>
-							<box></box>
-						</Shape>
-					</Transform>
-					<Transform DEF="Mod_Panel_side_2_TRANSFORM" translation="{{modPanelReturnPos 'right'}} -0.533376 -0.65" scale="0.005 0.38 0.38"
-						rotation="0 0.707107 0.707107 3.141593">
-						<Shape>
-							<Appearance>
-								{{{material 'modPanel'}}}
-							</Appearance>
-							<box></box>
-						</Shape>
-					</Transform>
-				{{/if}}
+
 				<Transform DEF="Plane_TRANSFORM" translation="-0.090922 -4.415999 0.336474" scale="9 7.5 1" rotation="0 1 -0 3.141593">
 					<Group DEF="group_ME_Floor">
 						<Shape>
@@ -160,29 +143,11 @@
 					</Shape>
 				</Group>
 		</Transform>
-
-		
-		<!-- CHROMABATTENS - RECESSES -->
-		<Transform DEF="Cube_002_TRANSFORM" translation="0 1.8 -2.7" scale="5.865 0 2.6">
-			<Shape>
-				<Appearance>
-					<ImageTexture url="../../../chromas3.png"></ImageTexture>
-					<Material diffuseColor="0.5 0.5 0.5" specularColor="0.084 0.084 0.084" emissiveColor="{{recessesRed}} {{recessesGreen}} {{recessesBlue}}"></Material>
-				</Appearance>
-				<box></box>
-			</Shape>
-		</Transform>
-		<!--
-		<transform DEF='Spot_TRANSFORM' rotation='1 8e-06 1e-06 0.307906' translation='4.2 1.39086 2.93871'>
-			<spotLight DEF="Chromabattens SR" color="{{recessesRed}} {{recessesGreen}} {{recessesBlue}}" intensity="8" beamWidth="0.45" cutOffAngle="0.5" radius="8" attenuation="0.8 0 0.025"></spotLight>
-    </transform>
-    <transform DEF='Spot_TRANSFORM' rotation='1 8e-06 1e-06 0.307906' translation='-4.2 1.39086 2.93871'>
-			<spotLight DEF="Chromabattens SL" color="{{recessesRed}} {{recessesGreen}} {{recessesBlue}}" intensity="8" beamWidth="0.45" cutOffAngle="0.5" radius="8" attenuation="0.8 0 0.025"></spotLight>
-    </transform>
-		-->
+-->
 		
 		
-
+		
+<!--
 		<Transform DEF="Cube_001_TRANSFORM" translation="0 1.836743 -2.352934" scale="5.865 2.06 0.025" rotation="0 0.707107 0.707107 3.141593">
 					<Shape>
 						<Appearance>
@@ -203,26 +168,9 @@
 				</Group>
 			</Transform>
 		</Transform>
-		<Transform DEF="Stage_TRANSFORM" scale="7.377498 0.300000 1.310000" rotation="0 0.707107 0.707107 3.141593">
-					<Shape>
-						<Appearance>
-							<Material DEF="MA_Stage" diffuseColor="0.052 0.052 0.052" specularColor="0.084 0.084 0.084" ambientIntensity="0.333" shininess="0.098"></Material>
-						</Appearance>
-						<box></box>
-					</Shape>
-		</Transform>
-		<Transform DEF="Curve_SL_TRANSFORM" translation="-7.342917 1.842030 -2.074501" scale="1.479547 3.161181 2.360000" rotation="0 1 -0 3.141593">
-					<Shape>
-						<Appearance>
-							<Material USE="MA_Suede"></Material>
-						</Appearance>
-						<IndexedFaceSet solid="false" creaseAngle="0.5236"
-							coordIndex="0 1 3 2 -1 2 3 5 4 -1 4 5 7 6 -1 6 7 9 8 -1 8 9 11 10 -1 10 11 13 12 -1 12 13 15 14 -1 14 15 17 16 -1 18 20 21 19 -1 20 22 23 21 -1 22 24 25 23 -1 24 26 27 25 -1 26 28 29 27 -1 28 30 31 29 -1 30 32 33 31 -1 32 34 35 33 -1 ">
-							<Coordinate DEF="coords_ME_Curve_SL"
-								point="-0 -1 -1 -0 -1 1 -0.195091 -0.980785 -1 -0.195091 -0.980785 1 -0.382684 -0.923879 -1 -0.382684 -0.923879 1 -0.555571 -0.831469 -1 -0.555571 -0.831469 1 -0.707107 -0.707106 -1 -0.707107 -0.707106 1 -0.831470 -0.555570 -1 -0.831470 -0.555570 1 -0.923880 -0.382683 -1 -0.923880 -0.382683 1 -0.980785 -0.195089 -1 -0.980785 -0.195089 1 -1 0.000001 -1 -1 0.000001 1 -9.925900 -1 -1 -9.925900 -1 1 -9.730810 -0.980785 -1 -9.730810 -0.980785 1 -9.543217 -0.923879 -1 -9.543217 -0.923879 1 -9.370330 -0.831469 -1 -9.370330 -0.831469 1 -9.218793 -0.707106 -1 -9.218793 -0.707106 1 -9.094431 -0.555570 -1 -9.094431 -0.555570 1 -9.002021 -0.382683 -1 -9.002021 -0.382683 1 -8.945115 -0.195090 -1 -8.945115 -0.19509 1 -8.9259 0.000001 -1 -8.925900 0.000001 1 "></Coordinate>
-						</IndexedFaceSet>
-					</Shape>
-		</Transform>
+-->		
+		
+		
 		
 		<!-- SET GRAPHICS -->
 		<Transform DEF="Set_Graphic_SR_TRANSFORM" translation="4.183743 1.797791 -2.844459" rotation="0 -0.707107 0.707107 3.141593" scale="{{setGraphicsScale setGraphicSize setGraphics}}">
@@ -242,13 +190,17 @@
 			</Shape>
 		</Transform>
 
-		
+		<!--
 		<Transform DEF="Lamp_TRANSFORM" translation="-4.398767 -3.487818 -9.558777" rotation="-0.498084 -0.762016 -0.413815 1.513875">
 			<PointLight DEF="LA_Lamp" color="1 1 1" intensity="0.5714" radius="30.0000" location="0 -0 -0"></PointLight>
 		</Transform>
+		-->
+		
+		<!--
 		<Transform DEF="Camera_TRANSFORM" translation="7.823406 -9.931327 -2.815764" scale="1 1 1" rotation="-0.204596 0.717934 -0.665365 2.766813">
 			<Viewpoint DEF="CA_Camera" centerOfRotation="0 0 0" position="0.00 0.00 -0.00" orientation="-0.00 0.00 0.00 0.00" fieldOfView="1.240"></Viewpoint>
 		</Transform>
+		-->
 
 		</Scene>
 	</x3d>

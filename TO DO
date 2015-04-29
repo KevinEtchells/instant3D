@@ -11,14 +11,16 @@ BUG FIXES:
 
 NEW FEATURES:
 * Churchill stage and set
+* Mod panel logos
 * Change monochrome gobo colour ("Lamp Colour") ?
 * Stage height options for Fleming
 * Sort docs by date/time (may need separate datestamp)
 * Expand / hide control panel
 * In CONTROL MODE, need to have a drop-down box to select elements
-* Mod panel logos
 * Allow insertion of custom objects in x3d format
 * Triangular set pieces - Fleming
+* Chromabatten option for Westminster
+* Add Victoria / Albert scene
 
 
 
