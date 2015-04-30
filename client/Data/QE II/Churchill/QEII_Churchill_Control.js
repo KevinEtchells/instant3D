@@ -1,32 +1,46 @@
 Template.QEII_Churchill_Control.helpers({
 
-	'setGraphicsSize': function(size, setGraphic) {
-		var img = Resources.findOne({name: setGraphic});
-		if (img) {
-			return Math.round(size * 3048) + 'mm x ' + Math.round((size / img.aspectRatio) * 3048) + 'mm';
-		} else {
-			return '';
-		}
-	}
+
 
 });
 
 
 Template.QEII_Churchill_Control.events({
 
-	'click div.colourBoxSmall': function(event) {
-		document.querySelectorAll('div.feltSwatch')[0].style.left = 0;
-	},
-	
-	'click div.colourBoxMedium': function(event) {
+	'click [data-action="add"]': function(event) {
 
-		var currentDoc = Docs.findOne();
-		currentDoc.data.modPanelColour = event.target.style.backgroundColor
-		Docs.update(currentDoc._id, {$set: {data: currentDoc.data}});
+		var defaults = {id: Date.now()},
+				doc = Docs.findOne(),				
+				type = event.target.getAttribute('data-collection');
+
+		if (type === 'screens') {
+			defaults.ratio = '4:3';
+			defaults.type = 'Standard';
+			defaults.positionX = 0;
+		} else if (type === 'setGraphics') {
+			defaults.positionX = -2;
+			defaults.positionY = 1.6;
+			defaults.size = 0.5;
+		} else if (type === 'lecterns') {
+			defaults.positionX = 2.3;
+			defaults.type = 'Felt';
+			defaults.logo = 'None';
+			defaults.logoSize = 0.23;
+			defaults.colour = {hash: '#000000', rgb: '0 0 0', name: 'S67 Black'};
+		} else if (type === 'topTables') {
+			defaults.positionX = -2.4;
+			defaults.size = 4;
+			defaults.type = 'Top Table';
+			defaults.colour = {hash: '#000000', rgb: '0 0 0', name: 'S67 Black'};
+		}
 		
-		document.querySelectorAll('div.feltSwatch')[0].style.left = '-250px';
-	},
-	
-	
+		if (!doc.data[type]) {
+			doc.data[type] = [];
+		}
+
+		doc.data[type].push(defaults);
+		Docs.update(doc._id, {$set: {data: doc.data}});
+
+	}
 
 });

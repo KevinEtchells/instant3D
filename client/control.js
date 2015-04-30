@@ -26,7 +26,7 @@ Template.control.events({
 		document.querySelectorAll('div.feltSwatch')[0].style.left = 0;
 	},
 	'click [data-action="colour-select"]': function(event) {
-		console.log('check');
+
 		var currentDoc = Docs.findOne(),
 				selectedObject = Session.get('selectedObject'),
 				collection = currentDoc.data[selectedObject.type + 's']

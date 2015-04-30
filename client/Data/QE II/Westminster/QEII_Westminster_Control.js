@@ -22,12 +22,12 @@ Template.QEII_Westminster_Control.events({
 			defaults.type = 'Felt';
 			defaults.logo = 'None';
 			defaults.logoSize = 0.23;
-			defaults.colour = {hash: '#000000', rgb: '0 0 0'};
+			defaults.colour = {hash: '#000000', rgb: '0 0 0', name: 'S67 Black'};
 		} else if (type === 'topTables') {
 			defaults.positionX = -2.4;
 			defaults.size = 4;
 			defaults.type = 'Top Table';
-			defaults.colour = {hash: '#000000', rgb: '0 0 0'};
+			defaults.colour = {hash: '#000000', rgb: '0 0 0', name: 'S67 Black'};	
 		}
 		
 		if (!doc.data[type]) {

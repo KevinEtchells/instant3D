@@ -115,7 +115,7 @@
 			<input type="range" min="-9" max="9" step="0.01" data-action="input" data-collection="lecterns" data-property="positionX" value="{{positionX}}"/>
 			<br/>
 			<label>Logo: </label>
-			<select class="right form-control" data-action="change" data-collection="lecterns" data-property="logo">
+			<select class="form-control" data-action="change" data-collection="lecterns" data-property="logo">
 				<option value="None">None</option>
 				{{#each _resources}}
 					{{{_option name name ../logo}}}
