@@ -1,48 +1,34 @@
 Template.QEII_Churchill_Scene.helpers({
 
-	'Id': function() {
-		var doc = Docs.findOne();
-		if (doc) {
-			return doc._id;
+	'angle': function(xPos, reverse) {
+
+		if (reverse && typeof(reverse) === 'boolean') {
+			xPos = -xPos;
 		}
-	},
-	
-	'scale': function(size) {
-		return size/10;
-	},
-	'scaleSet': function(size) {
-		return size/10 + 0.025;
-	},
-	
-	'material': function(property) {
-		return '<Material diffuseColor="' + this[property +'Red'] + ' ' + this[property + 'Green'] + ' ' + this[property + 'Blue'] + '"></Material>';
-	},
 
-	'topTable': function() {
-		return this.ttSize > 0;
-	},
-
-	'ttScale': function() {
-		return 0.35 * this.ttSize;
-	},
-	'ttPos': function() {
-		return 5 - (0.35 * this.ttSize);
-	},
-	'modPanelReturnPos': function() {
-		return 4.99 - (0.7 * this.ttSize);
-	},
-
-
-	'setGraphicsX': function(stageWidth) {
-		return (((stageWidth - 12.25) / 2) + 12.3) / 10;
-	},
-	'setGraphicsScale': function(size, setGraphic) {
-		var img = Resources.findOne({name: setGraphic});
-		if (img) {
-			return size + ' ' + (size / img.aspectRatio) + '  0.01';
+		if (xPos > 1.5) {
+			return '0 1 0 -0.79';
+		} else if (xPos < -1.5) {
+			return '0 1 0 0.79';
 		} else {
-			return '0 0 0';
+			return '0 0 0 0';
 		}
+
+	},
+	
+	'zPos45deg': function(xPos) {
+
+		// Make xPos positive
+		if (xPos < 0) {
+			xPos = 0 - xPos;
+		}
+		
+		if (xPos < 1.5) { // central set
+			return - 2.29;
+		} else {
+			return xPos - 3.97;
+		}
+
 	}
 
 });
@@ -54,6 +40,16 @@ Template.QEII_Churchill_Scene.events({
 	
 
 Template.QEII_Churchill_Scene.rendered = function() {
-	x3dom.reload();
+
+	// only init x3dom if document has loaded (once we have updated iron router we can simplify this)
+	var x3domInit = function() {
+		if (Docs.findOne()) {
+			x3dom.reload();
+		} else {
+			x3domInit();
+		}
+	}
+	x3domInit();
+
 };
 

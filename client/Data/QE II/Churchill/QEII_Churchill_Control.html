@@ -1,5 +1,36 @@
 <template name="QEII_Churchill_Control">
 
+	{{#if selectedObjectType 'graphics' 'set'}}
+		{{#with selectedObject 'setGraphics'}}
+			<h5>Set Graphics</h5>
+			<label>Content: </label>
+			<select class="form-control" data-action="change" data-collection="setGraphics" data-property="content">
+				<option value="None">None</option>
+				{{#each _resources}}
+					{{{_option name name ../content}}}
+				{{/each}}
+			</select>
+			<label>Size: </label><span class="right">{{setGraphicsSize size content}}</span>
+			<input type="range" min="0.2" max="1" step="0.01" value="{{size}}" data-action="input" data-collection="setGraphics" data-property="size"/>
+			<br/>
+			<label>Position (Horizontal): </label>
+			<input type="range" min="-7" max="7" step="0.002" data-action="input" data-collection="setGraphics" data-property="positionX" value="{{positionX}}"/>
+			<br/>
+			<label>Position (Vertical): </label>
+			<input type="range" min="0" max="2.5" step="0.01" data-action="input" data-collection="setGraphics" data-property="positionY" value="{{positionY}}"/>
+			<br/>
+			<label>Mirror: </label>
+			{{#if mirror}}
+				<input type="checkbox" class="form-control" data-action="check" data-collection="setGraphics" data-property="mirror" checked="true"/>
+			{{else}}
+				<input type="checkbox" class="form-control" data-action="check" data-collection="setGraphics" data-property="mirror"/>
+			{{/if}}
+			<br/><br/>
+			<button class="btn btn-danger" data-action="remove" data-collection="setGraphics">Remove Set Graphic</button>
+			<hr/>
+		{{/with}}
+	{{/if}}
+
 	{{#if selectedObjectType 'topTable'}}
 		{{#with selectedObject 'topTables'}}
 			<h5>Top Table</h5>
@@ -60,7 +91,7 @@
 	{{/if}}
 
 	<h5>Add</h5>
-	<button data-action="add" data-collection="screens" class="btn">Add Screen</button>
+	<!--<button data-action="add" data-collection="screens" class="btn">Add Screen</button>-->
 	<button data-action="add" data-collection="setGraphics" class="btn">Add Graphic</button>
 	<button data-action="add" data-collection="lecterns" class="btn">Add Lectern</button>
 	<button data-action="add" data-collection="topTables" class="btn">Add Top Table</button>
