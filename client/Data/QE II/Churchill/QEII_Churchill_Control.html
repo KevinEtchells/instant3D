@@ -1,5 +1,11 @@
 <template name="QEII_Churchill_Control">
 
+	<h5>Set Wash</h5>
+	<label>R:</label> <input type="range" min="0" max="1" step="0.01" value="{{uplightRed}}" data-global="input" data-property="uplightRed"/>
+	<label>G:</label><input type="range" min="0" max="1" step="0.01" value="{{uplightGreen}}" data-global="input" data-property="uplightGreen"/>
+	<label>B:</label><input type="range" min="0" max="1" step="0.01" value="{{uplightBlue}}" data-global="input" data-property="uplightBlue"/>
+	<hr/>
+
 	{{#if selectedObjectType 'graphics' 'set'}}
 		{{#with selectedObject 'setGraphics'}}
 			<h5>Set Graphics</h5>
