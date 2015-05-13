@@ -8,11 +8,6 @@ Template.QEII_Fleming_Scene.helpers({
 		return value1;
 	},
 
-/*
-	'scaleSet': function(size) {
-		return size/10 + 0.025;
-	},
-*/
 	'setSections': function() { // this works out the gaps for the recesses
 
 		var doc = Docs.findOne(),
@@ -21,7 +16,7 @@ Template.QEII_Fleming_Scene.helpers({
 				stageWidth = doc.data.stageWidth;
 
 		// [1] if any recesses are mirrored, add these to the array
-		if (recesses) {
+		if (recesses.length) {
 			recesses.forEach(function(recess) {
 				if (recess.mirror) {
 					var mirror = JSON.parse(JSON.stringify(recess));
@@ -33,7 +28,7 @@ Template.QEII_Fleming_Scene.helpers({
 		}
 
 		// [2] sort recesses array into left-to-right order
-		if (recesses) {
+		if (recesses.length) {
 			recesses.sort(function(a, b) {
 				return a.positionX > b.positionX;
 			});
@@ -41,7 +36,7 @@ Template.QEII_Fleming_Scene.helpers({
 
 		// [3] create set sections data
 		setSections.push({start: stageWidth / -10});
-		if (recesses) {
+		if (recesses.length) {
 			for (var i = 0; i < recesses.length; i++) {
 				setSections[i].width = ((recesses[i].positionX - setSections[i].start) / 2) - 0.1;
 				setSections.push({start: Number(recesses[i].positionX) + 0.1});
@@ -55,6 +50,16 @@ Template.QEII_Fleming_Scene.helpers({
 		setSections.forEach(function(section) {
 			section.start = section.start + section.width;
 		});
+		
+		// [5] if curved ends, leave space for these
+		if (doc.data.curvedEndFlats) {
+			var lastIndex = setSections.length - 1;
+			setSections[0].start = setSections[0].start + 0.2;
+			setSections[0].width = setSections[0].width - 0.2;
+			setSections[lastIndex].start = setSections[lastIndex].start - 0.2;
+			setSections[lastIndex].width = setSections[lastIndex].width - 0.2;
+		}
+		
 
 		return setSections;
 

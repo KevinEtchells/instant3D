@@ -19,6 +19,15 @@
 		<label>G:</label><input type="range" min="0" max="1" step="0.01" value="{{uplightGreen}}" data-global="input" data-property="uplightGreen"/>
 		<label>B:</label><input type="range" min="0" max="1" step="0.01" value="{{uplightBlue}}" data-global="input" data-property="uplightBlue"/>
 		<hr/>
+		<h5>Set type</h5>
+		<label>Curved ends: </label>
+		{{#if curvedEndFlats}}
+			<input type="checkbox" class="form-control" data-global="check" data-property="curvedEndFlats" checked="true"/>
+		{{else}}
+			<input type="checkbox" class="form-control" data-global="check" data-property="curvedEndFlats"/>
+		{{/if}}
+		<br/>
+		<hr/>
 	{{/if}}
 	
 	{{#if selectedObjectType 'screen'}}
