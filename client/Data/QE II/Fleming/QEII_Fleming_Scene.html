@@ -63,7 +63,7 @@
 				
 				{{#if curvedEndFlats}}
 				
-					<Transform DEF="Curve_TRANSFORM" translation="-4.99 3.12 -0.77" scale="0.3 0.3 0.22">
+					<Transform DEF="Curve_TRANSFORM" translation="-{{curvedFlatPositionX ../stageWidth 0.99}} 3.12 -0.77" scale="0.3 0.3 0.22">
 						<Shape>
 							<Appearance>
 								<Material USE="MA_Suede"></Material>
@@ -73,7 +73,7 @@
 							</IndexedFaceSet>
 						</Shape>
 					</Transform>
-					<Transform translation="-3.81 1.1 -0.74" scale="0.21 1.3 0">
+					<Transform translation="-{{curvedFlatPositionX ../stageWidth -0.19}} 1.1 -0.74" scale="0.21 1.3 0">
 						<Shape onclick="selectObject('set', '1', event)">
 							<Appearance>
 								<Material diffuseColor="0.5 0.5 0.5" specularColor="0.084 0.084 0.084"></Material>
@@ -83,7 +83,7 @@
 						</Shape>
 					</Transform>
 					
-					<Transform DEF="Curve_TRANSFORM" translation="4.99 3.12 -0.77" scale="0.3 0.3 0.22" rotation="0 1 0 3.141593">
+					<Transform DEF="Curve_TRANSFORM" translation="{{curvedFlatPositionX ../stageWidth 0.99}} 3.12 -0.77" scale="0.3 0.3 0.22" rotation="0 1 0 3.141593">
 						<Shape>
 							<Appearance>
 								<Material USE="MA_Suede"></Material>
@@ -93,7 +93,7 @@
 							</IndexedFaceSet>
 						</Shape>
 					</Transform>
-					<Transform translation="3.81 1.1 -0.74" scale="0.21 1.3 0">
+					<Transform translation="{{curvedFlatPositionX ../stageWidth -0.19}} 1.1 -0.74" scale="0.21 1.3 0">
 						<Shape onclick="selectObject('set', '1', event)">
 							<Appearance>
 								<Material diffuseColor="0.5 0.5 0.5" specularColor="0.084 0.084 0.084"></Material>

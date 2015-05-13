@@ -63,6 +63,11 @@ Template.QEII_Fleming_Scene.helpers({
 
 		return setSections;
 
+	},
+	
+	'curvedFlatPositionX': function(stageWidth, offset) {
+		return (stageWidth / 10) + offset;
+		
 	}
 
 });
