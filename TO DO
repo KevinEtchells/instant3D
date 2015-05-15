@@ -1,6 +1,5 @@
 WAITING DEPLOYMENT:
-* Westminster pillars
-* Bug fix: "Upload" and "Screen Shots" were appearing twice in Fleming control
+
 
 
 
@@ -10,14 +9,14 @@ BUG FIXES:
 
 
 NEW FEATURES:
-* Churchill stage and set
+* 16:9 option for Churchill
 * Mod panel logos
+* Allow insertion of custom objects in x3d format
 * Change monochrome gobo colour ("Lamp Colour") ?
 * Stage height options for Fleming
 * Sort docs by date/time (may need separate datestamp)
 * Expand / hide control panel
 * In CONTROL MODE, need to have a drop-down box to select elements
-* Allow insertion of custom objects in x3d format
 * Triangular set pieces - Fleming
 * Chromabatten option for Westminster
 * Add Victoria / Albert scene
@@ -27,6 +26,6 @@ NEW FEATURES:
 PERFORMANCE IMPROVEMENTS / REFACTORING:
 * Re-work Mountbatten (scale and rotation. Use boxes for the flat parts. Remove camera) ***
 * Can we implement mirror feature with less lines of HTML?
-* Sort out set wash png (sort out bottom in Fleming. Make only 1px wide)
+* Sort out set wash PNGs (Make only 1px wide where possible)
 * New comfy chair (scale and rotation is out. Optimise)
 * Update Meteor and x3dom

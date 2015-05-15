@@ -3,8 +3,8 @@
 	<x3d showStat="false" showLog="false" showProgress="bar" id="canvas">
 		<Scene>
 			<NavigationInfo headlight="true"></NavigationInfo>
-			<Background DEF="WO_World" groundColor="0.2 0.2 0.2" skyColor="0.051 0.051 0.051"></Background>
-			
+			<Background skyColor="0 0 0"></Background>
+
 			<Transform rotation="0 1 0 3.14" scale="0.2 0.2 0.2" translation="-4.8 1.82 -2.4">
 
 				<Transform DEF="Stage_TRANSFORM" translation="1.345245 -11.700596 -19.482363" scale="1 1 11" rotation="0 0.707107 0.707107 3.141593">
@@ -37,7 +37,7 @@
 						</IndexedFaceSet>
 					</Shape>
 				</Transform>
-				<Transform DEF="Pillar_SR_TRANSFORM" translation="10.963036 -4.011346 -15.620829" scale="2.123431 3.280998 10" rotation="-0.281085 -0.678598 -0.678598 2.593564">
+				<Transform DEF="Pillar_SR_TRANSFORM" translation="10.963036 -3.6 -15.620829" scale="2.123431 3.280998 9.2" rotation="-0.281085 -0.678598 -0.678598 2.593564">
 					<Shape DEF="Pillar">
 						<Appearance>
 							<Material DEF="MA_Concrete" diffuseColor="0.8 0.8 0.8" specularColor="0.17 0.17 0.17" ambientIntensity="0.333" shininess="0.055"></Material>
@@ -47,13 +47,11 @@
 						</IndexedFaceSet>
 					</Shape>
 				</Transform>
-				<Transform DEF="Pillar_SL_TRANSFORM" translation="-58.850719 -4.057225 -15.70517" scale="2.123431 3.280998 10" rotation="-0.281085 0.678598 0.678598 2.593564">
+				<Transform DEF="Pillar_SL_TRANSFORM" translation="-58.850719 -3.6 -15.70517" scale="2.123431 3.280998 9.2" rotation="-0.281085 0.678598 0.678598 2.593564">
 					<Shape USE="Pillar"></Shape>
 				</Transform>
 
 			</Transform>
-
-			
 			
 			<Transform translation="6.6 1.2 2" scale="1.8 1.8 1.8">
 
@@ -82,6 +80,44 @@
 				</Transform>
 
 			</Transform>
+
+
+			<!-- 4:3 screen -->
+			<Transform DEF="Screen" translation="0 1.7 -2.35" scale="1.35 1.0125 0">
+				<Shape onclick="selectObject('screen', {{id}}, event)">
+						<Appearance>
+							{{#if isMovie path}}
+								<MovieTexture url="{{path}}" loop="true"></MovieTexture>
+							{{else}}
+								{{#if isImage path}}}
+									<ImageTexture url="{{path}}"></ImageTexture>
+								{{else}}
+									<Material DEF="Screen" diffuseColor="1 1 1" specularColor="1 1 1" emissiveColor="1 1 1" ambientIntensity="0.333" shininess="0.1"></Material>
+								{{/if}}
+							{{/if}}
+						</Appearance>
+					<plane></plane>
+				</Shape>
+			</Transform>
+			<!-- screen surround-->
+			<Transform scale="1.45 0.05 0.01" translation="0 0.64 -2.29">
+					<shape DEF="ScreenSurround">
+						<Appearance>
+							<Material diffuseColor="0 0 0"></Material>
+						</Appearance>
+						<box></box>
+					</shape>
+			</Transform>
+			<Transform scale="1.45 0.05 0.01" translation="0 2.76 -2.29">
+					<shape USE="ScreenSurround"></shape>
+			</Transform>
+			<Transform scale="0.05 1.0125 0.01" translation="-1.4 1.7 -2.29">
+					<shape USE="ScreenSurround"></shape>
+			</Transform>
+			<Transform scale="0.05 1.0125 0.01" translation="1.4 1.7 -2.29">
+					<shape USE="ScreenSurround"></shape>
+			</Transform>
+			
 			
 			<!-- set wash -->
 			<Transform translation="-3.08 1 -0.9" scale="2 1.7 0" rotation="0 1 0 0.785397">
