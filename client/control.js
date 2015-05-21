@@ -69,7 +69,7 @@ Template.control.events({
 		}
 	},
 	
-	'input [data-action="input"]': function() {
+	'input [data-action="input"]': function(event) {
 		var doc = Docs.findOne(),
 				id = Session.get('selectedObject').id,
 				collection = event.target.getAttribute('data-collection'),
@@ -81,7 +81,7 @@ Template.control.events({
 		}
 		Docs.update(doc._id, {$set: {data: doc.data}});
 	},
-	'change [data-action="change"]': function() {
+	'change [data-action="change"]': function(event) {
 		var doc = Docs.findOne(),
 				id = Session.get('selectedObject').id,
 				collection = event.target.getAttribute('data-collection'),
@@ -93,7 +93,7 @@ Template.control.events({
 		}
 		Docs.update(doc._id, {$set: {data: doc.data}});
 	},
-	'change [data-action="check"]': function() {
+	'change [data-action="check"]': function(event) {
 		var doc = Docs.findOne(),
 				id = Session.get('selectedObject').id,
 				collection = event.target.getAttribute('data-collection'),
