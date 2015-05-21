@@ -17,7 +17,7 @@
 				{{/each}}
 			</select>
 			<label>Size: </label><span class="right">{{setGraphicsSize size content}}</span>
-			<input type="range" min="0.2" max="1" step="0.01" value="{{size}}" data-action="input" data-collection="setGraphics" data-property="size"/>
+			<input type="range" min="0.2" max="2" step="0.01" value="{{size}}" data-action="input" data-collection="setGraphics" data-property="size"/>
 			<br/>
 			<label>Position (Horizontal): </label>
 			<input type="range" min="-7" max="7" step="0.002" data-action="input" data-collection="setGraphics" data-property="positionX" value="{{positionX}}"/>
@@ -82,14 +82,18 @@
 				{{/each}}
 			</select>
 			{{#unless _equal logo 'None'}}
-				<label>Logo Size: </label>
-				<input type="range" min="0" max="0.23" step="0.01" data-action="input" data-collection="lecterns" data-property="logoSize" value="{{logoSize}}"/>
+				{{#if _equal type 'Felt'}}
+					<label>Logo Size: </label>
+					<input type="range" min="0" max="0.23" step="0.01" data-action="input" data-collection="lecterns" data-property="logoSize" value="{{logoSize}}"/>
+				{{/if}}
 			{{/unless}}
-			<br/>
-			<label>Colour: </label>
-			{{#with colour}}
-				<div class="colourBoxSmall left" style="background-color: {{hash}}"></div><span class="left"> {{name}}</span>
-			{{/with}}
+			{{#if _equal type 'Felt'}}
+				<br/>
+				<label>Colour: </label>
+				{{#with colour}}
+					<div class="colourBoxSmall left" style="background-color: {{hash}}"></div><span class="left"> {{name}}</span>
+				{{/with}}
+			{{/if}}
 			<br/><br/>
 			<button class="btn btn-danger" data-action="remove" data-collection="lecterns">Remove Lectern</button>
 			<hr/>
