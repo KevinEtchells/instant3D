@@ -193,7 +193,7 @@
 				{{#if _equal type 'Comfy Chairs'}}
 					
 					{{#each comfyChairs size positionX}}
-						<Transform scale="0.2 0.2 0.2" translation="{{positionX}} 0.45 0.1" rotation="0 1 0 {{rotation}}">
+						<Transform scale="0.2 0.2 0.2" translation="{{positionX}} 0 0.5" rotation="0 1 0 {{rotation}}">
 							<Transform DEF="Cube_001_TRANSFORM" translation="-4.441655 -0.31 0.308153" scale="1.202861 1.245166 0.874038" rotation="0 0.645389 0.763854 3.141593">
 								<Group DEF="group_ME_Cube">
 									<Shape onclick="selectObject('topTable', {{../id}}, event)">
