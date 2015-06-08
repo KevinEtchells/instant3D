@@ -16,7 +16,7 @@ Template.QEII_Fleming_Scene.helpers({
 				stageWidth = doc.data.stageWidth;
 
 		// [1] if any recesses are mirrored, add these to the array
-		if (recesses.length) {
+		if (recesses && recesses.length) {
 			recesses.forEach(function(recess) {
 				if (recess.mirror) {
 					var mirror = JSON.parse(JSON.stringify(recess));
@@ -28,7 +28,7 @@ Template.QEII_Fleming_Scene.helpers({
 		}
 
 		// [2] sort recesses array into left-to-right order
-		if (recesses.length) {
+		if (recesses && recesses.length) {
 			recesses.sort(function(a, b) {
 				return a.positionX > b.positionX;
 			});
@@ -36,7 +36,7 @@ Template.QEII_Fleming_Scene.helpers({
 
 		// [3] create set sections data
 		setSections.push({start: stageWidth / -10});
-		if (recesses.length) {
+		if (recesses && recesses.length) {
 			for (var i = 0; i < recesses.length; i++) {
 				setSections[i].width = ((recesses[i].positionX - setSections[i].start) / 2) - 0.1;
 				setSections.push({start: Number(recesses[i].positionX) + 0.1});
