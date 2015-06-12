@@ -29,8 +29,12 @@ Template.QEII_Churchill_Scene.helpers({
 			return xPos - 3.97;
 		}
 
+	},
+	/*
+	'chairRotation': function(index) {
+		return '0';
 	}
-
+	*/
 });
 
 

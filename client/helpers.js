@@ -104,22 +104,6 @@ UI.registerHelper('isMovie', function(path) {
 	}
 });
 
-UI.registerHelper('comfyChairs', function(size, position) {
-	var chairs = [],
-			rotation = -2.14,
-			xPos = Number(position);
-
-	for(var i = 0; i < size; i++) {
-		xPos = xPos + 0.6
-		rotation = rotation - 0.2
-		chairs.push({
-			positionX: xPos,
-			rotation: 3.14 //rotation
-		});
-	}
-
-	return chairs;
-});
 
 UI.registerHelper('setGraphicsScale', function(size, setGraphic) {
 	var img = Resources.findOne({name: setGraphic});

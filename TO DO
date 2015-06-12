@@ -1,25 +1,20 @@
-WAITING DEPLOYMENT:
-
-
-
-
 BUG FIXES:
+* Fix Felt lectern logo for Churchill and apply global version to all rooms ***
 * Set graphic sizing issue in VIEW MODE
 
 
 
 NEW FEATURES:
-* 16:9 option for Churchill
-* Mod panel logos
-* Allow insertion of custom objects in x3d format
+* Add Perspex Lectern
+* 16:9 option for QEII_Churchill
 * Change monochrome gobo colour ("Lamp Colour") ?
 * Stage height options for Fleming
-* Sort docs by date/time (may need separate datestamp)
-* Expand / hide control panel
+* Sort docs by date/time (may need separate datestamp) + add a sort-by drop-down
 * In CONTROL MODE, need to have a drop-down box to select elements
 * Triangular set pieces - Fleming
-* Chromabatten option for Westminster
 * Add Victoria / Albert scene
+* Expand / hide control panel
+* Add QEII_Foyer scene
 
 
 
@@ -27,5 +22,4 @@ PERFORMANCE IMPROVEMENTS / REFACTORING:
 * Re-work Mountbatten (scale and rotation. Use boxes for the flat parts. Remove camera) ***
 * Can we implement mirror feature with less lines of HTML?
 * Sort out set wash PNGs (Make only 1px wide where possible)
-* New comfy chair (scale and rotation is out. Optimise)
 * Update Meteor and x3dom
