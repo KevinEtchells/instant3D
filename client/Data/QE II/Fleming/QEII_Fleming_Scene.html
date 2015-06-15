@@ -6,8 +6,15 @@
 	
 	<x3d id="canvas">
 		<Scene>
-			<NavigationInfo id="navType" type="examine" headlight="true"></NavigationInfo>
-				<Background DEF="WO_World" groundColor="0.2 0.2 0.2" skyColor="0.051 0.051 0.051"></Background>
+			<NavigationInfo id="navType" type="examine" headlight="false"></NavigationInfo>
+				<Background DEF="WO_World" skyColor="0.8 0.8 0.8"></Background>
+				
+				<Transform translation="-10 10 10">
+					<PointLight color="1 1 1" intensity="0.3"></PointLight>
+				</Transform>
+				<Transform translation="10 10 10">
+					<PointLight color="1 1 1" intensity="0.3"></PointLight>
+				</Transform>
 				
 				<Transform DEF="Stage" translation="0 0 {{stageDepthOffset 0 0.4}}" scale="{{_scale stageWidth 0.1}} 0.2 {{stageDepth}}">
 					<Shape onclick="selectObject('stage', '1', event)">
@@ -307,7 +314,7 @@
 				{{/each}}
 
 				{{#each setGraphics}}
-					<Transform translation="{{positionX}} {{positionY}} -0.74" scale="{{setGraphicsScale size content}}" onclick="selectObject('graphics', {{id}}, event)">
+					<Transform translation="{{positionX}} {{positionY}} -0.73" scale="{{setGraphicsScale size content}}" onclick="selectObject('graphics', {{id}}, event)">
 						<Shape>
 							<Appearance>
 								<ImageTexture url="{{_host}}/resource/{{Id}}/{{content}}"></ImageTexture>
@@ -324,7 +331,7 @@
 						</Transform>
 					</Transform>
 					{{#if mirror}}
-						<Transform translation="{{opposite positionX}} {{positionY}} -0.74" scale="{{setGraphicsScale size content}}" 
+						<Transform translation="{{opposite positionX}} {{positionY}} -0.73" scale="{{setGraphicsScale size content}}" 
 							onclick="selectObject('graphics', {{id}}, event)">
 							<Shape>
 								<Appearance>
