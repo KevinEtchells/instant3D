@@ -17,7 +17,7 @@ Template.QEII_ComfyChairs_Scene.helpers({
 					zPos = zPos + ((zPos - 0.55) * 1.7);
 				}
 			}
-			//console.log(rotation + ' : ' + zPos);
+
 			xPos = xPos + 0.6 - (zPos * 0.2);
 			
 			chairs.push({

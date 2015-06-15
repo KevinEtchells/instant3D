@@ -1,6 +1,6 @@
 BUG FIXES:
 * Fix Felt lectern logo for Churchill and apply global version to all rooms ***
-* Set graphic sizing issue in VIEW MODE
+* In CONTROL MODE, need to have a drop-down box to select elements
 
 
 
@@ -10,7 +10,6 @@ NEW FEATURES:
 * Change monochrome gobo colour ("Lamp Colour") ?
 * Stage height options for Fleming
 * Sort docs by date/time (may need separate datestamp) + add a sort-by drop-down
-* In CONTROL MODE, need to have a drop-down box to select elements
 * Triangular set pieces - Fleming
 * Add Victoria / Albert scene
 * Expand / hide control panel

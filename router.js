@@ -7,7 +7,8 @@ Router.map(function () {
     waitOn: function() {
       return [
         Meteor.subscribe('docs', this.params.company, this.params.doc),
-        Meteor.subscribe('companies', this.params.company)
+        Meteor.subscribe('companies', this.params.company),
+        Meteor.subscribe('resources', this.params.doc)
       ];
     },
     data: function() {
@@ -43,7 +44,8 @@ Router.map(function () {
     },
     data: function() {
       return {
-        company: this.params.company
+        company: this.params.company,
+        type: 'edit'
       };
     }
   });
