@@ -1,14 +1,15 @@
 BUG FIXES:
-* Fix Felt lectern logo for Churchill and apply global version to all rooms ***
+* Fix Felt lectern logo for Churchill and apply global version to all rooms
 * In CONTROL MODE, need to have a drop-down box to select elements
 
 
 
 NEW FEATURES:
-* Ability to add custom x3d to scenes ***
-* 16:9 option for QEII_Churchill
-* Add logos for perspex lectern
+* 16:9 option for QEII_Churchill ***
 * Triangular set pieces - Fleming
+* Finish adding felt colours
+* Add logos for perspex lectern
+* Add mod panel graphics
 * Change monochrome gobo colour ("Lamp Colour") ?
 * Stage height options for Fleming
 * Sort docs by date/time (may need separate datestamp) + add a sort-by drop-down
@@ -18,7 +19,7 @@ NEW FEATURES:
 
 
 PERFORMANCE IMPROVEMENTS / REFACTORING:
-* Re-work Mountbatten (scale and rotation. Use boxes for the flat parts. Remove camera) ***
+* Re-work Mountbatten (scale and rotation. Use boxes for the flat parts. Remove camera)
 * Can we implement mirror feature with less lines of HTML?
 * Sort out set wash PNGs (Make only 1px wide where possible)
 * Update Meteor and x3dom

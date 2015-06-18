@@ -1,0 +1,38 @@
+<template name="CustomObjects_Control">
+
+	{{#if selectedObjectType 'customObject'}}
+		{{#with selectedObject 'customObjects'}}
+
+			<h5>Custom Object</h5>
+			<label>Size: </label>
+			<input type="range" min="0" max="5" step="0.01" data-action="input" data-collection="customObjects" data-property="size" value="{{size}}"/>
+			<br/>
+			<label>Position (Horizontal): </label>
+			<input type="range" min="-9" max="9" step="0.01" data-action="input" data-collection="customObjects" data-property="positionX" value="{{positionX}}"/>
+			<br/>
+			<label>Position (Vertical): </label>
+			<input type="range" min="-1" max="5" step="0.01" data-action="input" data-collection="customObjects" data-property="positionY" value="{{positionY}}"/>
+			<br/>
+			<label>Position (Depth): </label>
+			<input type="range" min="-9" max="9" step="0.01" data-action="input" data-collection="customObjects" data-property="positionZ" value="{{positionZ}}"/>
+			<br/>
+			<label>Rotation (X): </label>
+			<input type="range" min="-1" max="1" step="0.01" data-action="input" data-collection="customObjects" data-property="rotationX" value="{{rotationX}}"/>
+			<br/>
+			<label>Rotation (Y): </label>
+			<input type="range" min="-1" max="1" step="0.01" data-action="input" data-collection="customObjects" data-property="rotationY" value="{{rotationY}}"/>
+			<br/>
+			<label>Rotation (Z): </label>
+			<input type="range" min="-1" max="1" step="0.01" data-action="input" data-collection="customObjects" data-property="rotationZ" value="{{rotationZ}}"/>
+			<br/>
+			<label>Content: </label>
+			<br/>
+			<textarea data-action="input" data-collection="customObjects" data-property="content">{{content}}</textarea>
+			<br/><br/>
+			<button class="btn btn-danger" data-action="remove" data-collection="customObjects">Remove Object</button>
+			<hr/>
+	
+		{{/with}}
+	{{/if}}	
+	
+</template>

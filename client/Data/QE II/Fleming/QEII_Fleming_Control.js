@@ -1,8 +1,3 @@
-Template.QEII_Fleming_Control.helpers({
-
-});
-
-
 Template.QEII_Fleming_Control.events({
 
 	'dblclick [data-reset="screenPosition"]': function() {
@@ -45,6 +40,15 @@ Template.QEII_Fleming_Control.events({
 			defaults.size = 4;
 			defaults.type = 'Top Table';
 			defaults.colour = {hash: '#000000', rgb: '0 0 0', name: 'S67 Black'};
+		} else if (type === 'customObjects') {
+			defaults.size = 1;
+			defaults.positionX = 0;
+			defaults.positionY = 1.6;
+			defaults.positionZ = 1;
+			defaults.rotationX = 0;
+			defaults.rotationY = 0;
+			defaults.rotationZ = 0;
+			defaults.content = '<shape><box></box></shape>';
 		}
 		
 		if (!doc.data[type]) {
